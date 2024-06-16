@@ -31,6 +31,10 @@ in {
     ./session.nix
   ];
 
+  enableMan = true;
+  viAlias = true;
+  vimAlias = true;
+
   clipboard.providers.wl-copy.enable = true;
 
   globals = {
