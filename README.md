@@ -1,5 +1,7 @@
 <p align="center" style="color:grey">
 
+![image](https://github.com/niksingh710/nvix/assets/60490474/89503d51-ca86-4933-872f-3f60c32202a9)
+
 <div align="center">
 <table>
 <tbody>
@@ -71,4 +73,15 @@ nix profile install "github:niksingh710/nvix"
 ```
 
 
-### Previews are in coming .... they are same as my previous [config.](https://github.com/niksingh710/nvim)
+### Previews
+
+##### Telescope
+
+![image](https://github.com/niksingh710/nvix/assets/60490474/52f91e06-5161-4217-8f84-5a6d390295a5)
+
+
+##### Dashboard
+![image](https://github.com/niksingh710/nvix/assets/60490474/9f3bb154-a404-4e07-9eb5-168d0e591b85)
+
+##### Lualine
+![image](https://github.com/niksingh710/nvix/assets/60490474/14e81ab5-080a-40a7-a259-f486563881cb)
