@@ -26,6 +26,32 @@ I've switched to using `nix` for its many advantages, which far outweigh any dra
 </div>
 </p>
 
+<details> 
+<summary>
+Layout
+  </summary>
+
+```bash
+ ./
+├──  config/
+│  ├──  lang/
+│  └──  default.nix
+├──  lib/
+│  ├──  default.nix
+│  └──  icons.nix
+├──  flake.lock
+├──  flake.nix
+├──  LICENSE
+└──  README.md
+```
+
+- All `.nix` files under the config/lang directory are automatically imported by the config/lang/default.nix file, excluding itself.
+- The `config/default.nix` file is responsible for manually importing all configuration files within the config directory, allowing for selective inclusion of features.
+- The `lib/default.nix` file is responsible for importing all utility functions and modules.
+- The `config/general.nix` file contains small plugins that do not require extensive configuration.
+
+</details>
+
 ### Installation
 
 <details>
