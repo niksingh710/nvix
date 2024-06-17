@@ -19,7 +19,7 @@ in {
     ./treesitter.nix
     ./nvimtree.nix
     ./gitsigns.nix
-    
+
     ./dashboard.nix
     ./lsp.nix
     ./lang

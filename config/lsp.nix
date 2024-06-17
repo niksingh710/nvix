@@ -13,8 +13,8 @@ in {
           gt = "type_definition";
         };
         diagnostic = {
-          "<leader>j" = "goto_next";
-          "<leader>k" = "goto_prev";
+          gj = "goto_next";
+          gk = "goto_prev";
         };
       };
     };
