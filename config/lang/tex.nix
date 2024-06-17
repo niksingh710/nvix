@@ -5,6 +5,6 @@
   };
   extraConfigLua = # lua
     ''
-      vim.cmd([[let maplocalleader = ","]])
+      vim.cmd([[let maplocalleader = " t"]])
     '';
 }
