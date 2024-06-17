@@ -1,10 +1,6 @@
 { pkgs, inputs, ... }: {
   extraConfigLua = # lua
     ''
-      local ok, _ = pcall(require, "nvim-ts-autotag")
-      if ok then
-        require("nvim-ts-autotag").setup()
-      end
       local ok, _ = pcall(require, "ts-comments")
       if ok then
         require("ts-comments").setup()
