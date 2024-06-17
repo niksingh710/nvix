@@ -29,6 +29,8 @@ in {
     ./cmp.nix
     ./copilot.nix
     ./session.nix
+
+    ./image.nix
   ];
 
   enableMan = true;
