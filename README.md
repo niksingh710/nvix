@@ -50,11 +50,11 @@ Layout
 - The `lib/default.nix` file is responsible for importing all utility functions and modules.
 - The `config/general.nix` file contains small plugins that do not require extensive configuration.
 
-> [!NOTE]
+>[!NOTE]
 > I have added files in `config/lang` still not working `:womp:`.
 > Ensure you have done `git add <newfile>` that's how flakes work. (`git restore --staged .` to revert). \[Same for any new file.\]
 
-> [!NOTE]
+>[!NOTE]
 > How to update plugins to latest version? -> `nix flake update` should do that.
 > Also I regularly update the flake.lock file.
 
