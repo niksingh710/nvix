@@ -65,17 +65,19 @@ Layout
   Ensure that you have nix installed on your system and flakes enabled.
   </summary>
 
-  #### Nix pkg manager installation
-  ```bash
-  # This is multiuser installation of nix requires sudo
-  sh <(curl -L https://nixos.org/nix/install) --daemon
-  ```
+#### Nix pkg manager installation
+
+```bash
+# This is multiuser installation of nix requires sudo
+sh <(curl -L https://nixos.org/nix/install) --daemon
+```
 
 </details>
 
 ##### Quick run
 
 As the config is based on flakes you can run it quickly without any long code snippet.
+
 ```bash
 nix run "github:niksingh710/nvix"
 ```
@@ -104,16 +106,16 @@ nix profile install "github:niksingh710/nvix"
   ];
 ```
 
-
 ### Previews
 
 ##### Telescope
 
 ![image](https://github.com/niksingh710/nvix/assets/60490474/52f91e06-5161-4217-8f84-5a6d390295a5)
 
-
 ##### Dashboard
+
 ![image](https://github.com/niksingh710/nvix/assets/60490474/9f3bb154-a404-4e07-9eb5-168d0e591b85)
 
 ##### Lualine
+
 ![image](https://github.com/niksingh710/nvix/assets/60490474/14e81ab5-080a-40a7-a259-f486563881cb)
