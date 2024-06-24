@@ -17,7 +17,7 @@ in {
           q = {
             __raw = "require('telescope.actions').close";
           };
-          x = {
+          s = {
             __raw = "require('telescope.actions').select_horizontal";
           };
           v = {
