@@ -106,7 +106,6 @@ let
     (mkKeymap "v" "<leader>x" ''"+x'' "Register x")
     (mkKeymap "v" "<leader>X" ''"+'' "Register X")
 
-    (mkKeymap "v" "<leader>lf" "vim.lsp.buf.format" "Format file")
   ];
   xv = [
     (mkKeymapWithOpts "x" "j" ''v:count || mode(1)[0:1] == "no" ? "j" : "gj"'' "Move down" {
@@ -116,7 +115,6 @@ let
       expr = true;
     })
     (mkKeymap "x" "p" ''p:let @+=@0<CR>:let @"=@0<CR>'' "Dont copy replaced text")
-    (mkKeymap "x" "<leader>lf" "vim.lsp.buf.format" "Format file")
   ];
 in
 {
