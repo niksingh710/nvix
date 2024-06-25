@@ -31,6 +31,7 @@ in {
     ./session.nix
 
     ./image.nix
+    ./otter.nix
   ];
 
   enableMan = true;
