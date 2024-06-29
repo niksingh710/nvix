@@ -8,34 +8,20 @@ in {
       current_line_blame = true;
       signs = {
         add = {
-          hl = "GitSignsAdd";
           text = "${icons.ui.LineLeft}";
-          numhl = "GitSignsAddNr";
-          linehl = "GitSignsAddLn";
         };
         change = {
-          hl = "GitSignsChange";
           text = "${icons.ui.LineLeft}";
-          numhl = "GitSignsChangeNr";
-          linehl = "GitSignsChangeLn";
         };
         delete = {
-          hl = "GitSignsDelete";
           text = "${icons.ui.LineLeft}";
-          numhl = "GitSignsDeleteNr";
-          linehl = "GitSignsDeleteLn";
         };
         topdelete = {
-          hl = "GitSignsDelete";
           text = "${icons.ui.Triangle}";
-          numhl = "GitSignsDeleteNr";
-          linehl = "GitSignsDeleteLn";
         };
-
-        hl = "GitSignsChange";
-        text = "${icons.ui.BoldLineLeft}";
-        numhl = "GitSignsChangeNr";
-        linehl = "GitSignsChangeLn";
+        changedelete = {
+          text = "${icons.ui.BoldLineLeft}";
+        };
       };
     };
   };

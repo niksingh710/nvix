@@ -1,7 +1,7 @@
 { icons, ... }: {
   plugins.dashboard = {
     # TODO: search for fix when free
-    enable = false;
+    enable = true;
     settings = {
       hide = { tabline = false; };
       disable_move = true;

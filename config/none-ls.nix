@@ -3,7 +3,7 @@
     # lsp-format.enable = true;
     none-ls = {
       enable = true;
-      updateInInsert = true;
+      settings.update_in_insert = true;
       # enableLspFormat = true;
     };
   };

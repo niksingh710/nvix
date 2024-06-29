@@ -1,6 +1,7 @@
 {
   plugins.image = {
-    enable = true;
+    # TODO: fix ueberzug issue on tmux layout change
+    enable = false;
     backend = "ueberzug";
     editorOnlyRenderWhenFocused = true;
     maxWidth = 50;
