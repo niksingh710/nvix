@@ -30,7 +30,7 @@
       formatting = {
         prettierd = {
           enable = true;
-          withArgs = # lua
+          settings = # lua
             ''
               {
                 filetypes = {

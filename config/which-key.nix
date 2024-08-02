@@ -1,17 +1,5 @@
 {
-  plugins.which-key = {
-    enable = true;
-    hidden = [
-      "<silent>"
-      "<cmd>"
-      "<Cmd>"
-      "<CR>"
-      "^:"
-      "^ "
-      "^call "
-      "^lua "
-    ];
-  };
+  plugins.which-key = { enable = true; };
   opts = {
     timeout = true;
     timeoutlen = 300;

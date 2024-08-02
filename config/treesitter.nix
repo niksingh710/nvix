@@ -2,9 +2,12 @@
   plugins = {
     treesitter = {
       enable = true;
-      indent = true;
       nixvimInjections = true;
-      incrementalSelection.enable = true;
+      settings = {
+        highlight.enable = true;
+        incremental_selection.enable = true;
+        indent.enable = true;
+      };
     };
     treesitter-textobjects = { enable = true; };
     mini.enable = true;

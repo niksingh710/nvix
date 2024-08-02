@@ -1,1 +1,1 @@
-{ pkgs, ... }: { extraPlugins = with pkgs.vimPlugins; [ otter-nvim ]; }
+{ plugins.otter = { enable = true; }; }

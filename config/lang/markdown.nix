@@ -1,6 +1,7 @@
 { pkgs, inputs, mkKey, ... }:
 let inherit (mkKey) mkKeymap;
 in {
+
   plugins.markdown-preview = { enable = true; };
   extraPlugins = [
     pkgs.vimPlugins.glow-nvim
@@ -11,6 +12,10 @@ in {
     (pkgs.vimUtils.buildVimPlugin {
       name = "nvim-hl-md";
       src = inputs.nvim-hl-md;
+    })
+    (pkgs.vimUtils.buildVimPlugin {
+      name = "markview";
+      src = inputs.markview;
     })
   ];
   keymaps = [
