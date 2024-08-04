@@ -17,7 +17,7 @@ in {
           "^output/"
           "^data/"
           "%.ipynb"
-          "secrets/"
+          "^secrets/"
         ];
         mappings = {
           n = {
