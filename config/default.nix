@@ -32,6 +32,8 @@ in {
 
     ./image.nix
     ./otter.nix
+
+    ./firenvim.nix
   ];
 
   enableMan = true;
