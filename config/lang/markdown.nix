@@ -3,6 +3,7 @@ let inherit (mkKey) mkKeymap;
 in {
 
   plugins.markdown-preview = { enable = true; };
+  extraPackages = with pkgs; [ pandoc ];
   extraPlugins = [
     pkgs.vimPlugins.glow-nvim
     (pkgs.vimUtils.buildVimPlugin {
