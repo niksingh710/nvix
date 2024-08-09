@@ -200,11 +200,11 @@
     "markview": {
       "flake": false,
       "locked": {
-        "lastModified": 1723047385,
-        "narHash": "sha256-E6GcAq9/8BcrTEnJHDqMHbTWXW2UmJ7QMzH2YzacGlg=",
+        "lastModified": 1723145926,
+        "narHash": "sha256-uLbgR/J1OXieQBfaYYEfE3e9MgVYFePDVr/SxRM23L8=",
         "owner": "OXY2DEV",
         "repo": "markview.nvim",
-        "rev": "ea4eab99b211c3a4b963949c1e6104cca66bf161",
+        "rev": "edcb29d38d0e31fc82c81e7168dae37c71f863a3",
         "type": "github"
       },
       "original": {
@@ -323,11 +323,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1723064649,
-        "narHash": "sha256-J7p/kv0GHAnvg2HH3vJ3JVz1LEzCtdhcH0prmdYfRog=",
+        "lastModified": 1723156179,
+        "narHash": "sha256-rqdhRPPtxi/Mi73YC5mz/XAi/r8AJfH0Smhz6ZeS2nI=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "593f5215cb1df010451675c19f2ad5c5481ccee3",
+        "rev": "fab51138b7f8d2196b359d1a0986eaf0b69a9b9e",
         "type": "github"
       },
       "original": {
