@@ -44,7 +44,7 @@ in {
       local ok,mdpdf = pcall(require, "md-pdf")
       if ok then
         mdpdf.setup({
-          toc = false,
+          toc = false
         })
       end
       local ok, md = pcall(require, "hl-mdcodeblock")
