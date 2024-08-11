@@ -44,7 +44,9 @@ in {
 
       local ok, md = pcall(require, "hl-mdcodeblock")
       if ok then
-        md.setup()
+        md.setup({
+          toc = false,
+        })
       end
       local ok, g = pcall(require, "glow")
       if ok then
