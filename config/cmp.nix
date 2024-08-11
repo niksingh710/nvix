@@ -68,24 +68,25 @@
                   end,
                 }),
 
-                ["<c-l>"] = cmp.mapping(function(fallback)
-                  if cmp.visible() then
-                    cmp.select_next_item()
-                  elseif lsnip.expand_or_jumpable() then
-                    vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
-                  else
-                    fallback()
-                  end
-                end, { "i", "s" }),
                 ["<c-h>"] = cmp.mapping(function(fallback)
                   if cmp.visible() then
                     cmp.select_prev_item()
-                  elseif lsnip.jumpable(-1) then
+                  elseif require("luasnip").jumpable(-1) then
                     vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
                   else
                     fallback()
                   end
                 end, { "i", "s" }),
+                ["<c-l>"] = cmp.mapping(function(fallback)
+                  if cmp.visible() then
+                    cmp.select_next_item()
+                  elseif require("luasnip").expand_or_jumpable() then
+                    vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+                  else
+                    fallback()
+                  end
+                end, { "i", "s" }),
+
                 ["<c-space>"] = cmp.mapping(function(fallback)
 
                 local copk, _ = pcall(require, "copilot")

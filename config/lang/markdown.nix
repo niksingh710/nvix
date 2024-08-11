@@ -41,12 +41,15 @@ in {
         })
       end
 
-
-      local ok, md = pcall(require, "hl-mdcodeblock")
+      local ok,mdpdf = pcall(require, "md-pdf")
       if ok then
-        md.setup({
+        mdpdf.setup({
           toc = false,
         })
+      end
+      local ok, md = pcall(require, "hl-mdcodeblock")
+      if ok then
+        md.setup()
       end
       local ok, g = pcall(require, "glow")
       if ok then
