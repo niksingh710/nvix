@@ -21,99 +21,102 @@ let
 in {
   plugins.lualine = {
     enable = true;
-    alwaysDivideMiddle = true;
-    iconsEnabled = true;
-    theme = {
-      normal = {
-        a = {
-          fg = themeColors.bg;
-          bg = themeColors.blue;
-          gui = "bold";
+    settings.options = {
+      always_divide_middle = true;
+      icons_enabled = true;
+      theme = {
+        normal = {
+          a = {
+            fg = themeColors.bg;
+            bg = themeColors.blue;
+            gui = "bold";
+          };
+          b = {
+            inherit (themeColors) fg;
+            bg = themeColors.darkblue;
+          };
+          c = {
+            inherit (themeColors) fg;
+            inherit (themeColors) bg;
+          };
         };
-        b = {
-          inherit (themeColors) fg;
-          bg = themeColors.darkblue;
+        insert = {
+          a = {
+            fg = themeColors.bg;
+            bg = themeColors.green;
+            gui = "bold";
+          };
+          b = {
+            inherit (themeColors) fg;
+            bg = themeColors.darkblue;
+          };
+          c = {
+            inherit (themeColors) fg;
+            inherit (themeColors) bg;
+          };
         };
-        c = {
-          inherit (themeColors) fg;
-          inherit (themeColors) bg;
+        visual = {
+          a = {
+            fg = themeColors.bg;
+            bg = themeColors.magenta;
+            gui = "bold";
+          };
+          b = {
+            inherit (themeColors) fg;
+            bg = themeColors.darkblue;
+          };
+          c = {
+            inherit (themeColors) fg;
+            inherit (themeColors) bg;
+          };
+        };
+        replace = {
+          a = {
+            fg = themeColors.bg;
+            bg = themeColors.red;
+            gui = "bold";
+          };
+          b = {
+            inherit (themeColors) fg;
+            bg = themeColors.darkblue;
+          };
+          c = {
+            inherit (themeColors) fg;
+            inherit (themeColors) bg;
+          };
+        };
+        command = {
+          a = {
+            fg = themeColors.bg;
+            bg = themeColors.orange;
+            gui = "bold";
+          };
+          b = {
+            inherit (themeColors) fg;
+            bg = themeColors.darkblue;
+          };
+          c = {
+            inherit (themeColors) fg;
+            inherit (themeColors) bg;
+          };
+        };
+        inactive = {
+          a = {
+            inherit (themeColors) fg;
+            inherit (themeColors) bg;
+            gui = "bold";
+          };
+          b = {
+            inherit (themeColors) fg;
+            inherit (themeColors) bg;
+          };
+          c = {
+            inherit (themeColors) fg;
+            inherit (themeColors) bg;
+          };
         };
       };
-      insert = {
-        a = {
-          fg = themeColors.bg;
-          bg = themeColors.green;
-          gui = "bold";
-        };
-        b = {
-          inherit (themeColors) fg;
-          bg = themeColors.darkblue;
-        };
-        c = {
-          inherit (themeColors) fg;
-          inherit (themeColors) bg;
-        };
-      };
-      visual = {
-        a = {
-          fg = themeColors.bg;
-          bg = themeColors.magenta;
-          gui = "bold";
-        };
-        b = {
-          inherit (themeColors) fg;
-          bg = themeColors.darkblue;
-        };
-        c = {
-          inherit (themeColors) fg;
-          inherit (themeColors) bg;
-        };
-      };
-      replace = {
-        a = {
-          fg = themeColors.bg;
-          bg = themeColors.red;
-          gui = "bold";
-        };
-        b = {
-          inherit (themeColors) fg;
-          bg = themeColors.darkblue;
-        };
-        c = {
-          inherit (themeColors) fg;
-          inherit (themeColors) bg;
-        };
-      };
-      command = {
-        a = {
-          fg = themeColors.bg;
-          bg = themeColors.orange;
-          gui = "bold";
-        };
-        b = {
-          inherit (themeColors) fg;
-          bg = themeColors.darkblue;
-        };
-        c = {
-          inherit (themeColors) fg;
-          inherit (themeColors) bg;
-        };
-      };
-      inactive = {
-        a = {
-          inherit (themeColors) fg;
-          inherit (themeColors) bg;
-          gui = "bold";
-        };
-        b = {
-          inherit (themeColors) fg;
-          inherit (themeColors) bg;
-        };
-        c = {
-          inherit (themeColors) fg;
-          inherit (themeColors) bg;
-        };
-      };
+
     };
   };
 
