@@ -15,7 +15,7 @@
   plugins = {
     ts-autotag.enable = true;
     lsp.servers = {
-      tsserver.enable = true;
+      ts-ls.enable = true;
       vuels.enable = true;
       tailwindcss.enable = true;
       svelte.enable = true;

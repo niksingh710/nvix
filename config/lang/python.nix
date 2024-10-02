@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   plugins = {
+    web-devicons.enable = true;
     lsp = {
       servers = {
         ruff.enable = true;

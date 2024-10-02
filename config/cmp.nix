@@ -25,7 +25,6 @@
             '';
         };
         sources = [
-          { name = "otter"; }
           { name = "async_path"; }
           { name = "nvim_lsp_signature_help"; }
           {
