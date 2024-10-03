@@ -11,7 +11,7 @@
           module = { inherit imports; };
         };
 
-      bare = [ "${self}/config" ];
+      bare = [ "${self}/config/core" ];
     in {
 
       packages = { bare = modules bare; };
