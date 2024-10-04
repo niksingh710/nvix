@@ -17,7 +17,7 @@ in {
   plugins = {
 
     # TODO: add multicursor
-
+    # transparent.enable = true;
     nvim-surround.enable = true;
     dressing.enable = true;
     lastplace.enable = true;

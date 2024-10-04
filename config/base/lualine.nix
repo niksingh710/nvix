@@ -9,6 +9,21 @@ in
   plugins.lualine = {
     enable = true;
     settings.options = {
+      theme =
+        let
+          transparent = {
+            a.fg = "none";
+            c.bg = "none";
+          };
+        in
+        {
+          normal = transparent;
+          insert = transparent;
+          visual = transparent;
+          replace = transparent;
+          command = transparent;
+          inactive = transparent;
+        };
       always_divide_middle = true;
       icons_enable = true;
       component_separators = separators;
@@ -81,7 +96,7 @@ in
           color = { fg = "#ff9e64" },
         }
       end
-      components.location = { "location", color = { fg = "#000000" }, }
+      -- components.location = { "location", color = { fg = "#000000" }, }
       components.filetype = { "filetype", cond = nil, padding = { left = 1, right = 1 } }
       components.fileformat = { "fileformat", cond = nil, padding = { left = 1, right = 1 }, color = "SLGreen" }
       components.lsp = {
@@ -93,7 +108,8 @@ in
           end
           for _, client in ipairs(clients) do
             if client.name ~= "copilot" and client.name ~= "null-ls" then
-              table.insert(lsp_names, client.name)
+              local name = client.name:gsub("%[%d+%]", "") -- makes otter-ls[number] -> otter-ls
+              table.insert(lsp_names, name)
             end
           end
 
@@ -101,7 +117,8 @@ in
           local con_names = {}
 
           for _, formatter in ipairs(formatters) do
-            if formatter.available then
+            local name = formatter.name
+            if formatter.available and (name ~= "squeeze_blanks" and name ~= "trim_whitespace" and name ~= "trim_newlines") then
               table.insert(con_names, formatter.name)
             end
           end
@@ -123,7 +140,7 @@ in
           components.lsp,
         },
         lualine_y = { "progress" },
-        lualine_z = { components.location, components.copilot },
+        lualine_z = { "location", components.copilot },
       }
 
       local lualine = require("lualine")
