@@ -36,7 +36,7 @@ I've switched to using `nix` for its many advantages, which far outweigh any dra
 <small> `base` config is the default package and it is meat to be used normally.</small><br>
 <small> `full` config contains `tex/latex` setup the package download is heavy that's why it is not recommended to have always.</small><br>
 
-<details> 
+<details>
 <summary>
 Layout
   </summary>
@@ -200,4 +200,3 @@ nix profile install "github:niksingh710/nvix"
 ##### Lualine
 
 ![image](https://github.com/niksingh710/nvix/assets/60490474/14e81ab5-080a-40a7-a259-f486563881cb)
-```
