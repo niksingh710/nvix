@@ -5,7 +5,7 @@
       bg = "none";
     };
   };
-  colorschemes.rose-pine.enable = true;
+  # colorschemes.rose-pine.enable = true;
   plugins = {
     lspkind.enable = true;
     luasnip.enable = true;
