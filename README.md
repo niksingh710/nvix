@@ -141,7 +141,9 @@ nix profile install "github:niksingh710/nvix"
 
 <details>
   <summary>
-  Tip to get this kind of blend on any theme.
+
+### Tip to get this kind of blend on any theme.
+
   </summary>
 
   ```lua
