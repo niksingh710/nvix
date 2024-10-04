@@ -14,20 +14,6 @@ in {
     (mkPkgs "windows-mc" inputs.windows-mc)
     (mkPkgs "windows-a" inputs.windows-a)
   ];
-
-  colorschemes.tokyonight = {
-    enable = true;
-    settings = {
-      style = "night";
-      styles = {
-        comments.italic = true;
-        functions.italic = true;
-        variables.italic = true;
-        keywords = { italic = true; bold = true; };
-      };
-    };
-  };
-
   plugins = {
 
     # TODO: add multicursor
