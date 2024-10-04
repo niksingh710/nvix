@@ -1,24 +1,37 @@
-{ lib, mkKey, ... }:
+{ lib, mkKey, icons, opts, specObj, pkgs, ... }:
 let inherit (mkKey) mkKeymap;
 in with lib; {
-  plugins.lsp = {
-    enable = mkDefault true;
-    inlayHints = mkDefault true;
-    servers.nil-ls = {
-      enable = true;
+  plugins = {
+    conform-nvim = {
+      enable = mkDefault true;
       settings = {
-        formatting.command = [ "nixpkgs-fmt" ];
+        formatters.nixpkgs-fmt = {
+          command = lib.getExe pkgs.nixpkgs-fmt;
+        };
+        formatters_by_ft.nix = [ "nixpkgs-fmt" ];
       };
-
+    };
+    lsp = {
+      enable = mkDefault true;
+      inlayHints = mkDefault true;
+      servers.nil-ls = {
+        enable = true;
+        settings = {
+          formatting.command = [ "nixpkgs-fmt" ];
+        };
+      };
     };
   };
 
-  keymaps = [
-    (mkKeymap "v" "<leader>lf" { __raw = "vim.lsp.buf.format "; }
-      "Format file")
-    (mkKeymap "x" "<leader>lf" { __raw = "vim.lsp.buf.format"; }
-      "Format file")
-    (mkKeymap "n" "<leader>lf" { __raw = "vim.lsp.buf.format"; }
-      "Format file")
+  extraConfigLua = # lua
+    ''
+      vim.keymap.set("n", "<leader>lf", function() require("conform").format() end, { noremap = true, silent = true, desc = "Format Buffer" })
+      vim.keymap.set("v", "<leader>lf", function() require("conform").format() { async = true } end, { noremap = true, silent = true, desc = "Format Buffer" })
+      vim.keymap.set("x", "<leader>lf", function() require("conform").format() { async = true } end, { noremap = true, silent = true, desc = "Format Buffer" })
+
+    '';
+
+  wKeyList = [
+    (specObj [ "<leader>l" "󰿘" "lsp" ])
   ];
 }

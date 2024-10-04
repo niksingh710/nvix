@@ -5,13 +5,13 @@
       enable = true;
 
       settings = {
-        win = { wo = { inherit (opts) winblend; }; };
+        win.wo = { inherit (opts) winblend; };
         spec = config.wKeyList;
       };
     };
     opts = {
       timeout = true;
-      timeoutlen = 100;
+      timeoutlen = 250;
     };
   };
 }

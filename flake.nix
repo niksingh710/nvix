@@ -7,6 +7,19 @@
 
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
+
+    windows = {
+      url = "github:anuvyklack/windows.nvim";
+      flake = false;
+    };
+    windows-mc = {
+      url = "github:anuvyklack/middleclass";
+      flake = false;
+    };
+    windows-a = {
+      url = "github:anuvyklack/animation.nvim";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ flake-parts, ... }:

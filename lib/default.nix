@@ -34,7 +34,8 @@
       fourth = lib.optionalAttrs (len > 3 && elemAt list 3 != "") {
         hidden = elemAt list 3;
       };
-    in first // second // third // fourth;
+    in
+    first // second // third // fourth;
 
   icons = import ./icons.nix;
 }

@@ -1,11 +1,16 @@
 { icons, opts, ... }: {
+
+  performance.byteCompileLua = {
+    enable = true;
+    nvimRuntime = true;
+  };
+
   plugins = {
     tmux-navigator.enable = true;
     web-devicons.enable = true;
-    dressing.enable = true;
+    nvim-autopairs.enable = true;
   };
-
-  extraConfigLuaPre = # lua
+  extraConfigLua = #lua 
     ''
       local signs = {
           Hint = "${icons.diagnostics.BoldHint}",
@@ -30,6 +35,5 @@
           focusable = false,
         },
       })
-
     '';
 }

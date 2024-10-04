@@ -268,7 +268,10 @@
       "inputs": {
         "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs",
-        "nixvim": "nixvim"
+        "nixvim": "nixvim",
+        "windows": "windows",
+        "windows-a": "windows-a",
+        "windows-mc": "windows-mc"
       }
     },
     "systems": {
@@ -304,6 +307,54 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "windows": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673907386,
+        "narHash": "sha256-Nfzd8kFqA83/0RfMUAYF4XXqhihyb22OnxDBrWW1nzU=",
+        "owner": "anuvyklack",
+        "repo": "windows.nvim",
+        "rev": "c7492552b23d0ab30325e90b56066ec51242adc8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "anuvyklack",
+        "repo": "windows.nvim",
+        "type": "github"
+      }
+    },
+    "windows-a": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1663498646,
+        "narHash": "sha256-KyFzPI2B0ioIABnhC6MwaHYLcuUzSqCsmcGpMei4XXk=",
+        "owner": "anuvyklack",
+        "repo": "animation.nvim",
+        "rev": "fb77091ab72ec9971aee0562e7081182527aaa6a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "anuvyklack",
+        "repo": "animation.nvim",
+        "type": "github"
+      }
+    },
+    "windows-mc": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1663692601,
+        "narHash": "sha256-scJX7ovVZ6YBRp2lTP7JswyZ0smvVZneGRGBvwFsyOQ=",
+        "owner": "anuvyklack",
+        "repo": "middleclass",
+        "rev": "9fab4d5bca67262614960960ca35c4740eb2be2c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "anuvyklack",
+        "repo": "middleclass",
         "type": "github"
       }
     }

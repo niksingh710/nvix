@@ -98,6 +98,7 @@
     Ellipsis = "";
     EmptyFolder = "";
     EmptyFolderOpen = "";
+    ExitCircle = "󰿅";
     File = "";
     FileSymlink = "";
     Files = "";

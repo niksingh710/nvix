@@ -1,4 +1,4 @@
-{ mkKey,specObj, ... }:
+{ mkKey, specObj, ... }:
 let inherit (mkKey) mkKeymap;
 in {
   plugins.bufferline = {
@@ -40,7 +40,7 @@ in {
     };
   };
   wKeyList = [
-      (specObj [ "<leader>b" "" "buffers" ])
+    (specObj [ "<leader>b" "" "buffers" ])
   ];
   keymaps = [
     (mkKeymap "n" "<leader>bp" "<cmd>:BufferLinePick<cr>" "BufferLine Pick")

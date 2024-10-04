@@ -12,8 +12,12 @@
         };
 
       bare = [ "${self}/config/core" ];
+      base = bare ++ [ "${self}/config/base" "${self}/lang" ];
     in {
 
-      packages = { bare = modules bare; };
+      packages = {
+        bare = modules bare;
+        base = modules base;
+      };
     };
 }
