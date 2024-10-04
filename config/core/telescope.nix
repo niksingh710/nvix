@@ -2,14 +2,12 @@
 let inherit (mkKey) mkKeymap;
 in {
   wKeyList = [
-    (specObj [ "<leader>x" "" "diagnostics/quickfix" ])
     (specObj [ "<leader>s" "" "search" ])
     (specObj [ "<leader>f" "" "file/find" ])
     (specObj [ "<leader>:" "" ])
   ];
   plugins = {
     todo-comments.enable = true;
-    trouble.enable = true;
     telescope = {
       enable = true;
       extensions = {
@@ -58,8 +56,8 @@ in {
     (mkKeymap "n" "<leader>xx" "<cmd>Trouble diagnostics toggle <cr>" "iagnostics (Trouble)")
     (mkKeymap "n" "<leader>xL" "<cmd>Trouble loclist toggle<cr>" "Location List (Trouble)")
     (mkKeymap "n" "<leader>xQ" "<cmd>Trouble qflist toggle<cr>" "QuickFix List (Trouble)")
-    (mkKeymap "n" "<leader>cl" "<cmd>Trouble lsp toggle focus=false win.position=right<cr>" "LSP Definitions / references / ... (Trouble)")
-    (mkKeymap "n" "<leader>cs" "<cmd>Trouble symbols toggle focus=false<cr>" "Symbols (Trouble)")
+    (mkKeymap "n" "<leader>xl" "<cmd>Trouble lsp toggle focus=false win.position=right<cr>" "LSP Definitions / references / ... (Trouble)")
+    (mkKeymap "n" "<leader>xs" "<cmd>Trouble symbols toggle focus=false<cr>" "Symbols (Trouble)")
 
     (mkKeymap "n" "<leader>st" "<cmd>TodoTelescope<cr>" "Todo")
     (mkKeymap "n" "<leader>sT" "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>"

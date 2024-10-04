@@ -8,6 +8,11 @@
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
+    buffer-manager = {
+      url = "github:j-morano/buffer_manager.nvim";
+      flake = false;
+    };
+
     windows = {
       url = "github:anuvyklack/windows.nvim";
       flake = false;

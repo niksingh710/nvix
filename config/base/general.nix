@@ -1,8 +1,7 @@
 # This file contains plugins that are basics or don't need their own file
-{ pkgs, inputs, mkKey, ... }:
+{ pkgs, inputs, mkPkgs, mkKey, ... }:
 let
   inherit (mkKey) mkKeymap;
-  mkPkgs = name: src: pkgs.vimUtils.buildVimPlugin { inherit name src; };
 in
 {
   # Keeping this at top so that if any plugin is removed it's respective config can be removed

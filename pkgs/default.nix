@@ -1,10 +1,10 @@
 { inputs, self, lib, ... }: {
-  perSystem = { pkgs, system, ... }:
+  perSystem = { pkgs, self', system, ... }:
     let
       extraSpecialArgs = {
         inherit inputs;
         inherit (self) opts;
-      } // import "${self}/lib" { inherit lib; };
+      } // import "${self}/lib" { inherit lib pkgs; };
       modules = imports:
         inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
           inherit pkgs extraSpecialArgs;
@@ -13,11 +13,13 @@
 
       bare = [ "${self}/config/core" ];
       base = bare ++ [ "${self}/config/base" "${self}/lang" ];
-    in {
+    in
+    {
 
       packages = {
         bare = modules bare;
         base = modules base;
+        default = self'.packages.base;
       };
     };
 }

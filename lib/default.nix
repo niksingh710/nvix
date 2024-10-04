@@ -1,4 +1,4 @@
-{ lib, ... }: {
+{ lib, pkgs, ... }: {
   mkKey = rec {
     mkKeymap = mode: key: action: desc: {
       inherit mode key action;
@@ -16,6 +16,9 @@
         options = opts;
       };
   };
+
+
+  mkPkgs = name: src: pkgs.vimUtils.buildVimPlugin { inherit name src; };
 
   # For which-key icon generation
   # Accepts a list of strings and returns a list of objects

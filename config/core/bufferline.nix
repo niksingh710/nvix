@@ -1,4 +1,4 @@
-{ mkKey, specObj, ... }:
+{ inputs, mkPkgs, mkKey, specObj, ... }:
 let inherit (mkKey) mkKeymap;
 in {
   plugins.bufferline = {
@@ -39,11 +39,19 @@ in {
       ];
     };
   };
+  extraPlugins = [
+    (mkPkgs "buffer_manager" inputs.buffer-manager)
+  ];
+
   wKeyList = [
     (specObj [ "<leader>b" "" "buffers" ])
   ];
   keymaps = [
-    (mkKeymap "n" "<leader>bp" "<cmd>:BufferLinePick<cr>" "BufferLine Pick")
+    (mkKeymap "n" "<leader>bm"
+      ":lua require('buffer_manager.ui').toggle_quick_menu()<cr>"
+      "Buffer Manager")
+
+    (mkKeymap "n" "<leader>bp" "<cmd>:BufferLinePick<cr>" "Buffer Line Pick")
     (mkKeymap "n" "<cmd>:bp | bd #<cr>" "<leader>bc" "Buffer Delete")
 
     (mkKeymap "n" "<leader>bP" "<cmd>BufferLineTogglePin<cr>" "Buffer Pin")
