@@ -42,23 +42,32 @@ Layout
   </summary>
 
 ```bash
+
  ./
 ├──  config/
-│  ├──  lang/
+│  ├──  base/
+│  ├──  core/
 │  └──  default.nix
+├──  lang/
+│  ├──  default.nix
+│  ├──  lua.nix
+│  └──  shell.nix
 ├──  lib/
 │  ├──  default.nix
 │  └──  icons.nix
+├──  pkgs/
+│  └──  default.nix
+├──  variables/
+│  └──  default.nix
 ├──  flake.lock
 ├──  flake.nix
 ├──  LICENSE
 └──  README.md
 ```
 
-- All `.nix` files under the config/lang directory are automatically imported by the config/lang/default.nix file, excluding itself.
-- The `config/default.nix` file is responsible for manually importing all configuration files within the config directory, allowing for selective inclusion of features.
+- Every file in a dir is imported by `default.nix`. You don't need to import them manually.
 - The `lib/default.nix` file is responsible for importing all utility functions and modules.
-- The `config/general.nix` file contains small plugins that do not require extensive configuration.
+- The `general.nix` file contains small plugins that do not require extensive configuration.
 
 > I have added files in `config/lang` still not working `:womp:`.
 > Ensure you have done `git add <newfile>` that's how flakes work. (`git restore --staged .` to revert). \[Same for any new file.\]
