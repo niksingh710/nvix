@@ -1,5 +1,5 @@
 # This file contains plugins that are basics or don't need their own file
-{ pkgs, inputs, mkPkgs, mkKey, ... }:
+{ inputs, mkPkgs, mkKey, ... }:
 let inherit (mkKey) mkKeymap;
 in {
   # Keeping this at top so that if any plugin is removed it's respective config can be removed
@@ -14,10 +14,24 @@ in {
     (mkPkgs "windows-mc" inputs.windows-mc)
     (mkPkgs "windows-a" inputs.windows-a)
   ];
+
+  colorschemes.tokyonight = {
+    enable = true;
+    settings = {
+      style = "night";
+      styles = {
+        comments.italic = true;
+        functions.italic = true;
+        variables.italic = true;
+        keywords = { italic = true; bold = true; };
+      };
+    };
+  };
+
   plugins = {
 
     # TODO: add multicursor
-    # transparent.enable = true;
+
     nvim-surround.enable = true;
     dressing.enable = true;
     lastplace.enable = true;

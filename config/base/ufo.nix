@@ -2,12 +2,29 @@
 { mkKey, ... }:
 let inherit (mkKey) mkKeymap;
 in {
+  autoCmd = [
+    {
+      event = [ "BufEnter" "BufNew" ];
+      desc = "disable statuscolumn for neo-tree and dashboard";
+      callback = {
+        __raw = ''
+          function()
+            local ft_ignore = { "dashboard", "neo-tree" }
+            if vim.tbl_contains(ft_ignore, vim.bo.filetype) then
+              vim.cmd("setlocal foldcolumn=0")
+            end
+          end
+        '';
+      };
+    }
+  ];
+
   plugins = {
     statuscol = {
       enable = true;
       settings = {
         relculright = true;
-        ft_ignore = [ "alpha" ];
+        ft_ignore = [ "dashboard" "neo-tree" ];
         segments = [
           {
             click = "v:lua.ScFa";

@@ -11,7 +11,6 @@
         '';
       };
     }
-
     {
       event = [ "CursorHold" ];
       desc = "lsp show diagnostics on CursorHold";

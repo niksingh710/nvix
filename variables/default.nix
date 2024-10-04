@@ -10,7 +10,7 @@ with lib; {
         };
         winblend = mkOption {
           type = types.int;
-          default = 20;
+          default = 12;
           description = "The blend of other windows.";
         };
 
