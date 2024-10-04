@@ -25,6 +25,7 @@ in
           inactive = transparent;
         };
       always_divide_middle = true;
+      globalstatus = true;
       icons_enable = true;
       component_separators = separators;
       section_separators = separators;
