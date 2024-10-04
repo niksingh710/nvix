@@ -1,8 +1,6 @@
 { mkKey, specObj, ... }:
-let
-  inherit (mkKey) mkKeymap;
-in
-{
+let inherit (mkKey) mkKeymap;
+in {
   plugins.copilot-lua = {
     enable = true;
     filetypes.markdown = true;
@@ -11,13 +9,11 @@ in
       autoTrigger = true;
     };
   };
-  wKeyList = [
-    (specObj [ "<leader>a" "󰚩" "ai" ])
-  ];
+  wKeyList = [ (specObj [ "<leader>a" "󰚩" "ai" ]) ];
   keymaps = [
     (mkKeymap "n" "<leader>ac"
       {
-        __raw = #lua
+        __raw = # lua
           ''
             function()
               if vim.g.copilot_status == nil then
@@ -32,7 +28,6 @@ in
               end
             end
           '';
-      }
-      "Toggle Copilot")
+      } "Toggle Copilot")
   ];
 }

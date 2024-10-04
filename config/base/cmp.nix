@@ -1,5 +1,4 @@
-{ opts, ... }:
-{
+{ opts, ... }: {
   highlightOverride = {
     PMenu = {
       ctermbg = "none";
@@ -14,11 +13,7 @@
       enable = true;
       autoEnableSources = true;
       settings = {
-        formatting.fields = [
-          "kind"
-          "abbr"
-          "menu"
-        ];
+        formatting.fields = [ "kind" "abbr" "menu" ];
         window.completion = {
           border = "${opts.border}";
           scrollbar = false;
@@ -30,7 +25,7 @@
           { name = "luasnip"; }
         ];
         mapping = {
-          __raw = # lua 
+          __raw = # lua
             ''
               cmp.mapping.preset.insert({
                 ["<C-k>"] = cmp.mapping.select_prev_item(),

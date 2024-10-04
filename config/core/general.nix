@@ -10,7 +10,7 @@
     web-devicons.enable = true;
     nvim-autopairs.enable = true;
   };
-  extraConfigLua = #lua 
+  extraConfigLua = # lua
     ''
       local signs = {
           Hint = "${icons.diagnostics.BoldHint}",

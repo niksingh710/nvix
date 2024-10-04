@@ -15,11 +15,11 @@
       base = bare ++ [ "${self}/config/base" "${self}/lang" ];
     in
     {
-
       packages = {
         bare = modules bare;
         base = modules base;
         default = self'.packages.base;
       };
+      formatter = pkgs.nixpkgs-fmt;
     };
 }

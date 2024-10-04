@@ -57,6 +57,7 @@ with lib; {
     fileencoding = "utf-8";
     list = true;
     smoothscroll = true;
+    scrolloff = 999;
     fillchars = { eob = " "; };
 
     #interval for writing swap file to disk, also used by gitsigns

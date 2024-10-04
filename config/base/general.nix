@@ -1,15 +1,14 @@
 # This file contains plugins that are basics or don't need their own file
 { pkgs, inputs, mkPkgs, mkKey, ... }:
-let
-  inherit (mkKey) mkKeymap;
-in
-{
+let inherit (mkKey) mkKeymap;
+in {
   # Keeping this at top so that if any plugin is removed it's respective config can be removed
   extraConfigLua = # lua
     ''
       require("windows").setup()
     '';
-  keymaps = [ (mkKeymap "n" "<c-w>=" "<cmd>WindowsEqualize<CR>" "Equalize windows") ];
+  keymaps =
+    [ (mkKeymap "n" "<c-w>=" "<cmd>WindowsEqualize<CR>" "Equalize windows") ];
   extraPlugins = [
     (mkPkgs "windows" inputs.windows)
     (mkPkgs "windows-mc" inputs.windows-mc)

@@ -14,12 +14,7 @@
       enable = true;
       settings = {
         indent.char = "│";
-        exclude.filetypes = [
-          "''"
-          "lspinfo"
-          "dashboard"
-          "checkhealth"
-        ];
+        exclude.filetypes = [ "''" "lspinfo" "dashboard" "checkhealth" ];
       };
     };
   };

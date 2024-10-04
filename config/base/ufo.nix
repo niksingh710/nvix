@@ -1,9 +1,7 @@
 # This plugin handles folding.
 { mkKey, ... }:
-let
-  inherit (mkKey) mkKeymap;
-in
-{
+let inherit (mkKey) mkKeymap;
+in {
   plugins = {
     statuscol = {
       enable = true;
@@ -13,26 +11,15 @@ in
         segments = [
           {
             click = "v:lua.ScFa";
-            text = [
-              {
-                __raw = "require('statuscol.builtin').foldfunc";
-              }
-            ];
+            text = [{ __raw = "require('statuscol.builtin').foldfunc"; }];
           }
           {
             click = "v:lua.ScSa";
-            text = [
-              " %s"
-            ];
+            text = [ " %s" ];
           }
           {
             click = "v:lua.ScLa";
-            text = [
-              {
-                __raw = "require('statuscol.builtin').lnumfunc";
-              }
-              " "
-            ];
+            text = [{ __raw = "require('statuscol.builtin').lnumfunc"; } " "];
           }
         ];
       };
@@ -56,12 +43,24 @@ in
     foldlevel = 99;
     foldlevelstart = 99;
     foldenable = true;
-    fillchars = { __raw = "[[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]"; };
+    fillchars = {
+      __raw = "[[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]";
+    };
   };
 
   keymaps = [
-    (mkKeymap "n" "zR" { __raw = ''function() require("ufo").openAllFolds() end''; } "Open all folds")
-    (mkKeymap "n" "zM" { __raw = ''function() require("ufo").closeAllFolds() end''; } "Close All Folds")
-    (mkKeymap "n" "zK" { __raw = ''function() local winid = require("ufo").peekFoldedLinesUnderCursor() if not winid then vim.lsp.buf.hover() end end''; } "Peek Folded Lines")
+    (mkKeymap "n" "zR"
+      {
+        __raw = ''function() require("ufo").openAllFolds() end'';
+      } "Open all folds")
+    (mkKeymap "n" "zM"
+      {
+        __raw = ''function() require("ufo").closeAllFolds() end'';
+      } "Close All Folds")
+    (mkKeymap "n" "zK"
+      {
+        __raw = ''
+          function() local winid = require("ufo").peekFoldedLinesUnderCursor() if not winid then vim.lsp.buf.hover() end end'';
+      } "Peek Folded Lines")
   ];
 }

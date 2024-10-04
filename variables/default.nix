@@ -6,14 +6,12 @@ with lib; {
         border = mkOption {
           type = types.str;
           default = "rounded";
-          description =
-            "The type of border to be used.";
+          description = "The type of border to be used.";
         };
         winblend = mkOption {
           type = types.int;
           default = 20;
-          description =
-            "The blend of other windows.";
+          description = "The blend of other windows.";
         };
 
         transparent = mkEnableOption "transparent";

@@ -39,13 +39,9 @@ in {
       ];
     };
   };
-  extraPlugins = [
-    (mkPkgs "buffer_manager" inputs.buffer-manager)
-  ];
+  extraPlugins = [ (mkPkgs "buffer_manager" inputs.buffer-manager) ];
 
-  wKeyList = [
-    (specObj [ "<leader>b" "" "buffers" ])
-  ];
+  wKeyList = [ (specObj [ "<leader>b" "" "buffers" ]) ];
   keymaps = [
     (mkKeymap "n" "<leader>bm"
       ":lua require('buffer_manager.ui').toggle_quick_menu()<cr>"

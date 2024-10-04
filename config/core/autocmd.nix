@@ -1,5 +1,4 @@
-{ opts, ... }:
-{
+{ opts, ... }: {
   autoCmd = [
     {
       desc = "Highlight on yank";

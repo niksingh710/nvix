@@ -52,12 +52,20 @@ in {
       "<cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<cr>"
       "Todo/Fix/Fixme (Trouble)")
 
-    (mkKeymap "n" "<leader>xX" "<cmd>Trouble diagnostics toggle filter.buf=0<cr>" "Buffer Diagnostics (Trouble)")
-    (mkKeymap "n" "<leader>xx" "<cmd>Trouble diagnostics toggle <cr>" "iagnostics (Trouble)")
-    (mkKeymap "n" "<leader>xL" "<cmd>Trouble loclist toggle<cr>" "Location List (Trouble)")
-    (mkKeymap "n" "<leader>xQ" "<cmd>Trouble qflist toggle<cr>" "QuickFix List (Trouble)")
-    (mkKeymap "n" "<leader>xl" "<cmd>Trouble lsp toggle focus=false win.position=right<cr>" "LSP Definitions / references / ... (Trouble)")
-    (mkKeymap "n" "<leader>xs" "<cmd>Trouble symbols toggle focus=false<cr>" "Symbols (Trouble)")
+    (mkKeymap "n" "<leader>xX"
+      "<cmd>Trouble diagnostics toggle filter.buf=0<cr>"
+      "Buffer Diagnostics (Trouble)")
+    (mkKeymap "n" "<leader>xx" "<cmd>Trouble diagnostics toggle <cr>"
+      "iagnostics (Trouble)")
+    (mkKeymap "n" "<leader>xL" "<cmd>Trouble loclist toggle<cr>"
+      "Location List (Trouble)")
+    (mkKeymap "n" "<leader>xQ" "<cmd>Trouble qflist toggle<cr>"
+      "QuickFix List (Trouble)")
+    (mkKeymap "n" "<leader>xl"
+      "<cmd>Trouble lsp toggle focus=false win.position=right<cr>"
+      "LSP Definitions / references / ... (Trouble)")
+    (mkKeymap "n" "<leader>xs" "<cmd>Trouble symbols toggle focus=false<cr>"
+      "Symbols (Trouble)")
 
     (mkKeymap "n" "<leader>st" "<cmd>TodoTelescope<cr>" "Todo")
     (mkKeymap "n" "<leader>sT" "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>"
@@ -107,14 +115,20 @@ in {
 
     # search
     (mkKeymap "n" "<leader>s'" "<cmd>Telescope registers<cr>" "Registers")
-    (mkKeymap "n" "<leader>sa" "<cmd>Telescope autocommands<cr>" "Auto Commands")
-    (mkKeymap "n" "<leader>sb" "<cmd>Telescope current_buffer_fuzzy_find<cr>" "Buffer")
-    (mkKeymap "n" "<leader>sc" "<cmd>Telescope command_history<cr>" "Command History")
+    (mkKeymap "n" "<leader>sa" "<cmd>Telescope autocommands<cr>"
+      "Auto Commands")
+    (mkKeymap "n" "<leader>sb" "<cmd>Telescope current_buffer_fuzzy_find<cr>"
+      "Buffer")
+    (mkKeymap "n" "<leader>sc" "<cmd>Telescope command_history<cr>"
+      "Command History")
     (mkKeymap "n" "<leader>sC" "<cmd>Telescope commands<cr>" "Commands")
-    (mkKeymap "n" "<leader>sd" "<cmd>Telescope diagnostics bufnr=0<cr>" "Document Diagnostics")
-    (mkKeymap "n" "<leader>sD" "<cmd>Telescope diagnostics<cr>" "Workspace Diagnostics")
+    (mkKeymap "n" "<leader>sd" "<cmd>Telescope diagnostics bufnr=0<cr>"
+      "Document Diagnostics")
+    (mkKeymap "n" "<leader>sD" "<cmd>Telescope diagnostics<cr>"
+      "Workspace Diagnostics")
     (mkKeymap "n" "<leader>sh" "<cmd>Telescope help_tags<cr>" "Help Pages")
-    (mkKeymap "n" "<leader>sH" "<cmd>Telescope highlights<cr>" "Search Highlight Groups")
+    (mkKeymap "n" "<leader>sH" "<cmd>Telescope highlights<cr>"
+      "Search Highlight Groups")
     (mkKeymap "n" "<leader>sj" "<cmd>Telescope jumplist<cr>" "Jumplist")
     (mkKeymap "n" "<leader>sk" "<cmd>Telescope keymaps<cr>" "Key Maps")
     (mkKeymap "n" "<leader>sl" "<cmd>Telescope loclist<cr>" "Location List")

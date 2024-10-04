@@ -1,24 +1,17 @@
-{ lib, mkKey, icons, opts, specObj, pkgs, ... }:
-let inherit (mkKey) mkKeymap;
-in with lib; {
+{ lib, mkKey, specObj, pkgs, ... }:
+let
+  inherit (mkKey) mkKeymap;
+in
+with lib;
+{
   plugins = {
-    conform-nvim = {
-      enable = mkDefault true;
-      settings = {
-        formatters.nixpkgs-fmt = {
-          command = lib.getExe pkgs.nixpkgs-fmt;
-        };
-        formatters_by_ft.nix = [ "nixpkgs-fmt" ];
-      };
-    };
+    conform-nvim.enable = mkDefault true;
     lsp = {
       enable = mkDefault true;
       inlayHints = mkDefault true;
       servers.nil-ls = {
         enable = true;
-        settings = {
-          formatting.command = [ "nixpkgs-fmt" ];
-        };
+        settings.formatting.command = [ "${lib.getExe pkgs.nixpkgs-fmt}" ];
       };
     };
   };

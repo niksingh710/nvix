@@ -17,7 +17,6 @@
       };
   };
 
-
   mkPkgs = name: src: pkgs.vimUtils.buildVimPlugin { inherit name src; };
 
   # For which-key icon generation

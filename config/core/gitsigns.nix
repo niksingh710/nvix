@@ -19,12 +19,19 @@ in {
     };
   };
   keymaps = [
-    (mkKeymap "n" "<leader>ghS" "lua require 'gitsigns'.stage_buffer" "Stage Buffer")
-    (mkKeymap "n" "<leader>ghu" "lua require 'gitsigns'.undo_stage_hunk" "Undo Stage Hunk")
-    (mkKeymap "n" "<leader>ghR" "lua require 'gitsigns'.reset_buffer" "Reset Buffer")
-    (mkKeymap "n" "<leader>ghp" "lua require 'gitsigns'.preview_hunk_inline" "Preview Hunk Inline")
-    (mkKeymap "n" "<leader>ghb" "function() lua require 'gitsigns'.blame_line({ full = true }) end" "Blame Line")
-    (mkKeymap "n" "<leader>ghB" "function() lua require 'gitsigns'.blame() end" "Blame Buffer")
+    (mkKeymap "n" "<leader>ghS" "lua require 'gitsigns'.stage_buffer"
+      "Stage Buffer")
+    (mkKeymap "n" "<leader>ghu" "lua require 'gitsigns'.undo_stage_hunk"
+      "Undo Stage Hunk")
+    (mkKeymap "n" "<leader>ghR" "lua require 'gitsigns'.reset_buffer"
+      "Reset Buffer")
+    (mkKeymap "n" "<leader>ghp" "lua require 'gitsigns'.preview_hunk_inline"
+      "Preview Hunk Inline")
+    (mkKeymap "n" "<leader>ghb"
+      "function() lua require 'gitsigns'.blame_line({ full = true }) end"
+      "Blame Line")
+    (mkKeymap "n" "<leader>ghB" "function() lua require 'gitsigns'.blame() end"
+      "Blame Buffer")
     (mkKeymap "n" "<leader>gl" "lua require 'gitsigns'.blame_line" "Blame")
     (mkKeymap "n" "<leader>ghd" "lua require 'gitsigns'.diffthis" "Diff This")
     (mkKeymap "n" "<leader>ghD"
