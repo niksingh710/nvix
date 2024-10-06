@@ -1,4 +1,4 @@
-{ mkKey, specObj, pkgs, lib, ... }:
+{ mkKey, specObj, helpers, pkgs, lib, ... }:
 let inherit (mkKey) mkKeymap;
 in {
   wKeyList = [
@@ -18,14 +18,7 @@ in {
         pickers = {
           find_files = {
             hidden = true;
-            find_command = {
-              __raw = # lua
-                ''
-                  { "${
-                    lib.getExe pkgs.ripgrep
-                  }", "--files", "--color", "never", "-g", "!.git" }
-                '';
-            };
+            find_command = helpers.listToUnkeyedAttrs [ "${lib.getExe pkgs.ripgrep}" "--files" "--color" "never" "-g" "!.git" ];
           };
           colorscheme.enable_preview = true;
         };
@@ -37,9 +30,9 @@ in {
           };
           mappings = {
             n = {
-              q = { __raw = "require('telescope.actions').close"; };
-              s = { __raw = "require('telescope.actions').select_horizontal"; };
-              v = { __raw = "require('telescope.actions').select_vertical"; };
+              q = helpers.mkRaw "require('telescope.actions').close";
+              s = helpers.mkRaw "require('telescope.actions').select_horizontal";
+              v = helpers.mkRaw "require('telescope.actions').select_vertical";
             };
           };
         };
@@ -72,21 +65,17 @@ in {
       "Todo/Fix/Fixme")
 
     (mkKeymap "n" "]t"
-      {
-        __raw = # lua
-          ''
-            function() require("todo-comments").jump_next() end
-          '';
-      } "Next Todo Comment")
+      (helpers.mkRaw # lua
+        ''
+          function() require("todo-comments").jump_next() end
+        '')
+      "Next Todo Comment")
     (mkKeymap "n" "[t"
-      {
-        __raw = # lua
-          ''
-            function() 
-              require("todo-comments").jump_prev() 
-            end
-          '';
-      } "Previous Todo Comment")
+      (helpers.mkRaw # lua
+        ''
+          function() require("todo-comments").jump_prev() end
+        '')
+      "Previous Todo Comment")
 
     (mkKeymap "n" "<leader>,"
       "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>"
@@ -140,41 +129,4 @@ in {
     (mkKeymap "n" "<leader>sq" "<cmd>Telescope quickfix<cr>" "Quickfix List")
     (mkKeymap "n" "<leader>uC" "<cmd>Telescope colorscheme<cr>" "Colorschmes")
   ];
-
-  # extraConfigLua = # lua
-  #   ''
-  #     vim.api.nvim_exec([[
-  #       function! CustomTelescopeHighlights() abort
-  #         " Fetching colors from core Neovim highlight groups
-  #         let fg = synIDattr(hlID('Normal'), 'fg')
-  #         let bg0 = synIDattr(hlID('Normal'), 'bg')
-  #         let bg1 = synIDattr(hlID('NormalFloat'), 'bg')
-  #         let orange = synIDattr(hlID('WarningMsg'), 'fg')
-  #         let purple = synIDattr(hlID('Statement'), 'fg')
-  #         let green = synIDattr(hlID('String'), 'fg')
-  #         let red = synIDattr(hlID('ErrorMsg'), 'fg')
-  #
-  #         " Setting custom highlights for Telescope
-  #         call nvim_set_hl(0, 'TelescopeMatching', {'fg': orange})
-  #         call nvim_set_hl(0, 'TelescopeSelection', {'fg': fg, 'bg': bg1, 'bold': v:true})
-  #         call nvim_set_hl(0, 'TelescopePromptPrefix', {'bg': bg1})
-  #         call nvim_set_hl(0, 'TelescopePromptNormal', {'bg': bg1})
-  #         call nvim_set_hl(0, 'TelescopeResultsNormal', {'bg': bg0})
-  #         call nvim_set_hl(0, 'TelescopePreviewNormal', {'bg': bg0})
-  #         call nvim_set_hl(0, 'TelescopePromptBorder', {'bg': bg1, 'fg': bg1})
-  #         call nvim_set_hl(0, 'TelescopeResultsBorder', {'bg': bg0, 'fg': bg0})
-  #         call nvim_set_hl(0, 'TelescopePreviewBorder', {'bg': bg0, 'fg': bg0})
-  #         call nvim_set_hl(0, 'TelescopePromptTitle', {'bg': purple, 'fg': bg0})
-  #         call nvim_set_hl(0, 'TelescopeResultsTitle', {'fg': bg0})
-  #         call nvim_set_hl(0, 'TelescopePreviewTitle', {'bg': green, 'fg': bg0})
-  #         call nvim_set_hl(0, 'CmpItemKindField', {'bg': red, 'fg': bg0})
-  #
-  #         " Make cmp menu transparent
-  #         call nvim_set_hl(0, 'PMenu', {'bg': 'NONE'})
-  #       endfunction
-  #
-  #       " Call the function to apply the custom highlights
-  #       call CustomTelescopeHighlights()
-  #     ]], false)
-  #   '';
 }

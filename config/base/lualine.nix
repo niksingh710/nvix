@@ -108,7 +108,7 @@ in
             return "Ls Inactive"
           end
           for _, client in ipairs(clients) do
-            if client.name ~= "copilot" and client.name ~= "null-ls" then
+            if client.name ~= "copilot" and client.name ~= "null-ls" and client.name ~= "typos_lsp" then
               local name = client.name:gsub("%[%d+%]", "") -- makes otter-ls[number] -> otter-ls
               table.insert(lsp_names, name)
             end
@@ -137,8 +137,8 @@ in
         lualine_c = { components.branch, components.diff, components.diagnostics },
         lualine_x = {
           components.indicator(),
-          components.filetype,
           components.lsp,
+          components.filetype,
         },
         lualine_y = { "progress" },
         lualine_z = { "location", components.copilot },

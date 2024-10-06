@@ -1,21 +1,20 @@
-{ opts, ... }: {
+{ opts, helpers, ... }: {
   autoCmd = [
     {
       desc = "Highlight on yank";
       event = [ "TextYankPost" ];
-      callback = {
-        __raw = ''
+      callback = helpers.mkRaw #lua
+        ''
           function()
             vim.highlight.on_yank()
           end
         '';
-      };
     }
     {
       event = [ "CursorHold" ];
       desc = "lsp show diagnostics on CursorHold";
-      callback = {
-        __raw = ''
+      callback = helpers.mkRaw #lua
+        ''
           function()
             local hover_opts = {
               focusable = false,
@@ -26,7 +25,6 @@
             vim.diagnostic.open_float(nil, hover_opts)
           end
         '';
-      };
     }
   ];
 }

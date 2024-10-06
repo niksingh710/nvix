@@ -1,4 +1,4 @@
-{ mkKey, specObj, ... }:
+{ mkKey, specObj, helpers, ... }:
 let
   inherit (mkKey) mkKeymap mkKeymap' mkKeymapWithOpts;
   insert = [
@@ -30,8 +30,32 @@ let
     (mkKeymap "n" "<s-l>" "<esc>:bnext<cr>" "Buffer Next")
 
     (mkKeymap "n" "<leader>qq" "<cmd>quitall!<cr>" "Quit!")
-    (mkKeymap "n" "<leader>qc" "<esc>:bp | bd #<cr>" "Buffer Close")
-    (mkKeymap "n" "<leader>qC" "<esc>:q<cr>" "Window Close")
+    (mkKeymap "n" "<leader>qc"
+      (helpers.mkRaw # lua 
+        ''
+          function()
+            local wins = vim.api.nvim_tabpage_list_wins(0)
+            local non_floating_wins = 0
+
+            -- Count non-floating windows
+            for _, win in ipairs(wins) do
+              local config = vim.api.nvim_win_get_config(win)
+              if not config.relative or config.relative == "" then
+                non_floating_wins = non_floating_wins + 1
+              end
+            end
+
+            -- Close window or buffer based on the number of non-floating windows
+            if non_floating_wins > 1 then
+              vim.cmd("close")
+            elseif #vim.fn.getbufinfo({buflisted = 1}) > 1 then
+              vim.cmd('bdelete')  -- Delete the buffer if more than one buffer is open
+            else
+              vim.cmd('quit')  -- Quit Neovim if it's the last buffer
+            end
+          end
+        '')
+      "Buffer Close")
 
     (mkKeymapWithOpts "n" "j" ''v:count || mode(1)[0:1] == "no" ? "j" : "gj"''
       "Move down"
@@ -55,20 +79,19 @@ let
     (mkKeymap "n" "<leader><tab>n" "<cmd>tabnew<cr>" "New Tab")
 
     (mkKeymap "n" "<leader>ft"
-      {
-        __raw = # lua
-          ''
-            function()
-              vim.ui.input({ prompt = "Enter FileType: " }, function(input)
-                local ft = input
-                if not input or input == "" then
-                  ft = vim.bo.filetype
-                end
-                vim.o.filetype = ft
-              end)
-            end
-          '';
-      } "Set Filetype")
+      (helpers.mkRaw # lua
+        ''
+          function()
+            vim.ui.input({ prompt = "Enter FileType: " }, function(input)
+              local ft = input
+              if not input or input == "" then
+                ft = vim.bo.filetype
+              end
+              vim.o.filetype = ft
+            end)
+          end
+        '')
+      "Set Filetype")
 
     (mkKeymap "n" "n" "nzzzv" "Move to center")
     (mkKeymap "n" "N" "Nzzzv" "Moving to center")
@@ -131,6 +154,12 @@ in
 
       -- In visual mode, paste from the clipboard without overwriting it
       vim.api.nvim_set_keymap("v", "p", '"_dP', { noremap = true, silent = true })
+
+      -- Only this hack works in command mode
+      vim.cmd([[
+        cnoremap <C-j> <C-n>
+        cnoremap <C-k> <C-p>
+      ]])
 
     '';
 }

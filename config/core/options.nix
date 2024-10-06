@@ -8,7 +8,6 @@ with lib; {
 
   globals = {
     mapleader = " ";
-
     floating_window_options = {
       border = "${opts.border}";
       inherit (opts) winblend;

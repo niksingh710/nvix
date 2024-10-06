@@ -1,4 +1,4 @@
-{ mkKey, icons, specObj, ... }:
+{ mkKey, helpers, icons, specObj, ... }:
 let inherit (mkKey) mkKeymap;
 in {
   wKeyList = [ (specObj [ "<leader>e" "" ]) ];
@@ -45,13 +45,12 @@ in {
   };
   keymaps = [
     (mkKeymap "n" "<leader>e"
-      {
-        __raw = # lua
-          ''
-            function()
-              require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
-            end
-          '';
-      } "Explorer NeoTree (cwd)")
+      (helpers.mkRaw # lua
+        ''
+          function()
+            require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
+          end
+        '')
+      "Explorer NeoTree (cwd)")
   ];
 }

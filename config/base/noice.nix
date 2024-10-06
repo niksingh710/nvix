@@ -1,4 +1,4 @@
-{ mkKey, ... }:
+{ mkKey, helpers, ... }:
 let inherit (mkKey) mkKeymap;
 in {
   plugins = {
@@ -21,19 +21,11 @@ in {
         signature.enabled = false;
         progress.enabled = false;
       };
-      presets = {
-        bottom_search = true;
-        command_palette = true;
-        long_message_to_split = true;
-        inc_rename = false;
-        lsp_doc_border = false;
-      };
     };
   };
   keymaps = [
     (mkKeymap "n" "<leader>un"
-      {
-        __raw = "function () require('notify').dismiss() end";
-      } "Dismiss notification")
+      (helpers.mkRaw "function () require('notify').dismiss() end")
+      "Dismiss notification")
   ];
 }

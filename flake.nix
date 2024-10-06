@@ -13,6 +13,26 @@
       flake = false;
     };
 
+    minty = {
+      url = "github:NvChad/minty";
+      flake = false;
+    };
+
+    volt = {
+      url = "github:NvChad/volt";
+      flake = false;
+    };
+
+    rnoweb = {
+      url = "github:bamonroe/rnoweb-nvim";
+      flake = false;
+    };
+
+    md-pdf = {
+      url = "github:arminveres/md-pdf.nvim";
+      flake = false;
+    };
+
     windows = {
       url = "github:anuvyklack/windows.nvim";
       flake = false;

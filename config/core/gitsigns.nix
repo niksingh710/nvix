@@ -1,4 +1,4 @@
-{ mkKey, icons, specObj, ... }:
+{ mkKey, helpers, icons, specObj, ... }:
 let inherit (mkKey) mkKeymap;
 in {
   wKeyList = [
@@ -19,41 +19,38 @@ in {
     };
   };
   keymaps = [
-    (mkKeymap "n" "<leader>ghS" "lua require 'gitsigns'.stage_buffer"
+    (mkKeymap "n" "<leader>ghS" "<cmd>lua require('gitsigns').stage_buffer()<cr>"
       "Stage Buffer")
-    (mkKeymap "n" "<leader>ghu" "lua require 'gitsigns'.undo_stage_hunk"
+    (mkKeymap "n" "<leader>ghu" "<cmd>lua require('gitsigns').undo_stage_hunk()<cr>"
       "Undo Stage Hunk")
-    (mkKeymap "n" "<leader>ghR" "lua require 'gitsigns'.reset_buffer"
+    (mkKeymap "n" "<leader>ghR" "<cmd>lua require('gitsigns').reset_buffer()<cr>"
       "Reset Buffer")
-    (mkKeymap "n" "<leader>ghp" "lua require 'gitsigns'.preview_hunk_inline"
+    (mkKeymap "n" "<leader>ghp" "<cmd>lua require('gitsigns').preview_hunk_inline()<cr>"
       "Preview Hunk Inline")
     (mkKeymap "n" "<leader>ghb"
-      "function() lua require 'gitsigns'.blame_line({ full = true }) end"
+      "<cmd>lua require('gitsigns').blame_line({ full = true })<cr>"
       "Blame Line")
-    (mkKeymap "n" "<leader>ghB" "function() lua require 'gitsigns'.blame() end"
+    (mkKeymap "n" "<leader>ghB" "<cmd>lua require('gitsigns').blame()<cr>"
       "Blame Buffer")
-    (mkKeymap "n" "<leader>gl" "lua require 'gitsigns'.blame_line" "Blame")
-    (mkKeymap "n" "<leader>ghd" "lua require 'gitsigns'.diffthis" "Diff This")
+    (mkKeymap "n" "<leader>gl" "<cmd>lua require('gitsigns').blame_line()<cr>" "Blame")
+    (mkKeymap "n" "<leader>ghd" "<cmd>lua require('gitsigns').diffthis()<cr>" "Diff This")
     (mkKeymap "n" "<leader>ghD"
-      "function() lua require 'gitsigns'.diffthis('~') end" "Diff This ~")
+      "<cmd>lua require('gitsigns').diffthis('~')<cmd>" "Diff This ~")
     (mkKeymap "n" "]H"
-      {
-        __raw = # lua
-          ''
-            function()
-              require 'gitsigns'.nav_hunk("last")
-            end
-          '';
-      } "Last Hunk")
+      (helpers.mkRaw # lua
+        ''
+          function()
+            require 'gitsigns'.nav_hunk("last")
+          end
+        '') "Last Hunk")
     (mkKeymap "n" "[H"
-      {
-        __raw = # lua
-          ''
-            function()
-              require 'gitsigns'.nav_hunk("first") 
-            end
-          '';
-      } "First Hunk")
+      (helpers.mkRaw # lua
+        ''
+          function()
+            require 'gitsigns'.nav_hunk("first") 
+          end
+        '')
+      "First Hunk")
 
     (mkKeymap "n" "<leader>ghs" ":Gitsigns stage_hunk<CR>" "Stage Hunk")
     (mkKeymap "v" "<leader>ghs" ":Gitsigns stage_hunk<CR>" "Stage Hunk")

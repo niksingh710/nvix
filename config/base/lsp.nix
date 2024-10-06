@@ -31,6 +31,7 @@ in
     };
     lsp = {
       enable = true;
+      servers.typos-lsp.enable = true;
       keymaps = {
         silent = true;
         lspBuf = {
@@ -63,7 +64,6 @@ in
 
   plugins.lsp.onAttach = # lua
     ''
-
        -- Helper function to set key mappings more easily
        local function buf_set_keymap(mode, lhs, rhs, opts)
          opts = vim.tbl_extend("force", { noremap = true, silent = true, buffer = bufnr }, opts or {})
@@ -148,25 +148,22 @@ in
         options = {
           -- Set individual option values
           ignore_errors = true,
-          lang_to_formatters = {
-            json = { "jq" },
-            lua = { "stylua" },
+          lang_to_formatters = {},
+          lang_to_ext = {
+            bash = "sh",
+            lua = "lua",
+            c_sharp = "cs",
+            elixir = "exs",
+            javascript = "js",
+            julia = "jl",
+              markdown = "md",
+            latex = "tex",
+            python = "py",
+            ruby = "rb",
+            rust = "rs",
+            teal = "tl",
+            typescript = "ts",
           },
-         lang_to_ext = {
-           bash = "sh",
-           lua = "lua",
-           c_sharp = "cs",
-           elixir = "exs",
-           javascript = "js",
-           julia = "jl",
-           latex = "tex",
-           markdown = "md",
-           python = "py",
-           ruby = "rb",
-           rust = "rs",
-           teal = "tl",
-           typescript = "ts",
-         },
         },
       }
     '';

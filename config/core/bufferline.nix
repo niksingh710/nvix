@@ -63,9 +63,8 @@ in {
       "Buffer close all to left")
     (mkKeymap "n" "<leader>bc" "<cmd>BufferLineCloseOther<cr>"
       "Buffer close all except the current buffer")
-    (mkKeymap "n" "<leader><s-h>" "<cmd>BufferLineMovePrev<cr>"
-      "Move buffer to left")
-    (mkKeymap "n" "<leader><s-l>" "<cmd>BufferLineMoveNext<cr>"
-      "Move buffer to right")
+    (mkKeymap "n" "<a-s-h>" "<cmd>BufferLineMovePrev<cr>" "Move buffer to left")
+    (mkKeymap "n" "<a-s-l>" "<cmd>BufferLineMoveNext<cr>" "Move buffer to right")
+ 
   ];
 }

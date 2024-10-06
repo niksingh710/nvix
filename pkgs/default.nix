@@ -13,11 +13,13 @@
 
       bare = [ "${self}/config/core" ];
       base = bare ++ [ "${self}/config/base" "${self}/lang" ];
+      full = base ++ [ "${self}/config/full" ];
     in
     {
       packages = {
         bare = modules bare;
         base = modules base;
+        full = modules full;
         default = self'.packages.base;
       };
       formatter = pkgs.nixpkgs-fmt;
