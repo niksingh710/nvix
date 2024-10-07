@@ -45,7 +45,7 @@ in {
         "s" = "open_split";
         "v" = "open_vsplit";
         "l" = "open_with_window_picker";
-        "h" = "close_node";
+        "<cr>" = "open_with_window_picker";
         "<C-d>" = {
           command = "scroll_preview";
           config.direction = -10;
