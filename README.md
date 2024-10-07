@@ -101,6 +101,23 @@ As the config is based on flakes you can run it quickly without any long code sn
 nix run "github:niksingh710/nvix"
 ```
 
+##### How I use it on my nix config
+
+```nix
+# inputs
+nvix.url = "github:niksingh710/nvix";
+
+# Overlay
+nvix = inputs.nvix.packages.${pkgs.system}.<type>.extend {
+    config.colorschemes.tokyonight.settings.transparent = true;
+};
+
+home.packages = [
+    nvix
+];
+
+```
+
 <details>
   <summary>
     To run a specific config
