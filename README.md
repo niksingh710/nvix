@@ -161,6 +161,11 @@ nix profile install "github:niksingh710/nvix"
 > The Screenshots are taken after I have installed my configs via my [ndots](https://github.com/niksingh710/ndots).<br>
 > I utilize `extend` feature of nixvim there to update my colorscheme and have the one from wallpaper.
 
+| ![image](https://github.com/user-attachments/assets/166946eb-716b-44b4-81c6-845ca6dfb411) | ![image](https://github.com/user-attachments/assets/bb1d6130-89f4-4fe5-92b1-1b7636cdacad) |
+|-----------------------------------------------|----------------------------------------|
+| ![image](https://github.com/user-attachments/assets/9ff23b31-eb85-40f2-b75b-5a09bac396e2) | ![image](https://github.com/user-attachments/assets/5766fb4f-3553-4008-ba0b-1fc5fa8a6dbe) |
+| ![image](https://github.com/user-attachments/assets/3211a1e2-92f3-4dff-9b5c-8d4476f12a04) | ![image](https://github.com/user-attachments/assets/099cd474-b102-4b72-8ad9-f8f92f43dabd) |
+
 ##### Telescope
 
 ![image](https://github.com/niksingh710/nvix/assets/60490474/52f91e06-5161-4217-8f84-5a6d390295a5)
