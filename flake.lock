@@ -312,6 +312,22 @@
         "type": "github"
       }
     },
+    "nvim-window-picker": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1702792768,
+        "narHash": "sha256-D5ikm5Fw0N/AjDL71cuATp1OCONuxPZNfEHuh0vXkq0=",
+        "owner": "s1n7ax",
+        "repo": "nvim-window-picker",
+        "rev": "41cfaa428577c53552200a404ae9b3a0b5719706",
+        "type": "github"
+      },
+      "original": {
+        "owner": "s1n7ax",
+        "repo": "nvim-window-picker",
+        "type": "github"
+      }
+    },
     "rnoweb": {
       "flake": false,
       "locked": {
@@ -336,6 +352,7 @@
         "minty": "minty",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
+        "nvim-window-picker": "nvim-window-picker",
         "rnoweb": "rnoweb",
         "volt": "volt",
         "windows": "windows",

@@ -12,6 +12,7 @@
 
   wKeyList = [
     (specObj [ "<leader>t" "" "tex" ])
+    (specObj [ "<leader>tl" "" "vimtex" ])
   ];
 
   extraPlugins = [

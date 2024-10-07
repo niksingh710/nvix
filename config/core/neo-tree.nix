@@ -1,7 +1,18 @@
-{ mkKey, helpers, icons, specObj, ... }:
+{ mkKey, mkPkgs, helpers, icons, specObj, inputs, ... }:
 let inherit (mkKey) mkKeymap;
 in {
   wKeyList = [ (specObj [ "<leader>e" "" ]) ];
+
+  extraPlugins = [
+    (mkPkgs "nvim-window-picker" inputs.nvim-window-picker)
+  ];
+
+  extraConfigLua = ''
+    require('window-picker').setup({
+      hint = 'floating-big-letter'
+    })
+  '';
+
   plugins.neo-tree = {
     enable = true;
 
@@ -10,7 +21,7 @@ in {
     extraSources = [ "document_symbols" ];
     sourceSelector.winbar = true;
     buffers.followCurrentFile.enabled = true;
-    filesystem.window.mappings = { "F" = "fuzzy_finder_directory"; };
+    filesystem.window.mappings."F" = "fuzzy_finder_directory";
     defaultComponentConfigs = {
       diagnostics.symbols = {
         hint = "${icons.diagnostics.BoldHint}";
@@ -31,14 +42,23 @@ in {
       position = "right";
       autoExpandWidth = true;
       mappings = {
-        "s" = "split_with_window_picker";
-        "v" = "vsplit_with_window_picker";
-        "l" = "open";
+        "s" = "open_split";
+        "v" = "open_vsplit";
+        "l" = "open_with_window_picker";
         "h" = "close_node";
+        "<C-d>" = {
+          command = "scroll_preview";
+          config.direction = -10;
+        };
+        "<C-u>" = {
+          command = "scroll_preview";
+          config.direction = 10;
+        };
         "<space>" = "none";
+        "K" = "focus_preview";
         "P" = {
           command = "toggle_preview";
-          config = { use_float = true; };
+          config.use_float = true;
         };
       };
     };

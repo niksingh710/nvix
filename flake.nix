@@ -23,6 +23,11 @@
       flake = false;
     };
 
+    nvim-window-picker = {
+      url = "github:s1n7ax/nvim-window-picker";
+      flake = false;
+    };
+
     rnoweb = {
       url = "github:bamonroe/rnoweb-nvim";
       flake = false;
