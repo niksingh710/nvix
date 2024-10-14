@@ -16,7 +16,6 @@
       enable = true;
       autoEnableSources = true;
       settings = {
-        formatting.fields = [ "kind" "menu" "abbr" ];
         snippet.expand = # lua
           ''
             function(args)
