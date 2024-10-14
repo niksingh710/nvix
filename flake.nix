@@ -28,11 +28,6 @@
       flake = false;
     };
 
-    rnoweb = {
-      url = "github:bamonroe/rnoweb-nvim";
-      flake = false;
-    };
-
     md-pdf = {
       url = "github:arminveres/md-pdf.nvim";
       flake = false;

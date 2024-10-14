@@ -3,7 +3,12 @@
     treesitter = {
       enable = true;
       settings = {
-        highlight.enable = true;
+        highlight = {
+          enable = true;
+          disable = [
+            "latex"
+          ];
+        };
         incremental_selection.enable = true;
         indent.enable = true;
       };

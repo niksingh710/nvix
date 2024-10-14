@@ -328,22 +328,6 @@
         "type": "github"
       }
     },
-    "rnoweb": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1719919609,
-        "narHash": "sha256-PYmPy1zp8nvfrgsTGOfZPNRP569tv8PoZCCMlk+9Jn0=",
-        "owner": "bamonroe",
-        "repo": "rnoweb-nvim",
-        "rev": "dd5876c8762c750cbf05199aee28fed4de9c34df",
-        "type": "github"
-      },
-      "original": {
-        "owner": "bamonroe",
-        "repo": "rnoweb-nvim",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "buffer-manager": "buffer-manager",
@@ -353,7 +337,6 @@
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "nvim-window-picker": "nvim-window-picker",
-        "rnoweb": "rnoweb",
         "volt": "volt",
         "windows": "windows",
         "windows-a": "windows-a",

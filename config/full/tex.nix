@@ -1,9 +1,11 @@
-{ mkPkgs, inputs, specObj, ... }:
+{ specObj, pkgs, ... }:
 {
   plugins = {
-    lsp.servers.ltex.enable = true;
-    ltex-extra.enable = true;
-    vimtex.enable = true;
+    lsp.servers.texlab.enable = true;
+    vimtex = {
+      enable = true;
+      texlivePackage = pkgs.texlive.combined.scheme-full;
+    };
   };
 
   globals = {
@@ -14,13 +16,4 @@
     (specObj [ "<leader>t" "" "tex" ])
     (specObj [ "<leader>tl" "" "vimtex" ])
   ];
-
-  extraPlugins = [
-    (mkPkgs "rnoweb-nvim" inputs.rnoweb)
-  ];
-
-  extraConfigLua = # lua
-    ''
-      require('rnoweb-nvim').setup()
-    '';
 }

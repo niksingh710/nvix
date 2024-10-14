@@ -16,11 +16,7 @@
       callback = helpers.mkRaw #lua
         ''
           function()
-            -- Check if the current file is a .tex file
-            if vim.bo.filetype == "latex" then
-              return  -- Don't run the function for .tex files
-            end
-            local hover_opts = {
+           local hover_opts = {
               focusable = false,
               close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
               border = "${opts.border}",
