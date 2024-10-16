@@ -18,6 +18,8 @@ in {
 
     # TODO: add multicursor
 
+    neoscroll.enable = true;
+    trim.enable = true;
     nvim-surround.enable = true;
     dressing.enable = true;
     lastplace.enable = true;

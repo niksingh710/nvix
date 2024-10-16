@@ -53,14 +53,11 @@
                 select = true,
               }),
 
-              -- Enter to accept the completion or fallback
-              ["<CR>"] = cmp.mapping(function(fallback)
-                if cmp.visible() then
-                  cmp.confirm({ select = true }) -- Accept currently selected completion
-                else
-                  fallback() -- Default Enter behavior when no completion menu is visible
-                end
-              end, { "i", "s" }),
+              ["<CR>"] = cmp.mapping({
+                i = function(fallback)
+                  fallback()
+                end,
+              }),
 
               ["<c-h>"] = cmp.mapping(function(fallback)
                 if cmp.visible() then

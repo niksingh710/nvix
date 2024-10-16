@@ -11,15 +11,6 @@ let
 
     (mkKeymap "n" "<c-s>" "<cmd>w<cr>" "Save the file")
 
-    (mkKeymap "n" "<c-h>" "<c-w>h" "Focus on right split")
-    (mkKeymap "n" "<c-j>" "<c-w>j" "Focus on below split")
-    (mkKeymap "n" "<c-k>" "<c-w>k" "Focus on up split")
-    (mkKeymap "n" "<c-l>" "<c-w>l" "Focus on left split")
-
-    (mkKeymap "n" "<c-a-j>" "<cmd>resize -1<cr>" "Resize down")
-    (mkKeymap "n" "<c-a-k>" "<cmd>resize +1<cr>" "Resize up")
-    (mkKeymap "n" "<c-a-l>" "<cmd>vertical resize -1<cr>" "Resize right")
-    (mkKeymap "n" "<c-a-h>" "<cmd>vertical resize +1<cr>" "Resize left")
     (mkKeymap "n" "<c-a-=>" "<C-a>" "Increase Number")
     (mkKeymap "n" "<c-a-->" "<C-x>" "Decrease Number")
 
@@ -31,7 +22,7 @@ let
 
     (mkKeymap "n" "<leader>qq" "<cmd>quitall!<cr>" "Quit!")
     (mkKeymap "n" "<leader>qc"
-      (helpers.mkRaw # lua 
+      (helpers.mkRaw # lua
         ''
           function()
             local wins = vim.api.nvim_tabpage_list_wins(0)

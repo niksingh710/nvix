@@ -16,6 +16,22 @@
         "type": "github"
       }
     },
+    "calendar": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1677764960,
+        "narHash": "sha256-I/YqDiajmKnheQ4vAA6x+sGkCaAWeIn1MEYvffEbR0Y=",
+        "owner": "itchyny",
+        "repo": "calendar.vim",
+        "rev": "66e6d0955efb6beb68912dce3ff484e8805d975c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "itchyny",
+        "repo": "calendar.vim",
+        "type": "github"
+      }
+    },
     "devshell": {
       "inputs": {
         "nixpkgs": [
@@ -331,6 +347,7 @@
     "root": {
       "inputs": {
         "buffer-manager": "buffer-manager",
+        "calendar": "calendar",
         "flake-parts": "flake-parts",
         "md-pdf": "md-pdf",
         "minty": "minty",
