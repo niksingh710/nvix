@@ -9,7 +9,7 @@ with lib;
     lsp = {
       enable = mkDefault true;
       inlayHints = mkDefault true;
-      servers.nil-ls = {
+      servers.nil_ls = {
         enable = true;
         settings.formatting.command = [ "${lib.getExe pkgs.nixpkgs-fmt}" ];
       };

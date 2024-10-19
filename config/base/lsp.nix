@@ -31,7 +31,7 @@ in
     };
     lsp = {
       enable = true;
-      servers.typos-lsp.enable = true;
+      servers.typos_lsp.enable = true;
       keymaps = {
         silent = true;
         lspBuf = {

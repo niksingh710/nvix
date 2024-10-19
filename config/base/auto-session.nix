@@ -3,8 +3,10 @@ let inherit (mkKey) mkKeymap;
 in {
   plugins.auto-session = {
     enable = true;
-    autoSave.enabled = true;
-    autoRestore.enabled = false;
+    settings = {
+      auto_save = true;
+      auto_restore = false;
+    };
   };
   keymaps = [
     (mkKeymap "n" "<leader>q." "<cmd>SessionRestore<CR>" "Last Session")
