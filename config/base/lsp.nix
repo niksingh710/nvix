@@ -104,7 +104,7 @@ in
        buf_set_keymap("n", "<leader>lw", "<cmd>Lspsaga show_workspace_diagnostics<cr>", { desc = "Workspace Diagnostics" })
 
        -- LSP key mappings
-       buf_set_keymap("n", "gd", "<cmd>Lspsaga goto_defination<cr>", { desc = "Go to Definition" })
+       buf_set_keymap("n", "gd", "<cmd>Lspsaga goto_definition<cr>", { desc = "Go to Definition" })
        buf_set_keymap("n", "gD", vim.lsp.buf.declaration, { desc = "Go to Declaration" })
        buf_set_keymap("n", "gi", vim.lsp.buf.implementation, { desc = "Go to Implementation" })
        buf_set_keymap("n", "gr", vim.lsp.buf.references, { desc = "Go to References" })
@@ -119,7 +119,7 @@ in
 
        -- Rename
        buf_set_keymap("n", "gR", "<cmd>Lspsaga rename ++project<cr>", { desc = "Rename Symbol" })
-       buf_set_keymap("n", "gt", "<cmd>Lspsaga goto_type_definition<cr>", { desc = "Type Definations" })
+       buf_set_keymap("n", "gt", "<cmd>Lspsaga goto_type_definition<cr>", { desc = "Type Definitions" })
        buf_set_keymap("n", "gl", "<cmd>Lspsaga show_line_diagnostics<cr>", { desc = "Show Line Diagnostics" })
        buf_set_keymap("n", "gpd", "<cmd>Lspsaga peek_definition<cr>", { desc = "Peek Definitions" })
        buf_set_keymap("n", "gpt", "<cmd>Lspsaga peek_type_definition<cr>", { desc = "Peek Type Definitions" })
