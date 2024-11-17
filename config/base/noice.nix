@@ -7,6 +7,7 @@ in {
       backgroundColour = "#000000";
       render = "minimal";
       stages = "fade_in_slide_out";
+      topDown = false;
     };
     noice = {
       enable = true;
