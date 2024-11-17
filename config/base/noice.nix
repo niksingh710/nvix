@@ -1,4 +1,4 @@
-{ mkKey, helpers, ... }:
+{ mkKey, ... }:
 let inherit (mkKey) mkKeymap;
 in {
   plugins = {
@@ -10,22 +10,22 @@ in {
     };
     noice = {
       enable = true;
-      lsp = {
-        override = {
-          "vim.lsp.util.convert_input_to_markdown_lines" = true;
-          "vim.lsp.util.stylize_markdown" = true;
-          "cmp.entry.get_documentation" = true;
+      settings = {
+        lsp = {
+          override = {
+            "vim.lsp.util.convert_input_to_markdown_lines" = true;
+            "vim.lsp.util.stylize_markdown" = true;
+            "cmp.entry.get_documentation" = true;
+          };
+          hover.enabled = false;
+          message.enabled = false;
+          signature.enabled = false;
+          progress.enabled = false;
         };
-        hover.enabled = false;
-        message.enabled = false;
-        signature.enabled = false;
-        progress.enabled = false;
       };
     };
   };
   keymaps = [
-    (mkKeymap "n" "<leader>un"
-      (helpers.mkRaw "function () require('notify').dismiss() end")
-      "Dismiss notification")
+    (mkKeymap "n" "<leader>un" ":lua require('notify').dismiss()<cr>" "Dismiss notification")
   ];
 }

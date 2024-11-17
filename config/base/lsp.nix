@@ -31,7 +31,12 @@ in
     };
     lsp = {
       enable = true;
-      servers.typos_lsp.enable = true;
+      servers.typos_lsp = {
+        enable = true;
+        extraOptions = {
+          init_options.diagnosticSeverity = "Hint";
+        };
+      };
       keymaps = {
         silent = true;
         lspBuf = {
@@ -111,8 +116,8 @@ in
        buf_set_keymap("n", "gy", vim.lsp.buf.type_definition, { desc = "Go to Type Definition" })
 
        buf_set_keymap("n", "K", vim.lsp.buf.hover, { desc = "Hover Documentation" })
-       buf_set_keymap("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Help" })
-       buf_set_keymap("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Help (Insert Mode)" })
+       buf_set_keymap("n", "<C-s-k>", vim.lsp.buf.signature_help, { desc = "Signature Help" })
+       buf_set_keymap("i", "<C-s-k>", vim.lsp.buf.signature_help, { desc = "Signature Help (Insert Mode)" })
 
        -- Code actions
        buf_set_keymap({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, { desc = "Code Action" })
