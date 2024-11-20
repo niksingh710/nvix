@@ -1,6 +1,15 @@
 {
   plugins = {
-    lsp.servers.lua_ls.enable = true;
+    lsp.servers.lua_ls = {
+      enable = true;
+      settings.diagnostics = {
+        disable = [ "miss-name" ];
+        globals = [
+          "vim"
+          "cmp"
+        ];
+      };
+    };
     conform-nvim.settings = {
       formatters_by_ft.lua = [ "stylua" ];
       formatters.stylua = {
