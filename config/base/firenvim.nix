@@ -9,7 +9,10 @@
         selector = "textarea";
         takeover = "never";
       };
-      localSettings.".*".takeover = "never";
+      localSettings.".*" = {
+        takeover = "never";
+        cmdline = "neovim";
+      };
     };
   };
 }
