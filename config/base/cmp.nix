@@ -16,6 +16,7 @@
       enable = true;
       autoEnableSources = true;
       settings = {
+        completion.completeopt = "menu,menuone,noinsert";
         snippet.expand = # lua
           ''
             function(args)
@@ -30,7 +31,6 @@
           };
         };
         sources = [
-          { name = "cmp_luasnip"; }
           { name = "luasnip"; }
           { name = "nvim_lsp"; }
           { name = "nvim_lsp_signature_help"; }
@@ -40,49 +40,39 @@
         mapping = (helpers.mkRaw # lua
           ''
             cmp.mapping.preset.insert({
-              ["<C-k>"] = cmp.mapping.select_prev_item(),
-              ["<C-j>"] = cmp.mapping.select_next_item(),
+              ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+              ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
 
               ["<c-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
               ["<c-d>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 
               ["<C-e>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
 
-              ["<c-CR>"] = cmp.mapping.confirm({
-                behavior = cmp.ConfirmBehavior.Insert,
-                select = true,
-              }),
+              ["<C-cr>"] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false },
 
-              ["<CR>"] = cmp.mapping({
-                i = function(fallback)
-                  fallback()
-                end,
-              }),
-
-              ["<c-h>"] = cmp.mapping(function(fallback)
-                if cmp.visible() then
-                  cmp.select_prev_item()
-                elseif require("luasnip").jumpable(-1) then
-                  vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+              ["<C-l>"] = cmp.mapping(function(fallback)
+                local luasnip = require("luasnip")
+                if luasnip.expand_or_locally_jumpable() then
+                  luasnip.expand_or_jump()
+                elseif luasnip.jumpable(1) then
+                  luasnip.jump(1)
                 else
                   fallback()
                 end
               end, { "i", "s" }),
 
-              ["<c-l>"] = cmp.mapping(function(fallback)
-                if cmp.visible() then
-                  cmp.select_next_item()
-                elseif require("luasnip").expand_or_jumpable() then
-                  vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+              ["<C-h>"] = cmp.mapping(function(fallback)
+                local luasnip = require("luasnip")
+                if luasnip.jumpable(-1) then
+                  luasnip.jump(-1)
                 else
                   fallback()
                 end
               end, { "i", "s" }),
 
-
-              ["<c-space>"] = cmp.mapping(function(fallback)
+              ---@diagnostic disable-next-line
+              ["<c-space>"] = cmp.mapping(function()
                 local copk = require("copilot")
-                  
                 if copk then
                   vim.g.copilot_no_tab_map = true
                   vim.g.copilot_assume_mapped = true
@@ -92,14 +82,13 @@
                   if suggestion.is_visible() then
                     suggestion.accept()
                   else
-                    fallback()
+                    cmp.mapping.complete()
                   end
                 end
               end,{ "i", "s" }),
             })
           '');
+      };
     };
   };
-};
-
 }
