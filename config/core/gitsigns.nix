@@ -32,7 +32,7 @@ in {
       "Blame Line")
     (mkKeymap "n" "<leader>ghB" "<cmd>lua require('gitsigns').blame()<cr>"
       "Blame Buffer")
-    (mkKeymap "n" "<leader>gl" "<cmd>lua require('gitsigns').blame_line()<cr>" "Blame")
+    (mkKeymap "n" "<leader>gb" "<cmd>lua require('gitsigns').blame_line()<cr>" "Blame")
     (mkKeymap "n" "<leader>ghd" "<cmd>lua require('gitsigns').diffthis()<cr>" "Diff This")
     (mkKeymap "n" "<leader>ghD"
       "<cmd>lua require('gitsigns').diffthis('~')<cmd>" "Diff This ~")
@@ -47,7 +47,7 @@ in {
       (helpers.mkRaw # lua
         ''
           function()
-            require 'gitsigns'.nav_hunk("first") 
+            require 'gitsigns'.nav_hunk("first")
           end
         '')
       "First Hunk")

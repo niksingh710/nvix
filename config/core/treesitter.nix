@@ -24,6 +24,9 @@
       };
     };
     treesitter-textobjects = { enable = true; };
+
+    # TODO: To be removed in future to utilise the indent from snacks.nvim
+    # Below Indent Code
     mini.enable = true;
     indent-blankline = {
       enable = true;

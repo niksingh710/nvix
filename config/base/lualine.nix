@@ -29,7 +29,7 @@ in
       icons_enable = true;
       component_separators = separators;
       section_separators = separators;
-      disabled_filetypes = [ "Outline" "neo-tree" "dashboard" ];
+      disabled_filetypes = [ "Outline" "neo-tree" "dashboard" "snacks_dashboard" ];
     };
   };
 

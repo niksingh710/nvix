@@ -7,6 +7,7 @@
         globals = [
           "vim"
           "cmp"
+          "Snacks"
         ];
       };
     };
