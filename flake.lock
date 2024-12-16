@@ -384,6 +384,7 @@
         "nixvim": "nixvim",
         "nvim-window-picker": "nvim-window-picker",
         "tokyodark": "tokyodark",
+        "typr": "typr",
         "volt": "volt",
         "windows": "windows",
         "windows-a": "windows-a",
@@ -439,6 +440,22 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "typr": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1734157294,
+        "narHash": "sha256-xrWeMOe+4J9rVbS+2R8dFojZO/a26eWa6uzKgTWnXkM=",
+        "owner": "nvzone",
+        "repo": "typr",
+        "rev": "6617876f56a92865f9eb58b5db39e85fe09725b7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvzone",
+        "repo": "typr",
         "type": "github"
       }
     },

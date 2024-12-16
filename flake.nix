@@ -14,6 +14,11 @@
       flake = false;
     };
 
+    typr = {
+      url = "github:nvzone/typr";
+      flake = false;
+    };
+
     calendar = {
       url = "github:itchyny/calendar.vim";
       flake = false;
