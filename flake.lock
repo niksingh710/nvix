@@ -383,6 +383,7 @@
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "nvim-window-picker": "nvim-window-picker",
+        "tokyodark": "tokyodark",
         "volt": "volt",
         "windows": "windows",
         "windows-a": "windows-a",
@@ -401,6 +402,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tokyodark": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1717611113,
+        "narHash": "sha256-c5D+Lj7lSF1cAcmKECJy2wA9woStBE1ARrY2y48MMDw=",
+        "owner": "tiagovla",
+        "repo": "tokyodark.nvim",
+        "rev": "14bc1b3e596878a10647af7c82de7736300f3322",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tiagovla",
+        "repo": "tokyodark.nvim",
         "type": "github"
       }
     },
