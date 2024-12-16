@@ -1,4 +1,4 @@
-{ helpers, ... }:
+{ helpers, lib, pkgs, ... }:
 {
   plugins.snacks.settings.dashboard = {
     enabled = true;
@@ -11,36 +11,39 @@
         { icon = " "; key = "c"; desc = "Config"; action = ":lua Snacks.dashboard.pick('files'; {cwd = vim.fn.stdpath('config')})"; }
         { icon = " "; key = "."; desc = "Last Session"; action = "<leader>q."; }
         { icon = " "; key = "q"; desc = "Quit"; action = ":qa"; }
+        {
+          icon = " ";
+          desc = "Browse Repo";
+          padding = 1;
+          key = "b";
+          action = helpers.mkRaw # lua
+            ''
+              function()
+                Snacks.gitbrowse()
+              end
+            '';
+        }
       ];
-      header = helpers.mkRaw #lua
-        ''
-          [[
-          ███╗   ██╗██╗   ██╗██╗██╗  ██╗
-          ████╗  ██║██║   ██║██║╚██╗██╔╝
-          ██╔██╗ ██║██║   ██║██║ ╚███╔╝
-          ██║╚██╗██║╚██╗ ██╔╝██║ ██╔██╗
-          ██║ ╚████║ ╚████╔╝ ██║██╔╝ ██╗
-          ╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝  ╚═╝]]'';
     };
 
     sections = [
       { section = "header"; }
-      { icon = " "; title = "Keymaps"; section = "keys"; indent = 2; padding = 1; }
-      { icon = " "; title = "Recent Files"; section = "recent_files"; indent = 2; padding = 1; }
-      { icon = " "; title = "Projects"; section = "projects"; indent = 2; padding = 1; }
       {
         pane = 2;
-        icon = " ";
-        desc = "Browse Repo";
+        section = "terminal";
+        cmd = "${lib.getExe' pkgs.dwt1-shell-color-scripts "colorscript"} -e square";
+        height = 5;
         padding = 1;
-        key = "b";
-        action = helpers.mkRaw # lua
-          ''
-            function()
-              Snacks.gitbrowse()
-            end
-          '';
       }
+      {
+        icon = " ";
+        title = "Keymaps";
+        section = "keys";
+        indent = 2;
+        padding = 1;
+      }
+      { pane = 2; icon = " "; title = "Recent Files"; section = "recent_files"; indent = 2; padding = 1; }
+      { pane = 2; icon = " "; title = "Projects"; section = "projects"; indent = 2; padding = 1; }
       (helpers.mkRaw ''
         function()
           local in_git = Snacks.git.get_root() ~= nil
@@ -60,9 +63,10 @@
               icon = " ",
               title = "Git Status",
               cmd = "git --no-pager diff --stat -B -M -C",
-              height = 3,
+              -- height = 3,
             },
             {
+              pane = 1,
               title = "Open Issues",
               cmd = "gh issue list -L 3",
               key = "i",
@@ -70,9 +74,10 @@
                 vim.fn.jobstart("gh issue list --web", { detach = true })
               end,
               icon = " ",
-              height = 10,
+              height =6,
             },
             {
+              pane = 1,
               icon = " ",
               title = "Open PRs",
               cmd = "gh pr list -L 3",
@@ -80,7 +85,7 @@
               action = function()
                 vim.fn.jobstart("gh pr list --web", { detach = true })
               end,
-              height = 10,
+              height = 6,
             },
           }
           return vim.tbl_map(function(cmd)
