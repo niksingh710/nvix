@@ -17,14 +17,16 @@ in {
     })
   '';
 
-  plugins.nvim-colorizer = {
+  plugins.colorizer = {
     enable = true;
-    userDefaultOptions = {
-      css = true;
-      mode = "virtualtext";
-      tailwind = true;
-      sass.enable = true;
-      virtualtext = "■";
+    settings = {
+      user_default_options = {
+        css = true;
+        mode = "virtualtext";
+        tailwind = true;
+        sass.enable = true;
+        virtualtext = "■";
+      };
     };
   };
 

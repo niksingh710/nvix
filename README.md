@@ -217,6 +217,9 @@ nix profile install "github:niksingh710/nvix"
 
 ##### Dashboard
 
+**The New One:**
+![image](https://github.com/user-attachments/assets/01d8d3f2-9060-41cc-b7a3-9a4d150e1cba)
+**The Old One:**
 ![image](https://github.com/niksingh710/nvix/assets/60490474/9f3bb154-a404-4e07-9eb5-168d0e591b85)
 
 ##### Lualine
