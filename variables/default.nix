@@ -14,7 +14,7 @@ with lib; {
           description = "The blend of other windows.";
         };
 
-        transparent = mkEnableOption "transparent";
+        transparent = mkEnableOption "transparent" // { default = true; };
       };
     };
   };
