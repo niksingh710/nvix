@@ -8,6 +8,12 @@
     };
   };
 
+  extraConfigLuaPre = ''
+    vim.g.vimtex_compiler_latexmk = {
+      aux_dir = ".build" -- you can set here whatever name you desire
+    }
+  '';
+
   globals = {
     maplocalleader = " t"; # Set the local leader to "<leader>t"
   };
