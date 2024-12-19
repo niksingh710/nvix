@@ -16,9 +16,7 @@ in
       zen.enabled = false;
       zoom.enabled = false;
       indent.enabled = false;
-
-      bigfile.enabled = true;
-
+      animate.enabled = true;
       notifier.enabled = true;
       quickfile.enabled = true;
       scroll.enabled = true;
