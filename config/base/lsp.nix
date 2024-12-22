@@ -1,7 +1,4 @@
-{ opts, lib, pkgs, mkKey, ... }:
-let
-  inherit (mkKey) mkKeymap;
-in
+{ opts, lib, pkgs, ... }:
 {
   plugins = {
     otter.enable = true;
