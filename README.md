@@ -36,6 +36,28 @@ Nvix is a **modular** and **powerful** Neovim configuration built over [Nixvim](
 
 ---
 
+## 📚 How to Quick Run Nvix (Without installing)
+
+### Bare Configuration
+For a minimal setup with basic mappings and options, ideal for quick edits:
+```sh
+nix run "github:niksingh710/nvix#bare"
+```
+
+### Core Configuration
+For a fully-featured daily driver with LSP and language support:
+```sh
+nix run "github:niksingh710/nvix#core"
+```
+
+### Full Configuration
+For a comprehensive setup with jumbo packs (e.g., LaTeX support):
+```sh
+nix run "github:niksingh710/nvix#full"
+```
+
+---
+
 ## 🔧 Installation
 
 <details>
@@ -72,28 +94,6 @@ inputs.nvix.packages.${pkgs.system}.default.extend { }
 ```
 
 Check the `variables.nix` file or the [Nixvim Wiki](https://nix-community.github.io/nixvim/platforms/standalone.html?highlight=extend#extending-an-existing-configuration) for additional configuration options.
-
----
-
-## 📚 How to Quick Run Nvix (Without installing)
-
-### Bare Configuration
-For a minimal setup with basic mappings and options, ideal for quick edits:
-```sh
-nix run "github:niksingh710/nvix#bare"
-```
-
-### Core Configuration
-For a fully-featured daily driver with LSP and language support:
-```sh
-nix run "github:niksingh710/nvix#core"
-```
-
-### Full Configuration
-For a comprehensive setup with jumbo packs (e.g., LaTeX support):
-```sh
-nix run "github:niksingh710/nvix#full"
-```
 
 ---
 
