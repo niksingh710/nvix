@@ -21,8 +21,6 @@ Nvix is a **modular** and **powerful** Neovim configuration built over [Nixvim](
 </div>
 </p>
 
-![Placeholder: Showcase Image](https://via.placeholder.com/800x400?text=Showcase+Your+Editor+Configuration+Here)
-
 ---
 
 ## 🛠️ Why Use Nvix?
