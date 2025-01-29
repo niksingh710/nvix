@@ -34,6 +34,12 @@
             group = "DiagnosticHint";
             key = "a";
           }
+          {
+            action = "quitall!";
+            desc = "󰈆 Quit";
+            group = "DiagnosticError";
+            key = "q";
+          }
         ];
       };
       theme = "hyper";
