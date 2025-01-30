@@ -1,7 +1,14 @@
 { lib, config, helpers, ... }:
 {
   plugins = {
-    comment.enable = true;
+    mini.modules.comment = {
+      mappings = {
+        comment = "<leader>/";
+        comment_line = "<leader>/";
+        comment_visual = "<leader>/";
+        ignore_blank_line = true;
+      };
+    };
     trim.enable = true;
     lsp = {
       enable = true;

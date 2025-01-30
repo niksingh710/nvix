@@ -10,15 +10,6 @@ in {
 
 
   plugins.lsp.keymaps.extra = [
-    # Comments nvim
-
-    (mkKeymap "n" "<leader>/"
-      (helpers.mkRaw
-        ''function() require("Comment.api").toggle.linewise.current() end'')
-      "Toggle comment")
-    (mkKeymap "v" "<leader>/"
-      "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>"
-      "Toggle comment")
     (mkKeymap "n" "<leader>lO" "<cmd>lua require('otter').activate()<cr>" "Force Otter")
 
     # Lspsaga
