@@ -41,8 +41,8 @@ in {
         ''
           function()
             -- Set keymap: <leader>p to save and convert to PDF using pandoc
-            vim.api.nvim_buf_del_keymap(0, 'n', 'pb')
-            vim.api.nvim_buf_del_keymap(0, 'n', 'pp')
+            vim.api.nvim_buf_del_keymap(0, 'n', '<leader>pb')
+            vim.api.nvim_buf_del_keymap(0, 'n', '<leader>pp')
           end
         '';
     }
