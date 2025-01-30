@@ -15,7 +15,12 @@
     in
     {
       # Run `nix flake check .` to verify that your config is not broken
-      checks.default = check nvix;
+      checks = rec {
+        default = check (nvix "core");
+        core = default;
+        bare = check (nvix "bare");
+        full = check (nvix "full");
+      };
       # Lets you run `nix run .` to start nixvim
       packages = rec {
         default = package (nvix "core");
