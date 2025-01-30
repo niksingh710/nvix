@@ -33,19 +33,6 @@ in {
           end
         '';
     }
-    {
-      desc = "Remove Markdown mappings";
-      event = "BufUnload";
-      pattern = "*.md";
-      callback = helpers.mkRaw # lua
-        ''
-          function()
-            -- Set keymap: <leader>p to save and convert to PDF using pandoc
-            vim.api.nvim_buf_del_keymap(0, 'n', '<leader>pb')
-            vim.api.nvim_buf_del_keymap(0, 'n', '<leader>pp')
-          end
-        '';
-    }
   ];
 
   wKeyList = [
