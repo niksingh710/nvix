@@ -29,12 +29,12 @@ modules.imports = [
 | `<Leader>la`    | Code Action (`Lspsaga`)                           |
 | `<Leader>lo`    | Show Outline (`Lspsaga`)                          |
 | `<Leader>lw`    | Show Workspace Diagnostics (`Lspsaga`)            |
-| `<Leader>lgd`   | Go to Definition (`Lspsaga`)                      |
+| `gd`   | Go to Definition (`Lspsaga`)                      |
 | `<Leader>lr`    | Rename (`Lspsaga`)                                |
-| `<Leader>lgt`   | Go to Type Definition (`Lspsaga`)                 |
+| `gt`   | Go to Type Definition (`Lspsaga`)                 |
 | `<Leader>l.`    | Show Line Diagnostics (`Lspsaga`)                 |
-| `<Leader>lgpd`  | Peek Definition (`Lspsaga`)                       |
-| `<Leader>lgpt`  | Peek Type Definition (`Lspsaga`)                  |
+| `gpd`  | Peek Definition (`Lspsaga`)                       |
+| `gpt`  | Peek Type Definition (`Lspsaga`)                  |
 | `[e`            | Jump to Previous Diagnostic (`Lspsaga`)           |
 | `]e`            | Jump to Next Diagnostic (`Lspsaga`)               |
 | `K`             | Hover Doc, fallback to Lspsaga hover if no fold   |
@@ -48,10 +48,10 @@ modules.imports = [
 | `<C-s-k>`       | Signature Help                                     |
 | `<Leader>lD`    | Telescope Definitions                             |
 | `<Leader>lf`    | Format File                                        |
-| `<Leader>lgD`   | Go to Declaration                                  |
-| `<Leader>lgi`   | Go to Implementation                              |
-| `<Leader>lgr`   | Go to References                                   |
-| `<Leader>lgy`   | Go to Type Definition                             |
+| `gD`   | Go to Declaration                                  |
+| `gi`   | Go to Implementation                              |
+| `gR`   | Go to References                                   |
+| `gy`   | Go to Type Definition                             |
 | `[d`            | Previous Diagnostic                               |
 | `]d`            | Next Diagnostic                                   |
 | `<Leader>lL`    | Toggle Diagnostics                                |
