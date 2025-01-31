@@ -24,6 +24,7 @@ in {
       neo-tree = {
         enable = config.nvix.explorer.neo-tree;
         usePopupsForInput = false;
+        popupBorderStyle = config.nvix.border;
         sourceSelector.winbar = true;
         extraSources = [ "document_symbols" ];
         filesystem.followCurrentFile.enabled = true;
