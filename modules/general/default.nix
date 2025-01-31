@@ -50,7 +50,7 @@ in {
     fileencoding = "utf-8";
     list = true;
     smoothscroll = true;
-    scrolloff = 999;
+    autoread = true;
     fillchars = { eob = " "; };
 
     updatetime = 500;
