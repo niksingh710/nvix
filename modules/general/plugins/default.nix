@@ -21,6 +21,7 @@
     which-key = {
       enable = true;
       settings.spec = config.wKeyList;
+      settings.preset = "helix";
     };
   };
   opts = {
