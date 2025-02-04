@@ -8,13 +8,6 @@
       quickfile.enabled = true;
       indent.enabled = true;
       words.enabled = true;
-      statuscolumn = {
-        enabled = true;
-        folds = {
-          open = true;
-          git_hl = true;
-        };
-      };
       notifier = {
         enabled = true;
         style = "minimal";

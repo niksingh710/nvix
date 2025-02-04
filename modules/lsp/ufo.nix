@@ -16,6 +16,43 @@
         };
       };
     };
+    statuscol = {
+      enable = true;
+      settings = {
+        disabled_filetypes = [
+          "help"
+          "text"
+          "dashboard"
+          "markdown"
+          "neo-tree"
+        ];
+        relculright = true;
+        segments = [
+          {
+            click = "v:lua.ScSa";
+            text = [
+              " %s"
+            ];
+          }
+          {
+            click = "v:lua.ScLa";
+            text = [
+              (helpers.mkRaw # lua
+                "require('statuscol.builtin').lnumfunc")
+              " "
+            ];
+          }
+          {
+            click = "v:lua.ScFa";
+            text = [
+              (helpers.mkRaw # lua
+                "require('statuscol.builtin').foldfunc")
+              " "
+            ];
+          }
+        ];
+      };
+    };
   };
 
   opts = {
