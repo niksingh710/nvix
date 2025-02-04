@@ -73,6 +73,7 @@ modules.imports = [
 | `<Leader>A` | Select All                       |
 | `<Leader>\|` | Vertical Split                   |
 | `<Leader>-` | Horizontal Split                 |
+| `<Leader>o` | Open Files/Links Smartly                 |
 | `n`         | Move to Next Search Result       |
 | `N`         | Move to Previous Search Result   |
 

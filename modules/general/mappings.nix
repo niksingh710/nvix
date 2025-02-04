@@ -71,6 +71,25 @@ let
         '')
       "Set Filetype")
 
+    (mkKeymap "n" "<leader>o"
+      (helpers.mkRaw # lua
+        ''
+          function()
+            local file = vim.fn.expand('<cfile>')
+            if file:match('^%w+://') then
+              vim.fn['netrw#BrowseX'](file, vim.fn['netrw#CheckIfRemote']())
+            elseif file:match('%.(png|jpg|jpeg|gif|bmp|svg|webp|ico)$') and vim.fn.filereadable(file) == 1 then
+              vim.fn.jobstart({ 'xdg-open', file }, { detach = true })
+            elseif vim.fn.filereadable(file) == 1 or vim.fn.isdirectory(file) == 1 then
+              vim.cmd('edit ' .. vim.fn.fnameescape(file))
+            else
+              vim.fn['netrw#BrowseX'](file, vim.fn['netrw#CheckIfRemote']())
+            end
+          end
+        '')
+      "Open"
+    )
+
     (mkKeymapWithOpts "n" "j"
       ''v:count || mode(1)[0:1] == "no" ? "j" : "gj"''
       "Move down"
