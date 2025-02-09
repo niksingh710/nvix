@@ -8,5 +8,5 @@
     self.nvixModules.telescope
     self.nvixModules.colorschemes
   ];
-  colorscheme = "tokyodark";
+  colorscheme = "tokyonight"; # as it has light variant also
 }
