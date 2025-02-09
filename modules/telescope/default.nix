@@ -1,4 +1,7 @@
-{ helpers, pkgs, lib, ... }:
+{ helpers, pkgs, lib, config, ... }:
+let
+  inherit (config.nvix) icons;
+in
 {
   plugins = {
     todo-comments.enable = true;
@@ -6,7 +9,19 @@
       enable = true;
       extensions = {
         fzf-native.enable = true;
-        undo.enable = true;
+        frecency.enable = true;
+        ui-select.enable = true;
+        undo = {
+          enable = true;
+          settings = {
+            entry_format = "$ID ${icons.ui.LineLeft} $STAT, $TIME";
+            mappings.n = {
+              Y = "require('telescope-undo.actions').yank_deletions";
+              "<cr>" = "require('telescope-undo.actions').restore";
+              y = "require('telescope-undo.actions').yank_additions";
+            };
+          };
+        };
       };
       settings = {
         pickers = {

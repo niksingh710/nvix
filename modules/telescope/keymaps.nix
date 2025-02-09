@@ -3,6 +3,7 @@ let inherit (config.nvix.mkKey) mkKeymap wKeyObj;
 in {
   keymaps = [
     (mkKeymap "n" "<leader>st" "<cmd>TodoTelescope theme=ivy<cr>" "Todo")
+    (mkKeymap "n" "<leader>su" "<cmd>Telescope undo layout_strategy=vertical layout_config={preview_height=0.7,height=0.8,prompt_position='top'}<cr>" "Undo")
     (mkKeymap "n" "<leader>sT" "<cmd>TodoTelescope theme=ivy keywords=TODO,FIX,FIXME<cr>" "Todo/Fix/Fixme")
     (mkKeymap "n" "<leader>sc" "<cmd>Telescope builtin theme=dropdown previewer=false<cr>" "Telescope Commands")
     (mkKeymap "n" "<leader>sh" "<cmd>Telescope help_tags<cr>" "Help Pages")

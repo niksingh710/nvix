@@ -59,6 +59,14 @@ modules.imports = [
 | `s`             | Select horizontally (`require('telescope.actions').select_horizontal`) |
 | `v`             | Select vertically (`require('telescope.actions').select_vertical`) |
 
+### Telescope Undo (Normal Mode)
+
+| Key             | Action                                               |
+|-----------------|-----------------------------------------------------|
+| `<cr>`             | Restores the state |
+| `Y`             | Yanks the deletions |
+| `y`             | Yanks the selection |
+
 ---
 
 ## 📌 Notes
