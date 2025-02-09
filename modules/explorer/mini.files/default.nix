@@ -1,11 +1,7 @@
-{ lib, config, ... }:
+{ lib, ... }:
 {
   options.nvix.explorer.mini = lib.mkEnableOption "Enable Mini";
-  config.plugins.mini.modules =
-    if config.nvix.explorer.mini then {
-      files.windows.preview = true;
-    } else null;
-
+  config.plugins.mini.modules.files.windows.preview = true;
 
   imports = with builtins; with lib;
     map
