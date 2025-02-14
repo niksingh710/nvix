@@ -47,7 +47,7 @@ let
     (mkKeymap "n" "<leader>qw" "<cmd>:lua vim.cmd('close')<cr>" "Quit!")
 
     (mkKeymap "n" "<leader><leader>" "<cmd>nohl<cr>" "no highlight!")
-    (mkKeymap "n" "<leader>A" "gg0vG$" "select All")
+    (mkKeymap "n" "<leader>A" "ggVG" "select All")
 
     (mkKeymap "n" "<leader>|" "<cmd>vsplit<cr>" "vertical split")
     (mkKeymap "n" "<leader>-" "<cmd>split<cr>" "horizontal split")
