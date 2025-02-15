@@ -58,7 +58,6 @@ let
     (mkKeymap "n" "<leader>ft"
       (helpers.mkRaw # lua
         ''
-          -- TODO: test minimal code
           function()
             vim.ui.input({ prompt = "Enter FileType: " }, function(input)
               local ft = input

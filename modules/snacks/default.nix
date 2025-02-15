@@ -8,6 +8,7 @@
       quickfile.enabled = true;
       indent.enabled = true;
       words.enabled = true;
+      pickers.enabled = false;
       notifier = {
         enabled = true;
         style = "minimal";

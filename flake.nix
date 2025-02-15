@@ -1,6 +1,6 @@
 {
   description = "A nixvim configuration";
-
+  # TODO: work on startup time
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixvim.url = "github:nix-community/nixvim";
