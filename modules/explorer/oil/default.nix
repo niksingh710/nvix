@@ -26,8 +26,8 @@
         };
         float = {
           border = config.nvix.border;
-          max_width = 80;
-          max_height = 20;
+          max_width = 100;
+          max_height = 30;
         };
 
       };
