@@ -8,7 +8,19 @@
       quickfile.enabled = true;
       indent.enabled = true;
       words.enabled = true;
-      pickers.enabled = false;
+      picker = {
+        enabled = true;
+        layout.preset = "telescope";
+        win.input.keys = {
+          v = (helpers.listToUnkeyedAttrs [ "vsplit" ]) // { mode = "n"; };
+          s = (helpers.listToUnkeyedAttrs [ "split" ]) // { mode = "n"; };
+        };
+      };
+      image = {
+        enabled = true;
+        border = "none";
+        doc.inline = false;
+      };
       notifier = {
         enabled = true;
         style = "minimal";

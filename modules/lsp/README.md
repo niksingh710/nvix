@@ -46,7 +46,7 @@ modules.imports = [
 | `<Leader>ls`    | Start LSP                                          |
 | `<Leader>lR`    | Restart LSP                                        |
 | `<C-s-k>`       | Signature Help                                     |
-| `<Leader>lD`    | Telescope Definitions                             |
+| `<Leader>lD`    | Snacks.Picker Definitions                             |
 | `<Leader>lf`    | Format File                                        |
 | `gD`   | Go to Declaration                                  |
 | `gi`   | Go to Implementation                              |

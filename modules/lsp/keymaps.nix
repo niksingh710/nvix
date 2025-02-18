@@ -73,7 +73,8 @@ in {
     (mkKeymap "n" "<leader>lR" "<CMD>LspRestart<Enter>" "Restart LSP")
 
     (mkKeymap "n" "<C-s-k>" "<cmd>:lua vim.lsp.buf.signature_help()<cr>" "Signature Help")
-    (mkKeymap "n" "<leader>lD" "<cmd>:lua require('telescope.builtin').lsp_definitions()<cr>" "Telescope Definitions")
+    (mkKeymap "n" "<leader>lD" "<cmd>:lua Snacks.picker.lsp_definitions()<cr>" "Definitions list")
+    (mkKeymap "n" "<leader>ls" "<cmd>:lua Snacks.picker.lsp_symbols()<cr>" "Definitions list")
 
     (mkKeymap "n" "<leader>lf" "<cmd>:lua require('conform').format()<cr>" "Format file")
     (mkKeymap "x" "<leader>lf" "<cmd>:lua require('conform').format()<cr>" "Format File")

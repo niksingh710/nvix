@@ -1,3 +1,4 @@
+{ helpers, ... }:
 {
   plugins.dashboard = {
     enable = true;
@@ -15,7 +16,7 @@
         project.enable = true;
         shortcut = [
           {
-            action = "Telescope find_files";
+            action = helpers.mkRaw "function() Snacks.picker.files() end";
             desc = "Files";
             group = "Label";
             icon = " ";
@@ -29,10 +30,10 @@
             key = ".";
           }
           {
-            action = "Telescope oldfiles";
+            action = helpers.mkRaw "function() Snacks.picker.recent() end";
             desc = "󱦠 Recent Files";
             group = "DiagnosticHint";
-            key = "a";
+            key = "r";
           }
           {
             action = "quitall!";

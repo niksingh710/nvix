@@ -131,7 +131,6 @@ The configurations build on one another:
 | [lang](./modules/lang/README.md)           | Core, Full          | Language-specific configurations for various languages.         |
 | [lsp](./modules/lsp/README.md)             | Core, Full                | Language Server Protocol (LSP) setup for enhanced development.  |
 | [snacks](./modules/snacks/README.md)       | Core, Full                | Collection of utility plugins for Neovim.                       |
-| [telescope](./modules/telescope/README.md) | Core, Full          | Search and file navigation using the Telescope plugin.          |
 | [tex](./modules/tex/README.md)             | Full                | Full TeX/TeXLive/TeXLab setup for LaTeX document editing.        |
 | [treesitter](./modules/treesitter/README.md) | Core, Full         | Syntax highlighting and parsing with Treesitter.                 |
 
@@ -151,6 +150,9 @@ This table lists the modules, where they are included (`Bare`, `Core`, `Full`), 
 | ![image](https://github.com/user-attachments/assets/3211a1e2-92f3-4dff-9b5c-8d4476f12a04) | ![image](https://github.com/user-attachments/assets/099cd474-b102-4b72-8ad9-f8f92f43dabd) |
 
 ##### Telescope
+
+>[!NOTE]
+> Switched to `Snacks.picker` from telescope
 
 ![image](https://github.com/niksingh710/nvix/assets/60490474/52f91e06-5161-4217-8f84-5a6d390295a5)
 

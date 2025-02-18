@@ -14,7 +14,6 @@
     copilot = ./copilot;
     explorer = ./explorer;
     firenvim = ./firenvim;
-    telescope = ./telescope;
     dashboard = ./dashboard;
     aesthetics = ./aesthetics;
     treesitter = ./treesitter;
