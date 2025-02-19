@@ -4,7 +4,13 @@
     treesitter = {
       enable = true;
       settings = {
-        highlight.enable = true;
+        highlight = {
+          enable = true;
+          disable = [
+            "latex"
+            "markdown"
+          ];
+        };
         auto_install = true;
         incremental_selection.enable = true;
       };
