@@ -15,7 +15,6 @@
           v = (helpers.listToUnkeyedAttrs [ "vsplit" ]) // { mode = "n"; };
           s = (helpers.listToUnkeyedAttrs [ "split" ]) // { mode = "n"; };
         };
-        sources.explorer.layout.layout.position = "right";
       };
       image = {
         enabled = true;
