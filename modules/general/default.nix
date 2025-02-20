@@ -67,6 +67,17 @@ in {
           end
         '';
     }
+    {
+      desc = "Update checkview";
+      event = [ "BufEnter" "CursorHold" "CursorHoldI" "FocusGained" ];
+      pattern = [ "*" ];
+      callback = helpers.mkRaw # lua
+        ''
+          function()
+            vim.cmd("if mode() != 'c' | checktime | endif")
+          end
+        '';
+    }
   ];
 
   extraLuaPackages = lp: with lp; [ luarocks ];

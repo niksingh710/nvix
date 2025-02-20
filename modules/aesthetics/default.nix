@@ -9,7 +9,11 @@
       vim.o.winwidth = 10
       vim.o.winminwidth = 10
       vim.o.equalalways = false
-      require('windows').setup()
+      require('windows').setup({
+        ignore = {
+          filetype = { "snacks_picker_list" },
+        },
+      })
 
       require('minty').setup({
         huefy = {
