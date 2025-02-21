@@ -10,6 +10,7 @@
       words.enabled = true;
       picker = {
         enabled = true;
+        sources.explorer.layout.layout.position = "right";
         layout.preset = "telescope";
         win.input.keys = {
           v = (helpers.listToUnkeyedAttrs [ "vsplit" ]) // { mode = "n"; };
