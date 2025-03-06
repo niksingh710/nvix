@@ -26,11 +26,6 @@
       flake = false;
     };
 
-    minintro = {
-      url = "github:eoh-bse/minintro.nvim";
-      flake = false;
-    };
-
     md-pdf = {
       url = "github:arminveres/md-pdf.nvim";
       flake = false;
