@@ -10,7 +10,6 @@
   plugins = {
     harpoon = {
       enable = true;
-      keymapsSilent = true;
     };
     bufferline = {
       enable = true;
