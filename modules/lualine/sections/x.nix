@@ -27,7 +27,7 @@
       __unkeyed = helpers.mkRaw # lua
         ''
           function()
-            local clients = vim.lsp.get_active_clients()
+            local clients = vim.lsp.get_clients()
             local lsp_names = {}
             if next(clients) == nil then
               return "Ls Inactive"
