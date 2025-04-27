@@ -1,7 +1,7 @@
 { config, helpers, lib, ... }:
 let inherit (config.nvix) icons;
 in {
-
+  luaLoader.enable = false;
 
   globals = {
     mapleader = config.nvix.leader; # sets <space> as my leader key

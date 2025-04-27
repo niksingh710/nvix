@@ -8,7 +8,6 @@ in {
     (wKeyObj [ "<leader>l" "󰿘" "lsp" ])
   ];
 
-
   plugins.lsp.keymaps.extra = [
     (mkKeymap "n" "<leader>lO" "<cmd>lua require('otter').activate()<cr>" "Force Otter")
 
