@@ -1,9 +1,19 @@
-{ lib, pkgs, helpers, config, ... }:
-let inherit (config.nvix) icons;
-in {
-  options.nvix.explorer.neo-tree = lib.mkEnableOption "Enable NeoTree" // { default = true; };
+{
+  lib,
+  pkgs,
+  helpers,
+  config,
+  ...
+}:
+let
+  inherit (config.nvix) icons;
+in
+{
+  options.nvix.explorer.neo-tree = lib.mkEnableOption "Enable NeoTree" // {
+    default = true;
+  };
   config = {
-    extraPlugins = with pkgs.vimPlugins;[ nvim-window-picker ];
+    extraPlugins = with pkgs.vimPlugins; [ nvim-window-picker ];
     extraConfigLua = # lua
       ''
         require('window-picker').setup({
@@ -19,7 +29,12 @@ in {
       '';
     plugins = {
       bufferline.settings.options.offsets = [
-        { filetype = "neo-tree"; text = "Explorer"; highlight = "PanelHeading"; padding = 1; }
+        {
+          filetype = "neo-tree";
+          text = "Explorer";
+          highlight = "PanelHeading";
+          padding = 1;
+        }
       ];
       neo-tree = {
         enable = config.nvix.explorer.neo-tree;
@@ -35,7 +50,7 @@ in {
             warn = "${BoldWarning}";
             error = "${BoldError}";
           };
-          gitStatus.symbols = with icons.git;{
+          gitStatus.symbols = with icons.git; {
             unstaged = "${FileUnstaged}";
             staged = "${FileStaged}";
             renamed = "${FileRenamed}";
@@ -48,36 +63,39 @@ in {
           position = "right";
           autoExpandWidth = true;
           mappings = {
-            "f" = helpers.mkRaw # lua
-              ''
-                function(state)
-                  local node = state.tree:get_node()
-                  local path = node:get_id()
-                  Snacks.picker.files({ cwd = path })
-                end
-              '';
-            "/" = helpers.mkRaw # lua
-              ''
-                function(state)
-                  local node = state.tree:get_node()
-                  local path = node:get_id()
-                  Snacks.picker.grep({ cwd = path })
-                end
-              '';
+            "f" =
+              helpers.mkRaw # lua
+                ''
+                  function(state)
+                    local node = state.tree:get_node()
+                    local path = node:get_id()
+                    Snacks.picker.files({ cwd = path })
+                  end
+                '';
+            "/" =
+              helpers.mkRaw # lua
+                ''
+                  function(state)
+                    local node = state.tree:get_node()
+                    local path = node:get_id()
+                    Snacks.picker.grep({ cwd = path })
+                  end
+                '';
             "s" = "open_split";
             "v" = "open_vsplit";
             "l" = "open_with_window_picker";
-            "h" = helpers.mkRaw # lua
-              ''
-                function(state)
-                  local node = state.tree:get_node()
-                  if node.type == 'directory' and node:is_expanded() then
-                    require'neo-tree.sources.filesystem'.toggle_directory(state, node)
-                  else
-                    require'neo-tree.ui.renderer'.focus_node(state, node:get_parent_id())
+            "h" =
+              helpers.mkRaw # lua
+                ''
+                  function(state)
+                    local node = state.tree:get_node()
+                    if node.type == 'directory' and node:is_expanded() then
+                      require'neo-tree.sources.filesystem'.toggle_directory(state, node)
+                    else
+                      require'neo-tree.ui.renderer'.focus_node(state, node:get_parent_id())
+                    end
                   end
-                end
-              '';
+                '';
             "<cr>" = "open_with_window_picker";
             "<C-d>" = {
               command = "scroll_preview";
@@ -98,12 +116,10 @@ in {
       };
     };
   };
-  imports = with builtins; with lib;
-    map (fn: ./${fn})
-      (filter
-        (fn: (
-          fn != "default.nix"
-          && !hasSuffix ".md" "${fn}"
-        ))
-        (attrNames (readDir ./.)));
+  imports =
+    with builtins;
+    with lib;
+    map (fn: ./${fn}) (
+      filter (fn: (fn != "default.nix" && !hasSuffix ".md" "${fn}")) (attrNames (readDir ./.))
+    );
 }

@@ -1,4 +1,4 @@
-{config,...}:
+{ config, ... }:
 {
   colorschemes.tokyonight = {
     enable = true;
@@ -11,7 +11,10 @@
         comments.italic = true;
         functions.italic = true;
         variables.italic = true;
-        keywords = { italic = true; bold = true; };
+        keywords = {
+          italic = true;
+          bold = true;
+        };
       };
       on_highlights = # lua
         ''

@@ -1,6 +1,8 @@
 { config, helpers, ... }:
-let inherit (config.nvix) icons;
-in {
+let
+  inherit (config.nvix) icons;
+in
+{
 
   plugins.lualine.settings.sections.lualine_c = [
     {
@@ -10,19 +12,20 @@ in {
     }
     {
       __unkeyed = "diff";
-      source = helpers.mkRaw # lua 
-        ''
-          (function()
-            local gitsigns = vim.b.gitsigns_status_dict
-            if vim.b.gitsigns_status_dict then
-              return {
-                added = gitsigns.added,
-                modified = gitsigns.changed,
-                removed = gitsigns.removed,
-              }
-            end
-          end)
-        '';
+      source =
+        helpers.mkRaw # lua
+          ''
+            (function()
+              local gitsigns = vim.b.gitsigns_status_dict
+              if vim.b.gitsigns_status_dict then
+                return {
+                  added = gitsigns.added,
+                  modified = gitsigns.changed,
+                  removed = gitsigns.removed,
+                }
+              end
+            end)
+          '';
       symbols = {
         added = helpers.mkRaw ''"${icons.git.LineAdded}" .. " " '';
         modified = helpers.mkRaw ''"${icons.git.LineModified}".. " "'';
@@ -32,7 +35,9 @@ in {
 
     {
       __unkeyed = "diagnostics";
-      sources = { __unkeyed = "nvim_diagnostic"; };
+      sources = {
+        __unkeyed = "nvim_diagnostic";
+      };
       symbols = {
         error = helpers.mkRaw ''"${icons.diagnostics.BoldError}" .. " "'';
         warn = helpers.mkRaw ''"${icons.diagnostics.BoldWarning}" .. " "'';

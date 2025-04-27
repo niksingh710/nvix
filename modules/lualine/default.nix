@@ -29,16 +29,20 @@
           icons_enable = true;
           component_separators = separators;
           section_separators = separators;
-          disabled_filetypes = [ "Outline" "neo-tree" "dashboard" "snacks_dashboard" "snacks_terminal" ];
+          disabled_filetypes = [
+            "Outline"
+            "neo-tree"
+            "dashboard"
+            "snacks_dashboard"
+            "snacks_terminal"
+          ];
         };
       };
   };
-  imports = with builtins; with lib;
-    map (fn: ./${fn})
-      (filter
-        (fn: (
-          fn != "default.nix"
-          && !hasSuffix ".md" "${fn}"
-        ))
-        (attrNames (readDir ./.)));
+  imports =
+    with builtins;
+    with lib;
+    map (fn: ./${fn}) (
+      filter (fn: (fn != "default.nix" && !hasSuffix ".md" "${fn}")) (attrNames (readDir ./.))
+    );
 }

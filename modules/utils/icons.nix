@@ -1,6 +1,9 @@
 { lib, ... }:
 {
-  options.nvix.icons = lib.mkOption { type = lib.types.attrs; default = { }; };
+  options.nvix.icons = lib.mkOption {
+    type = lib.types.attrs;
+    default = { };
+  };
   config.nvix.icons = {
     kind = {
       Array = "";

@@ -1,5 +1,7 @@
-{ inputs, self, ... }: {
-  perSystem = { pkgs, system, ... }:
+{ inputs, self, ... }:
+{
+  perSystem =
+    { pkgs, system, ... }:
     let
       inherit (inputs) nixvim;
       extraSpecialArgs = {
@@ -10,16 +12,28 @@
         inherit pkgs extraSpecialArgs;
         module = import ./config/${type}.nix;
       };
-      check = attr: description:
+      check =
+        attr: description:
         let
           output = nixvim.lib.${system}.check.mkTestDerivationFromNixvimModule attr;
         in
-        output // { meta = output.meta // { inherit description; }; };
-      package = attr: description:
+        output
+        // {
+          meta = output.meta // {
+            inherit description;
+          };
+        };
+      package =
+        attr: description:
         let
           output = nixvim.legacyPackages.${system}.makeNixvimWithModule attr;
         in
-        output // { meta = output.meta // { inherit description; }; };
+        output
+        // {
+          meta = output.meta // {
+            inherit description;
+          };
+        };
     in
     {
       # Run `nix flake check .` to verify that your config is not broken

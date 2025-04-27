@@ -19,17 +19,27 @@ in
   };
 
   wKeyList = [
-    (wKeyObj [ "<leader>g" "" "git" ])
-    (wKeyObj [ "<leader>gh" "󰫅" "hunks" ])
-    (wKeyObj [ "<leader>gb" "󰭐" "blame" ])
+    (wKeyObj [
+      "<leader>g"
+      ""
+      "git"
+    ])
+    (wKeyObj [
+      "<leader>gh"
+      "󰫅"
+      "hunks"
+    ])
+    (wKeyObj [
+      "<leader>gb"
+      "󰭐"
+      "blame"
+    ])
   ];
 
-  imports = with builtins; with lib;
-    map (fn: ./${fn})
-      (filter
-        (fn: (
-          fn != "default.nix"
-          && !hasSuffix ".md" "${fn}"
-        ))
-        (attrNames (readDir ./.)));
+  imports =
+    with builtins;
+    with lib;
+    map (fn: ./${fn}) (
+      filter (fn: (fn != "default.nix" && !hasSuffix ".md" "${fn}")) (attrNames (readDir ./.))
+    );
 }

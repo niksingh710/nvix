@@ -1,4 +1,9 @@
-{ inputs, pkgs, config, ... }:
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}:
 {
   extraPlugins = [
     (pkgs.vimUtils.buildVimPlugin {

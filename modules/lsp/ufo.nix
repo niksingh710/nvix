@@ -38,7 +38,8 @@
             click = "v:lua.ScLa";
             text = [
               (helpers.mkRaw # lua
-                "require('statuscol.builtin').lnumfunc")
+                "require('statuscol.builtin').lnumfunc"
+              )
               " "
             ];
           }
@@ -46,7 +47,8 @@
             click = "v:lua.ScFa";
             text = [
               (helpers.mkRaw # lua
-                "require('statuscol.builtin').foldfunc")
+                "require('statuscol.builtin').foldfunc"
+              )
               " "
             ];
           }
@@ -63,16 +65,23 @@
     fillchars = helpers.mkRaw ''[[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]'';
   };
 
-  autoCmd = [{
-    event = [ "BufEnter" "BufNew" ];
-    desc = "disable statuscolumn for neo-tree and dashboard";
-    callback = (helpers.mkRaw ''
-      function()
-        local ft_ignore = { "dashboard", "neo-tree", "snacks_dashboard" }
-        if vim.tbl_contains(ft_ignore, vim.bo.filetype) then
-          vim.cmd("setlocal foldcolumn=0")
-        end
-      end
-    '');
-  }];
+  autoCmd = [
+    {
+      event = [
+        "BufEnter"
+        "BufNew"
+      ];
+      desc = "disable statuscolumn for neo-tree and dashboard";
+      callback = (
+        helpers.mkRaw ''
+          function()
+            local ft_ignore = { "dashboard", "neo-tree", "snacks_dashboard" }
+            if vim.tbl_contains(ft_ignore, vim.bo.filetype) then
+              vim.cmd("setlocal foldcolumn=0")
+            end
+          end
+        ''
+      );
+    }
+  ];
 }

@@ -1,6 +1,8 @@
 { config, ... }:
-let inherit (config.nvix.mkKey) mkKeymap;
-in {
+let
+  inherit (config.nvix.mkKey) mkKeymap;
+in
+{
   plugins.otter = {
     enable = false;
     settings.buffers = {

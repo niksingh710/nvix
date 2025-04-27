@@ -1,6 +1,13 @@
-{ inputs, pkgs, config, ... }:
-let inherit (config.nvix) icons;
-in {
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}:
+let
+  inherit (config.nvix) icons;
+in
+{
   extraPlugins = [
     (pkgs.vimUtils.buildVimPlugin {
       name = "oil-vcs-status";
@@ -8,7 +15,8 @@ in {
       dependencies = [ config.plugins.oil.package ];
     })
   ];
-  extraConfigLua = with icons;
+  extraConfigLua =
+    with icons;
     # lua
     ''
        local status_const = require "oil-vcs-status.constant.status"

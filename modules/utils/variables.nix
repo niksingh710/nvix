@@ -1,6 +1,7 @@
 # This file Contains custom options
 # That can be configured via the extend function of nixvim
-{ lib, ... }: with lib;
+{ lib, ... }:
+with lib;
 {
   options = {
     modulesList = mkOption {
@@ -16,7 +17,16 @@
 
       border = mkOption {
         description = "The border style for nvim";
-        type = types.enum [ "single" "double" "rounded" "solid" "shadow" "curved" "bold" "none" ];
+        type = types.enum [
+          "single"
+          "double"
+          "rounded"
+          "solid"
+          "shadow"
+          "curved"
+          "bold"
+          "none"
+        ];
         default = "rounded";
       };
 
@@ -26,7 +36,9 @@
         default = 2;
       };
 
-      transparent = mkEnableOption "transparent" // { default = true; };
+      transparent = mkEnableOption "transparent" // {
+        default = true;
+      };
 
     };
   };

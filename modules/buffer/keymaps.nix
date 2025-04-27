@@ -1,15 +1,27 @@
 { config, ... }:
-let inherit (config.nvix.mkKey) mkKeymap wKeyObj;
-in {
+let
+  inherit (config.nvix.mkKey) mkKeymap wKeyObj;
+in
+{
 
   wKeyList = [
-    (wKeyObj [ "<leader>b" "" "buffers" ])
-    (wKeyObj [ "<leader><tab>" "" "tabs" ])
+    (wKeyObj [
+      "<leader>b"
+      ""
+      "buffers"
+    ])
+    (wKeyObj [
+      "<leader><tab>"
+      ""
+      "tabs"
+    ])
   ];
 
   keymaps = [
     (mkKeymap "n" "<leader>b." "<cmd>:lua require('harpoon.mark').add_file()<cr>" "Add File to Harpoon")
-    (mkKeymap "n" "<leader>bm" "<cmd>:lua require('buffer_manager.ui').toggle_quick_menu()<cr>" "Buffer Manager")
+    (mkKeymap "n" "<leader>bm" "<cmd>:lua require('buffer_manager.ui').toggle_quick_menu()<cr>"
+      "Buffer Manager"
+    )
     (mkKeymap "n" "<leader>bb" "<cmd>:lua require('harpoon.ui').toggle_quick_menu()<cr>" "Harpoon ui")
 
     (mkKeymap "n" "<leader>bp" "<cmd>:BufferLinePick<cr>" "Buffer Line Pick")
@@ -21,7 +33,9 @@ in {
     (mkKeymap "n" "<leader>bt" "<cmd>BufferLineSortByTabs<cr>" "Buffer Sort by Tabs")
     (mkKeymap "n" "<leader>bL" "<cmd>BufferLineCloseRight<cr>" "Buffer close all to right")
     (mkKeymap "n" "<leader>bH" "<cmd>BufferLineCloseLeft<cr>" "Buffer close all to left")
-    (mkKeymap "n" "<leader>bc" "<cmd>BufferLineCloseOther<cr>" "Buffer close all except the current buffer")
+    (mkKeymap "n" "<leader>bc" "<cmd>BufferLineCloseOther<cr>"
+      "Buffer close all except the current buffer"
+    )
     (mkKeymap "n" "<a-s-h>" "<cmd>BufferLineMovePrev<cr>" "Move buffer to left")
     (mkKeymap "n" "<a-s-l>" "<cmd>BufferLineMoveNext<cr>" "Move buffer to right")
 

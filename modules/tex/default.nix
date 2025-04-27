@@ -1,6 +1,13 @@
-{ pkgs, config, lib, ... }:
-let inherit (config.nvix.mkKey) wKeyObj;
-in {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+let
+  inherit (config.nvix.mkKey) wKeyObj;
+in
+{
 
   plugins = {
     lsp.servers.texlab.enable = true;
@@ -21,8 +28,16 @@ in {
   globals.maplocalleader = " t"; # Set the local leader to "<leader>t"
 
   wKeyList = [
-    (wKeyObj [ "<leader>t" "" "tex" ])
-    (wKeyObj [ "<leader>tl" "" "vimtex" ])
+    (wKeyObj [
+      "<leader>t"
+      ""
+      "tex"
+    ])
+    (wKeyObj [
+      "<leader>tl"
+      ""
+      "vimtex"
+    ])
   ];
 
   # lua code copied from
@@ -536,14 +551,10 @@ in {
       })
     '';
 
-
-  imports = with builtins; with lib;
-    map
-      (fn: ./${fn})
-      (filter
-        (fn: (
-          fn != "default.nix"
-          && !hasSuffix ".md" "${fn}"
-        ))
-        (attrNames (readDir ./.)));
+  imports =
+    with builtins;
+    with lib;
+    map (fn: ./${fn}) (
+      filter (fn: (fn != "default.nix" && !hasSuffix ".md" "${fn}")) (attrNames (readDir ./.))
+    );
 }

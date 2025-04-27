@@ -10,6 +10,9 @@
   vimAlias = true; # Enable vim alias to run nvim
 
   # If using wayland will ensure that wl-copy is enabled
-  clipboard.providers.wl-copy.enable = lib.elem pkgs.system [ "x86_64-linux" "aarch64-linux" ];
+  clipboard.providers.wl-copy.enable = lib.elem pkgs.system [
+    "x86_64-linux"
+    "aarch64-linux"
+  ];
 
 }

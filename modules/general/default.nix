@@ -1,6 +1,13 @@
-{ config, helpers, lib, ... }:
-let inherit (config.nvix) icons;
-in {
+{
+  config,
+  helpers,
+  lib,
+  ...
+}:
+let
+  inherit (config.nvix) icons;
+in
+{
   luaLoader.enable = false;
 
   globals = {
@@ -51,7 +58,9 @@ in {
     list = true;
     smoothscroll = true;
     autoread = true;
-    fillchars = { eob = " "; };
+    fillchars = {
+      eob = " ";
+    };
 
     updatetime = 500;
   };
@@ -60,17 +69,19 @@ in {
     {
       desc = "Highlight on yank";
       event = [ "TextYankPost" ];
-      callback = helpers.mkRaw #lua
-        ''
-          function()
-            vim.highlight.on_yank()
-          end
-        '';
+      callback =
+        helpers.mkRaw # lua
+          ''
+            function()
+              vim.highlight.on_yank()
+            end
+          '';
     }
   ];
 
   extraLuaPackages = lp: with lp; [ luarocks ];
-  extraConfigLua = with icons.diagnostics;
+  extraConfigLua =
+    with icons.diagnostics;
     # lua
     ''
       vim.opt.whichwrap:append("<>[]hl")
@@ -89,12 +100,10 @@ in {
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
       end
     '';
-  imports = with builtins; with lib;
-    map (fn: ./${fn})
-      (filter
-        (fn: (
-          fn != "default.nix"
-          && !hasSuffix ".md" "${fn}"
-        ))
-        (attrNames (readDir ./.)));
+  imports =
+    with builtins;
+    with lib;
+    map (fn: ./${fn}) (
+      filter (fn: (fn != "default.nix" && !hasSuffix ".md" "${fn}")) (attrNames (readDir ./.))
+    );
 }
