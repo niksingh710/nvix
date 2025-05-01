@@ -9,6 +9,9 @@ let
 in
 {
   luaLoader.enable = false;
+  dependencies = {
+    gcc.enable = true;
+  };
 
   globals = {
     mapleader = config.nvix.leader; # sets <space> as my leader key
