@@ -12,7 +12,7 @@
 
           ["<C-e>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
 
-          ["<C-cr>"] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Insert, select = false },
+          ["<C-cr>"] = cmp.mapping.confirm ( { select = true } ),
 
           ["<C-l>"] = cmp.mapping(function(fallback)
             local luasnip = require("luasnip")

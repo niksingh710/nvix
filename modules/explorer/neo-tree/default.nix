@@ -44,12 +44,6 @@ in
         extraSources = [ "document_symbols" ];
         filesystem.followCurrentFile.enabled = true;
         defaultComponentConfigs = {
-          diagnostics.symbols = with icons.diagnostics; {
-            hint = "${BoldHint}";
-            info = "${BoldInformation}";
-            warn = "${BoldWarning}";
-            error = "${BoldError}";
-          };
           gitStatus.symbols = with icons.git; {
             unstaged = "${FileUnstaged}";
             staged = "${FileStaged}";
@@ -61,7 +55,6 @@ in
         };
         window = {
           position = "right";
-          autoExpandWidth = true;
           mappings = {
             "f" =
               helpers.mkRaw # lua

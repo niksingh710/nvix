@@ -5,7 +5,7 @@ in
 {
   wKeyList = [
     (wKeyObj [
-      "<leader>s,"
+      "<leader>."
       ""
       "Scratch Buffer"
     ])

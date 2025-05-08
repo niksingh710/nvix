@@ -23,6 +23,11 @@ let
     (mkKeymapWithOpts "x" "k" ''v:count || mode(1)[0:1] == "no" ? "k" : "gk"'' "Move up" {
       expr = true;
     })
+    (mkKeymap "n" "<leader>st" (helpers.mkRaw # lua
+      ''
+        require('stay-centered').toggle
+      ''
+    ) "Toggle stay-centered.nvim")
   ];
 
   insert = [
@@ -51,7 +56,11 @@ let
 
     (mkKeymap "n" "n" "nzzzv" "Move to center")
     (mkKeymap "n" "N" "Nzzzv" "Moving to center")
-
+    (mkKeymap "n" "<leader>sC" (helpers.mkRaw # lua
+      ''
+        require('stay-centered').toggle
+      ''
+    ) "Toggle stay-centered.nvim")
     (mkKeymap "n" "<leader>ft" (helpers.mkRaw # lua
       ''
         function()

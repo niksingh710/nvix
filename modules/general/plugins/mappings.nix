@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, helpers, ... }:
 let
   inherit (config.nvix.mkKey) mkKeymap;
 in
@@ -8,6 +8,15 @@ in
     (mkKeymap "n" "<c-a-j>" ":lua require('smart-splits').resize_down()<cr>" "Resize Down")
     (mkKeymap "n" "<c-a-k>" ":lua require('smart-splits').resize_up()<cr>" "Resize Up")
     (mkKeymap "n" "<c-a-l>" ":lua require('smart-splits').resize_right()<cr>" "Resize Right")
+    (mkKeymap "n" "?" (helpers.mkRaw # lua
+      ''
+        function()
+          require('flash').jump({
+            forward = true, wrap = true, multi_window = true
+          })
+          end
+      ''
+    ) "Flash Search")
 
     (mkKeymap "n" "<c-h>" ":lua require('smart-splits').move_cursor_left()<cr>" "Move Cursor Left")
     (mkKeymap "n" "<c-j>" ":lua require('smart-splits').move_cursor_down()<cr>" "Move Cursor Down")
