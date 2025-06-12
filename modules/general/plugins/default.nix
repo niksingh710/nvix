@@ -8,7 +8,7 @@
   extraPlugins = with pkgs.vimPlugins; [ stay-centered-nvim ];
   plugins = {
     # Must have plugins to have a decent flow of work
-    tmux-navigator.enable = true;
+    # tmux-navigator.enable = true;
     smart-splits.enable = true;
     web-devicons.enable = true;
     lz-n.enable = true;
