@@ -39,7 +39,6 @@ in
     (mkKeymap "n" "<leader>gl" "<cmd>:lua Snacks.lazygit.log()<cr>" "Lazygit Log (cwd)")
     (mkKeymap "n" "<leader>gL" "<cmd>:lua Snacks.picker.git_log()<cr>" "Git Log (cwd)")
     (mkKeymap "n" "<leader>un" "<cmd>:lua Snacks.notifier.hide()<cr>" "Dismiss All Notifications")
-    (mkKeymap "n" "<C-t>" "<cmd>:lua Snacks.terminal()<cr>" "Toggle Terminal")
 
     # Telescope replacement
     (mkKeymap "n" "<leader>sP" "<cmd>:lua Snacks.picker()<cr>" "Pickers")
