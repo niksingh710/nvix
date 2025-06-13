@@ -16,4 +16,6 @@
     self.nvixModules.auto-session
     self.nvixModules.toggleterm
   ];
+
+  nvix.explorer.oil-vcs-status = false;
 }
