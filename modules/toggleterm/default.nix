@@ -4,7 +4,7 @@ _: {
     settings = {
       autochdir = true;
       close_on_exit = true;
-      direction = "vertical";
+      direction = "float";
     };
   };
   keymaps = [
