@@ -14,5 +14,6 @@
     self.nvixModules.treesitter
     self.nvixModules.colorschemes
     self.nvixModules.auto-session
+    self.nvixModules.toggleterm
   ];
 }
