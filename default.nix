@@ -50,6 +50,5 @@
         bare = package (nvix "bare") "Minimal utility set (Good for servers to quick spin)";
         full = package (nvix "full") "Full utility set (Full Set contains tex utilities)";
       };
-      formatter = pkgs.nixpkgs-fmt;
     };
 }

@@ -17,6 +17,7 @@ in
     };
   };
 
+  extraPackages = [ pkgs.python313Packages.pylatexenc ];
   extraConfigLuaPre = ''
     vim.g.vimtex_compiler_latexmk = {
       aux_dir = ".build" -- you can set here whatever name you desire
