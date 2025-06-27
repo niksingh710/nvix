@@ -1,12 +1,25 @@
 { lib, ... }:
 {
-  plugins.copilot-lua = {
-    enable = true;
-    settings = {
-      filetypes.markdown = true;
-      suggestion = {
-        enabled = true;
-        auto_trigger = true;
+  plugins = {
+    copilot-lua = {
+      enable = true;
+      settings = {
+        filetypes.markdown = true;
+        suggestion = {
+          enabled = true;
+          auto_trigger = true;
+        };
+      };
+    };
+    copilot-chat = {
+      enable = true;
+      settings = {
+        window = {
+          border = "rounded";
+          layout = "float";
+          width = 0.5;
+          height = 0.6;
+        };
       };
     };
   };
