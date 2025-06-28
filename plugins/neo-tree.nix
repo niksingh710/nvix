@@ -10,7 +10,7 @@ in
   ];
 
   wKeyList = [
-    (wKeyObj [ "<leader>n" "󰙅" "blame" ])
+    (wKeyObj [ "<leader>e" "󰙅" "Neo Tree" ])
   ];
 
   extraPlugins = with pkgs.vimPlugins; [ nvim-window-picker ];

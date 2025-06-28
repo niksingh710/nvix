@@ -1,0 +1,34 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+jobs:
+  checks:
+    runs-on: ${{ matrix.runner }}
+    permissions:
+      contents: read
+    strategy:
+      matrix:
+        include:
+          - runner: ubuntu-latest
+            system: x86_64-linux
+          - runner: macos-latest
+            system: aarch64-darwin
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: "Install Nix"
+        uses: DeterminateSystems/nix-installer-action@main
+      - name: "Install omnix"
+        run: |
+          nix profile install nixpkgs#omnix
+
+      - name: Build all flake outputs
+        run: |
+          om ci run \
+            --extra-access-tokens ${{ secrets.GITHUB_TOKEN }} \
+            --systems "${{ matrix.system }}" \
+            --results=$HOME/omci.json \
+            -- --accept-flake-config

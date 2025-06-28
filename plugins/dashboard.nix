@@ -10,33 +10,41 @@ in
       config = {
         vertical_center = true;
         week_header.enable = true;
-        center = [{
-          icon = "";
-          desc = "Press";
-          key = "o";
-          key_format = "-> %s";
-          action = mkRaw # lus
-            ''
-              function()
-                local url = "https://c.xkcd.com/random/comic/"
-                local open_cmd
+        center = [
+          {
+            icon = "";
+            desc = " Press";
+            key = "o";
+            key_format = "-> %s";
+            action = mkRaw # lus
+              ''
+                function()
+                  local url = "https://c.xkcd.com/random/comic/"
+                  local open_cmd
 
-                if vim.fn.has("macunix") == 1 then
-                  open_cmd = "open"
-                elseif vim.fn.has("unix") == 1 then
-                  open_cmd = "xdg-open"
-                elseif vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
-                  open_cmd = "start"
-                else
-                  vim.notify("Unsupported OS for opening URLs", vim.log.levels.ERROR)
-                  return
+                  if vim.fn.has("macunix") == 1 then
+                    open_cmd = "open"
+                  elseif vim.fn.has("unix") == 1 then
+                    open_cmd = "xdg-open"
+                  elseif vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
+                    open_cmd = "start"
+                  else
+                    vim.notify("Unsupported OS for opening URLs", vim.log.levels.ERROR)
+                    return
+                  end
+
+                  vim.fn.jobstart({ open_cmd, url }, { detach = true })
                 end
 
-                vim.fn.jobstart({ open_cmd, url }, { detach = true })
-              end
-
-            '';
-        }];
+              '';
+          }
+          {
+            icon = "󰿅";
+            desc = " Quit";
+            key = "<leader>q";
+            action = "quitall!";
+          }
+        ];
         packages.enable = false;
         project.enable = false;
         shortcut = [ ];
