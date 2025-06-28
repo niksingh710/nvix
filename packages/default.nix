@@ -30,6 +30,9 @@ let
     # Productivity
     self.nvixPlugins.autosession
     self.nvixPlugins.copilot
+
+    # Dashboard (Auto session works so rarely i see this.)
+    self.nvixPlugins.dashboard
   ];
   fullModules = coreModules ++ [
     self.nvixPlugins.tex
@@ -43,3 +46,7 @@ in
     full = mkNixvim fullModules;
   };
 }
+
+# TODO: Plugins -- config to be added
+# - [ ] obsidian nvim
+# - [ ] quickfix list addition in lsp

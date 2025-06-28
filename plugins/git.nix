@@ -23,8 +23,6 @@ in
     (wKeyObj [ "<leader>g" "" "git" ])
     (wKeyObj [ "<leader>gh" "󰫅" "hunks" ])
     (wKeyObj [ "<leader>gb" "󰭐" "blame" ])
-    (wKeyObj [ "<leader>g" "" "git" ])
-    (wKeyObj [ "<leader>gh" "" "hunks" ])
   ];
 
   keymaps = [

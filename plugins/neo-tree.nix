@@ -2,12 +2,17 @@
 let
   inherit (lib.nixvim) mkRaw;
   inherit (config.nvix) icons;
-  inherit (config.nvix.mkKey) mkKeymap;
+  inherit (config.nvix.mkKey) mkKeymap wKeyObj;
 in
 {
   keymaps = [
     (mkKeymap "n" "<leader>e" "<cmd>:Neotree reveal toggle<cr>" "Neo Tree Explorer")
   ];
+
+  wKeyList = [
+    (wKeyObj [ "<leader>n" "󰙅" "blame" ])
+  ];
+
   extraPlugins = with pkgs.vimPlugins; [ nvim-window-picker ];
   extraConfigLua = # lua
     ''

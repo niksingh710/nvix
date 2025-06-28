@@ -100,13 +100,26 @@ let
       (mkRaw # lua
         ''
           function()
-            local word = vim.fn.expand("<cfile>")  -- Gets file-like word under cursor
+            local word = vim.fn.expand("<cfile>") -- Gets file-like word under cursor
 
             if word:match("^https?://") then
-              -- It's a URL; open in browser (macOS)
-              vim.fn.jobstart({ "open", word }, { detach = true })
+              -- Detect OS and choose browser opener
+              local open_cmd
+              if vim.fn.has("macunix") == 1 then
+                open_cmd = "open"
+              elseif vim.fn.has("unix") == 1 then
+                open_cmd = "xdg-open"
+              elseif vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
+                open_cmd = "start"
+              else
+                print("Unsupported OS")
+                return
+              end
+
+              vim.fn.jobstart({ open_cmd, word }, { detach = true })
+
             elseif vim.fn.filereadable(word) == 1 or vim.fn.isdirectory(word) == 1 then
-              -- It's a file or directory; open it in current window
+              -- It's a file or directory; open in current window
               vim.cmd("edit " .. vim.fn.fnameescape(word))
             else
               print("Not a valid file or URL: " .. word)
@@ -137,7 +150,6 @@ in
     (wKeyObj [ "[" "" "next" ])
     (wKeyObj [ "]" "" "prev" ])
     (wKeyObj [ "<leader>u" "󰔎" "ui" ])
-    (wKeyObj [ "<leader>g" "" "git" ])
     (wKeyObj [ "<leader>o" "" "Open" ])
     (wKeyObj [ "<leader>|" "" "vsplit" ])
     (wKeyObj [ "<leader>-" "" "split" ])

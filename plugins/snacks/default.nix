@@ -16,6 +16,7 @@ in
       indent.enabled = true;
       words.enabled = true;
       statuscolumn.enabled = true;
+      dashboard.enabled = lib.mkDefault false;
       picker =
         let
           keys = {
