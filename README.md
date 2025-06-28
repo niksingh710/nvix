@@ -151,6 +151,8 @@ Yes! Docs, configs, plugins, suggestions—all are valued. Open a PR or issue.
 
 ### Contributing
 
+> Just keep it simple, stupid! -> `kiss` design principle
+
 You’re welcome to contribute in any way:
 - Improve docs or fix typos
 - Suggest features or plugin support
