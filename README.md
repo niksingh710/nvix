@@ -1,3 +1,9 @@
+>[!WARNING]
+> This Branch is temporary and getting rewritten.
+> Currently, `kiss` branch is the one where all the development is happening.
+> `kiss -> keep it simple stupid` is the philosophy behind this branch.
+> The functionality will remain the same, while reducing the complexity of the codebase.
+
 <p align="center" style="color:grey">
 
 ![image](https://github.com/niksingh710/nvix/assets/60490474/89503d51-ca86-4933-872f-3f60c32202a9)
