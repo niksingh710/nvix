@@ -1,24 +1,6 @@
 { pkgs, config, ... }:
 {
   extraPlugins = with pkgs.vimPlugins; [ stay-centered-nvim ];
-  colorschemes.tokyonight = {
-    enable = true;
-    settings = {
-      style = "night";
-      transparent = config.nvix.transparent;
-      styles = {
-        floats = if config.nvix.transparent then "transparent" else "dark";
-        sidebars = if config.nvix.transparent then "transparent" else "dark";
-        comments.italic = true;
-        functions.italic = true;
-        variables.italic = true;
-        keywords = {
-          italic = true;
-          bold = true;
-        };
-      };
-    };
-  };
   plugins = {
     # Must have plugins to have a decent flow of work
     comment = {
