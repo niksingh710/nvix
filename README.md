@@ -156,6 +156,17 @@ You’re welcome to contribute in any way:
 - Suggest features or plugin support
 - Enhance language/LSP integration
 
+**Important:**
+This repository has undergone major revisions in the past, which has resulted in a larger history and increased cloning size.
+To minimize download time and space, please use a single branch clone:
+
+```sh
+git clone --single-branch --branch master https://github.com/niksingh710/nvix.git
+
+# ssh
+git clone --single-branch --branch master git@github.com:niksingh710/nvix.git
+```
+
 Please open an issue or PR with your ideas or improvements!
 
 ### License
