@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 let
   inherit (lib.nixvim) utils;
 in
@@ -53,6 +53,13 @@ in
       };
     };
   };
+
+  extraPackages = with pkgs;[
+    imagemagick
+    ghostscript_headless
+    tectonic
+    mermaid-cli
+  ]; # for image support
 
   autoCmd = [
     {

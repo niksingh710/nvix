@@ -29,7 +29,7 @@ let
 
     # Productivity
     self.nvixPlugins.autosession
-    self.nvixPlugins.copilot
+    self.nvixPlugins.ai
 
     # Dashboard (Auto session works so rarely i see this.)
     self.nvixPlugins.dashboard
