@@ -5,6 +5,11 @@ let
   inherit (lib.nixvim) mkRaw;
 in
 {
+
+  highlight = {
+    ObsidianMinus.fg = "#5fafff";
+    ObsidianCaret.fg = "#ff5f5f";
+  };
   plugins = {
     render-markdown = {
       enable = true;
@@ -14,7 +19,8 @@ in
           checked.icon = "${icons.ui.lazy.loaded} ";
           unchecked.icon = "${icons.ui.lazy.not_loaded} ";
           custom = {
-            todo = { raw = "[-]"; rendered = "󰥔 "; highlight = "RenderMarkdownTodo"; };
+            todoPending = { raw = "[-]"; rendered = "󰥔 "; highlight = "ObsidianMinus"; };
+            todoCaret = { raw = "[^]"; rendered = "^ "; highlight = "ObsidianCaret"; };
           };
         };
       };
@@ -35,7 +41,11 @@ in
             };
             "-" = {
               char = "󰥔";
-              hl_group = "ObsidianTilde";
+              hl_group = "ObsidianMinus";
+            };
+            "^" = {
+              char = "^";
+              hl_group = "ObsidianCaret";
             };
           };
         };

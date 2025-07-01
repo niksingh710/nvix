@@ -48,5 +48,4 @@ in
 }
 
 # TODO: Plugins -- config to be added
-# - [ ] obsidian nvim
 # - [ ] quickfix list addition in lsp

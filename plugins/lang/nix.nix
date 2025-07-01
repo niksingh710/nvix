@@ -3,7 +3,10 @@
     lsp.servers = {
       nixd = {
         enable = true;
-        settings.formatting.command = [ "nixpkgs-fmt" ];
+        settings = {
+          nixpkgs.expr = "import <nixpkgs> {}";
+          formatting.command = [ "nixpkgs-fmt" ];
+        };
       };
       statix.enable = true;
     };

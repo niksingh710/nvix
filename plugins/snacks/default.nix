@@ -1,6 +1,22 @@
 { lib, pkgs, ... }:
 let
-  inherit (lib.nixvim) utils;
+  inherit (lib.nixvim) mkRaw utils;
+  reopenFn = # lua
+    ''
+      local reopen_picker = function(source, picker)
+        picker:close()
+        Snacks.picker.pick(
+          source,
+          vim.tbl_extend('force', picker.init_opts, {
+            search = picker:filter().search,
+            pattern = picker:filter().pattern,
+            live = picker.opts.live or false,
+            ignored = picker.opts.ignored,
+            hidden = picker.opts.hidden,
+          } --[[@as snacks.picker.Config]])
+        )
+      end
+    '';
 in
 {
   # Generalise for all colorschemes
@@ -36,6 +52,38 @@ in
         in
         {
           enabled = true;
+          sources = {
+            files = {
+              actions.switch_grep =
+                (mkRaw # lua
+                  ''
+                    function(picker)
+                      ${reopenFn}
+                      reopen_picker('grep', picker)
+                    end,
+                  '');
+              win.input.keys = {
+                "g" = (utils.listToUnkeyedAttrs [ "switch_grep" ]) // {
+                  mode = "n";
+                };
+              };
+            };
+            grep = {
+              actions.switch_files =
+                (mkRaw # lua
+                  ''
+                    function(picker)
+                      ${reopenFn}
+                      reopen_picker('files', picker)
+                    end,
+                  '');
+              win.input.keys = {
+                "f" = (utils.listToUnkeyedAttrs [ "switch_files" ]) // {
+                  mode = "n";
+                };
+              };
+            };
+          };
           win = {
             input.keys = keys;
             list.keys = keys;
