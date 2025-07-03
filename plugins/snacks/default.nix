@@ -10,7 +10,7 @@ let
           vim.tbl_extend('force', picker.init_opts, {
             search = picker:filter().search,
             pattern = picker:filter().pattern,
-            live = picker.opts.live or false,
+            live = picker.opts.live,
             ignored = picker.opts.ignored,
             hidden = picker.opts.hidden,
           } --[[@as snacks.picker.Config]])
@@ -54,6 +54,7 @@ in
           enabled = true;
           sources = {
             files = {
+              # FIXME: Test if this works when switching from files to grep
               actions.switch_grep =
                 (mkRaw # lua
                   ''

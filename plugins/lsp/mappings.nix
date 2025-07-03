@@ -16,7 +16,6 @@ in
     # Lspsaga
 
     (mkKeymap "n" "<leader>la" "<cmd>:Lspsaga code_action<cr>" "Code Action")
-    (mkKeymap "v" "<leader>la" "<cmd>:Lspsaga code_action<cr>" "Code Action")
     (mkKeymap "n" "<leader>lo" "<cmd>Lspsaga outline<cr>" "Outline")
     (mkKeymap "n" "<leader>lw" "<cmd>Lspsaga show_workspace_diagnostics<cr>" "Workspace Diagnostics")
     (mkKeymap "n" "gd" "<cmd>Lspsaga goto_definition<cr>" "Definitions")

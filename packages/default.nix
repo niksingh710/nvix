@@ -46,6 +46,3 @@ in
     full = mkNixvim fullModules;
   };
 }
-
-# TODO: Plugins -- config to be added
-# - [ ] quickfix list addition in lsp

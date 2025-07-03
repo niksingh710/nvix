@@ -73,6 +73,29 @@ let
     (mkKeymap "n" "<leader>|" "<cmd>vsplit<cr>" "vertical split")
     (mkKeymap "n" "<leader>-" "<cmd>split<cr>" "horizontal split")
 
+    # quickfix
+    (mkKeymap "n" "<leader>cn" "<cmd>cnext<cr>" "quickfix next")
+    (mkKeymap "n" "<leader>cp" "<cmd>cprev<cr>" "quickfix prev")
+    (mkKeymap "n" "<leader>cq" "<cmd>cclose<cr>" "quit quickfix")
+
+    (mkKeymap "n" "<leader>id"
+      (mkRaw # lua
+        ''
+          function()
+            local date = "# " .. os.date("%d-%m-%y")
+            local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+            local line = vim.api.nvim_get_current_line()
+
+            -- Insert date at cursor position
+            local new_line = line:sub(1, col) .. date .. line:sub(col + 1)
+            vim.api.nvim_set_current_line(new_line)
+
+            -- Move cursor to next line
+            vim.api.nvim_win_set_cursor(0, { row + 1, 0 })
+          end
+        ''
+      ) "Insert Date at cursor position")
+
     (mkKeymap "n" "n" "nzzzv" "Move to center")
     (mkKeymap "n" "N" "Nzzzv" "Moving to center")
     (mkKeymap "n" "<leader>uC"
@@ -153,6 +176,7 @@ in
     (wKeyObj [ "<leader>o" "" "Open" ])
     (wKeyObj [ "<leader>|" "" "vsplit" ])
     (wKeyObj [ "<leader>-" "" "split" ])
+    (wKeyObj [ "<leader>c" "󰁨" "quickfix" ])
   ];
 
   extraConfigLua = # lua
