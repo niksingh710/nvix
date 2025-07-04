@@ -7,7 +7,6 @@ in
 {
   plugins = {
     git-conflict = {
-      #TODO: Add keymaps <nice plugin it is>
       enable = true;
       settings.default_mappings = true;
     };

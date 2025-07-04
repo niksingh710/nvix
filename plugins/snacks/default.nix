@@ -1,26 +1,14 @@
 { lib, pkgs, ... }:
 let
-  inherit (lib.nixvim) mkRaw utils;
-  reopenFn = # lua
-    ''
-      local reopen_picker = function(source, picker)
-        picker:close()
-        Snacks.picker.pick(
-          source,
-          vim.tbl_extend('force', picker.init_opts, {
-            search = picker:filter().search,
-            pattern = picker:filter().pattern,
-            live = picker.opts.live,
-            ignored = picker.opts.ignored,
-            hidden = picker.opts.hidden,
-          } --[[@as snacks.picker.Config]])
-        )
-      end
-    '';
+  inherit (lib.nixvim) utils;
 in
 {
   # Generalise for all colorschemes
   # <https://github.com/folke/snacks.nvim/discussions/1306#discussioncomment-12266647>
+
+  # TODO: <https://github.com/folke/snacks.nvim/discussions/2003#discussioncomment-13653042>
+  # Implement this with a fix, i have done the implementation in nix way, but `grep` seems to break.
+  # first check is required if it is from lua or nix
   plugins.todo-comments.enable = true;
   plugins.neoscroll.enable = true;
   plugins.snacks = {
@@ -52,39 +40,6 @@ in
         in
         {
           enabled = true;
-          sources = {
-            files = {
-              # FIXME: Test if this works when switching from files to grep
-              actions.switch_grep =
-                (mkRaw # lua
-                  ''
-                    function(picker)
-                      ${reopenFn}
-                      reopen_picker('grep', picker)
-                    end,
-                  '');
-              win.input.keys = {
-                "g" = (utils.listToUnkeyedAttrs [ "switch_grep" ]) // {
-                  mode = "n";
-                };
-              };
-            };
-            grep = {
-              actions.switch_files =
-                (mkRaw # lua
-                  ''
-                    function(picker)
-                      ${reopenFn}
-                      reopen_picker('files', picker)
-                    end,
-                  '');
-              win.input.keys = {
-                "f" = (utils.listToUnkeyedAttrs [ "switch_files" ]) // {
-                  mode = "n";
-                };
-              };
-            };
-          };
           win = {
             input.keys = keys;
             list.keys = keys;

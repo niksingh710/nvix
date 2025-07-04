@@ -5,25 +5,20 @@ let
   inherit (lib.nixvim) mkRaw;
 in
 {
-
-  highlight = {
-    ObsidianMinus.fg = "#5fafff";
-    ObsidianCaret.fg = "#ff5f5f";
-  };
   plugins = {
     markdown-preview.enable = true;
     render-markdown.enable = true;
     mkdnflow = {
       enable = true;
-      toDo.symbols = [ " " "⧖" "✓" ];
-      extraOptions = {
-        mappings = {
-          MkdnEnter = "<c-cr>";
-          MkdnToggleToDo = "<c-space>";
-          MkdnNewListItemBelow = "<c-j>";
-          MkdnNewListItemAbove = "<c-k>";
-          MkdnNextLink = "<c-n>";
-          MkdnPrevLink = "<c-p>";
+      toDo.symbols = [ " " "⧖" "x" ];
+      mappings = {
+        MkdnEnter = {
+          key = "<cr>";
+          modes = [ "n" "i" ];
+        };
+        MkdnToggleToDo = {
+          key = "<c-space>";
+          modes = [ "n" "i" ];
         };
       };
     };

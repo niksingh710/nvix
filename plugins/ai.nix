@@ -3,7 +3,6 @@ let
   inherit (config.nvix.mkKey) mkKeymap wKeyObj;
   inherit (lib.nixvim) mkRaw;
 in
-# TODO: Add copilot chat mappings
 {
   plugins = {
     chatgpt = {
