@@ -30,7 +30,10 @@ in
     enable = true;
     usePopupsForInput = false;
     popupBorderStyle = config.nvix.border;
-    filesystem.followCurrentFile.enabled = true;
+    filesystem = {
+      useLibuvFileWatcher = true;
+      followCurrentFile.enabled = true;
+    };
     defaultComponentConfigs = {
       gitStatus.symbols = with icons.git; {
         unstaged = "${FileUnstaged}";

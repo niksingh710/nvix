@@ -16,7 +16,6 @@ in
           "<c-h>" = [ "snippet_backward" "fallback" ];
           "<C-u>" = [ "scroll_documentation_up" "fallback" ];
           "<C-d>" = [ "scroll_documentation_down" "fallback" ];
-          "<C-cr>" = [ "select_and_accept" "fallback" ];
           "<C-space>" = [
             (mkRaw # lua
               ''
@@ -32,9 +31,9 @@ in
                         suggestion.accept()
                       else
                         if cmp.snippet_active() then
-                           return cmp.accept()
+                        return cmp.select_and_accept()
                         else
-                          return cmp.select_and_accept()
+                        return cmp.accept()
                         end
                       end
                     end

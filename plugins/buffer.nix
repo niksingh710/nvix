@@ -10,9 +10,16 @@ in
     };
     bufferline = {
       enable = true;
-      settings.options = {
+      settings.options = rec {
         diagnostics = "nvim_lsp";
+        buffer_close_icon = "󰅙";
+        close_icon = buffer_close_icon;
         always_show_bufferline = false;
+        hover = {
+          enabled = true;
+          delay = 200;
+          reveal = [ "close" ];
+        };
       };
     };
   };

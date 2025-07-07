@@ -19,7 +19,9 @@
     lz-n.enable = true;
     flash = {
       enable = true;
-      settings.modes.char.enabled = false;
+      settings = {
+        modes.char.enabled = false;
+      };
     };
     which-key = {
       enable = true;
