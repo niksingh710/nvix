@@ -4,6 +4,7 @@ let
 in
 {
   plugins = {
+    luasnip.enable = true;
     blink-cmp = {
       enable = true;
       settings = {

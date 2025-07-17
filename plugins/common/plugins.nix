@@ -1,4 +1,7 @@
 { pkgs, config, ... }:
+let
+  inherit (config.nvix.mkKey) mkKeymap;
+in
 {
   extraPlugins = with pkgs.vimPlugins; [ stay-centered-nvim ];
   plugins = {
@@ -33,4 +36,7 @@
     timeout = true;
     timeoutlen = 250;
   };
+  keymaps = [
+    (mkKeymap "n" "<leader>vt" "<cmd>:lua require('flash').treesitter()<cr>" "Select Treesitter Node")
+  ];
 }

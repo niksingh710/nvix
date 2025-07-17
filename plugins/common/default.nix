@@ -61,6 +61,8 @@ in
     list = true;
     smoothscroll = true;
     autoread = true;
+    autowrite = true;
+    swapfile = false;
     fillchars = {
       eob = " ";
     };
@@ -79,6 +81,19 @@ in
               vim.highlight.on_yank()
             end
           '';
+    }
+    {
+      desc = "Check file changes";
+      event = [ "FocusGained" "BufEnter" "CursorHold" ];
+      pattern = [ "*" ];
+      callback = mkRaw # lua
+        ''
+          function()
+            if vim.fn.mode() ~= "c" then
+              vim.cmd("checktime")
+            end
+          end
+        '';
     }
   ];
 
