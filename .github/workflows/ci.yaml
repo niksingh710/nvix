@@ -29,6 +29,5 @@ jobs:
         run: |
           om ci run \
             --extra-access-tokens ${{ secrets.GITHUB_TOKEN }} \
-            --systems "${{ matrix.system }}" \
             --results=$HOME/omci.json \
             -- --accept-flake-config
