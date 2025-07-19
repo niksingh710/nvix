@@ -24,17 +24,6 @@ in
         };
       };
     };
-    copilot-chat = {
-      enable = true;
-      settings = {
-        window = {
-          border = "rounded";
-          layout = "float";
-          width = 0.5;
-          height = 0.6;
-        };
-      };
-    };
   };
   wKeyList = [ (wKeyObj [ "<leader>a" "󰚩" "ai" ]) ];
   keymaps = [
