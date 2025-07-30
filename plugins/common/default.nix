@@ -16,6 +16,7 @@ in
   globals = {
     mapleader = config.nvix.leader; # sets <space> as my leader key
     floating_window_options.border = config.nvix.border;
+    clipboard = "osc52";
   };
 
   opts = {
