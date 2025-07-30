@@ -12,7 +12,7 @@ in
   };
   plugins = {
     otter = {
-      enable = true;
+      enable = false;
       settings.buffers = {
         set_filetype = true;
       };

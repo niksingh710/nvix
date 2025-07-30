@@ -6,6 +6,7 @@ let
 in
 {
   plugins = {
+    img-clip.enable = true;
     markdown-preview.enable = true;
     render-markdown.enable = true;
     mkdnflow = {
@@ -52,11 +53,4 @@ in
   wKeyList = [
     (wKeyObj [ "<leader>p" "" "preview" ])
   ];
-  extraPlugins = with pkgs.vimPlugins; [ img-clip-nvim ];
-  extraPackages =
-    with pkgs;
-    if pkgs.stdenv.isDarwin then
-      [ pngpaste ]
-    else
-      [ wl-clipboard ];
 }
