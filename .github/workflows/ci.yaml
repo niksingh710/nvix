@@ -21,13 +21,22 @@ jobs:
 
       - name: "Install Nix"
         uses: DeterminateSystems/nix-installer-action@main
+
       - name: "Install omnix"
         run: |
           nix profile install nixpkgs#omnix
+
+      - name: "Cachix: Configure"
+        uses: cachix/cachix-action@v14
+        with:
+          name: nvix
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+          installCommand: "nix profile install nixpkgs#cachix"
 
       - name: Build all flake outputs
         run: |
           om ci run \
             --extra-access-tokens ${{ secrets.GITHUB_TOKEN }} \
             --results=$HOME/omci.json \
-            -- --accept-flake-config
+            --include-all-dependencies \
+            -- --accept-flake-config | xargs cachix push nvix

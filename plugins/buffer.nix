@@ -14,7 +14,7 @@ in
         diagnostics = "nvim_lsp";
         buffer_close_icon = "󰅙";
         close_icon = buffer_close_icon;
-        always_show_bufferline = false;
+        always_show_bufferline = true;
         hover = {
           enabled = true;
           delay = 200;

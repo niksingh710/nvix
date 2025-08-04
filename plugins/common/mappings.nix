@@ -168,6 +168,8 @@ in
     (wKeyObj [ "<leader>A" "" "" "true" ])
     (wKeyObj [ "<leader><leader>" "" "" "true" ])
     (wKeyObj [ "<leader>q" "" "quit/session" ])
+    (wKeyObj [ "<leader>i" "" "Insert" ])
+    (wKeyObj [ "<leader>v" "󰩬" "Insert" ])
     (wKeyObj [ "z" "" "fold" ])
     (wKeyObj [ "g" "" "goto" ])
     (wKeyObj [ "[" "" "next" ])
