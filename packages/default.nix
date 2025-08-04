@@ -43,6 +43,6 @@ in
     default = self'.packages.core;
     bare = mkNixvim bareModules;
     core = mkNixvim coreModules;
-    # full = mkNixvim fullModules;
+    full = mkNixvim fullModules;
   };
 }
