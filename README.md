@@ -38,12 +38,12 @@ Nvix is a **modular**, **powerful**, and **reproducible** Neovim configuration f
 Run Nvix instantly with Nix (no install required):
 
 ```sh
-nix run "github:niksingh710/nvix#<type>" --accept-flake-config
+nix run "github:niksingh710/nvix#<type>"
 # <type> can be: bare | default | full
 ```
 
 >[!NOTE]
-> Use `--accept-flake-config` so that the package is fetched from [cachix](https://nvix.cachix.org) and you don't have to build it locally.
+> Now no need for ~--accept-flake-config~ flag, as Nvix's all package are already cached in the nixos cache
 
 ## Installation
 
