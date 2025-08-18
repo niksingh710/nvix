@@ -43,7 +43,7 @@ in
     (mkKeymap "n" "<leader>ghB" "<cmd>lua require('gitsigns').blame()<cr>" "Blame Buffer")
     (mkKeymap "n" "<leader>gb" "<cmd>lua require('gitsigns').blame_line()<cr>" "Blame")
     (mkKeymap "n" "<leader>ghd" "<cmd>lua require('gitsigns').diffthis()<cr>" "Diff This")
-    (mkKeymap "n" "<leader>ghD" "<cmd>lua require('gitsigns').diffthis('~')<cmd>" "Diff This ~")
+    (mkKeymap "n" "<leader>ghD" "<cmd>lua require('gitsigns').diffthis('~')<cr>" "Diff This ~")
     (mkKeymap "n" "]H"
       (mkRaw # lua
         ''
