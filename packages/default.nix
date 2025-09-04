@@ -21,7 +21,6 @@ let
 
     # UI and appearance
     self.nvixPlugins.lualine
-    self.nvixPlugins.neo-tree
     self.nvixPlugins.firenvim
 
     # Code editing and syntax
