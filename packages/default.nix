@@ -13,6 +13,9 @@ let
     self.nvixPlugins.snacks
   ];
   coreModules = bareModules ++ [
+    # noice for cmdline
+    self.nvixPlugins.noice
+
     # Git and version control
     self.nvixPlugins.git
 

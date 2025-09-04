@@ -1,3 +1,4 @@
+# TODO: get java setted up
 { lib, ... }:
 {
   imports =
