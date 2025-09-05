@@ -26,6 +26,7 @@ in
         modes.char.enabled = false;
       };
     };
+    visual-multi.enable = true;
     which-key = {
       enable = true;
       settings.spec = config.wKeyList;
