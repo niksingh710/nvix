@@ -9,7 +9,7 @@ in
     (wKeyObj [ "<leader>:" "" "" true ])
     (wKeyObj [ "<leader>s" "" "search" ])
     (wKeyObj [ "<leader>f" "" "file/find" ])
-    (wKeyObj [ "<leader>e" "󰙅" "Neo Tree" ])
+    (wKeyObj [ "<leader>e" "󰙅" "Explorer" ])
   ];
 
   keymaps = [
