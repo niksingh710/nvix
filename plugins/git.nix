@@ -31,44 +31,93 @@ in
   ];
 
   keymaps = [
-    (mkKeymap "n" "<leader>ghS" "<cmd>lua require('gitsigns').stage_buffer()<cr>" "Stage Buffer")
-    (mkKeymap "n" "<leader>ghu" "<cmd>lua require('gitsigns').undo_stage_hunk()<cr>" "Undo Stage Hunk")
-    (mkKeymap "n" "<leader>ghR" "<cmd>lua require('gitsigns').reset_buffer()<cr>" "Reset Buffer")
-    (mkKeymap "n" "<leader>ghp" "<cmd>lua require('gitsigns').preview_hunk_inline()<cr>"
-      "Preview Hunk Inline"
-    )
-    (mkKeymap "n" "<leader>ghb" "<cmd>lua require('gitsigns').blame_line({ full = true })<cr>"
-      "Blame Line"
-    )
-    (mkKeymap "n" "<leader>ghB" "<cmd>lua require('gitsigns').blame()<cr>" "Blame Buffer")
-    (mkKeymap "n" "<leader>gb" "<cmd>lua require('gitsigns').blame_line()<cr>" "Blame")
-    (mkKeymap "n" "<leader>ghd" "<cmd>lua require('gitsigns').diffthis()<cr>" "Diff This")
-    (mkKeymap "n" "<leader>ghD" "<cmd>lua require('gitsigns').diffthis('~')<cr>" "Diff This ~")
-    (mkKeymap "n" "]H"
+
+    # Navigation
+    (mkKeymap "n" "]h"
+      (mkRaw # lua
+        ''
+          function ()
+            if vim.wo.diff then
+              vim.cmd.normal ({ ' ]c', bang = true})
+          else
+              require('gitsigns').nav_hunk('next')
+            end
+          end
+        '') "Next Hunk")
+
+    (mkKeymap "n" "[h"
       (mkRaw # lua
         ''
           function()
-            require 'gitsigns'.nav_hunk("last")
+            if vim.wo.diff then
+              vim.cmd.normal({'[c', bang = true})
+            else
+              require('gitsigns').nav_hunk('prev')
+            end
           end
-        ''
-      ) "Last Hunk")
+        '') "Prev Hunk")
+
+    (mkKeymap "n" "]H"
+      (mkRaw "function() require('gitsigns').nav_hunk('last') end") "Last Hunk")
 
     (mkKeymap "n" "[H"
+      (mkRaw "function() require('gitsigns').nav_hunk('first') end") "First Hunk")
+
+    # Stage / Reset
+    (mkKeymap "n" "<leader>gs" "<cmd>lua require('gitsigns').stage_buffer()<CR>" "Stage Buffer")
+    (mkKeymap "v" "<leader>gs"
       (mkRaw # lua
         ''
           function()
-            require 'gitsigns'.nav_hunk("first")
+          require('gitsigns').stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
           end
+        '') "Stage Selection")
+
+    (mkKeymap "n" "<leader>gr" "<cmd>lua require('gitsigns').reset_buffer()<CR>" "Reset Buffer")
+    (mkKeymap "v" "<leader>gr"
+      (mkRaw # lua
         ''
-      ) "First Hunk")
+          function()
+          require('gitsigns').reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+          end
+        '') "Reset Selection")
 
-    (mkKeymap "n" "<leader>ghs" ":Gitsigns stage_hunk<CR>" "Stage Hunk")
-    (mkKeymap "v" "<leader>ghs" ":Gitsigns stage_hunk<CR>" "Stage Hunk")
-    (mkKeymap "n" "<leader>ghr" ":Gitsigns reset_hunk<CR>" "Reset Hunk")
-    (mkKeymap "v" "<leader>ghr" ":Gitsigns reset_hunk<CR>" "Reset Hunk")
+    # Undo
+    (mkKeymap "n" "<leader>gu" "<cmd>lua require('gitsigns').undo_stage_hunk()<CR>" "Undo Stage Hunk")
 
-    (mkKeymap "o" "ih" ":<C-U>Gitsigns select_hunk<CR>" "GitSigns Select Hunk")
-    (mkKeymap "x" "ih" ":<C-U>Gitsigns select_hunk<CR>" "GitSigns Select Hunk")
+    # Preview / Diff
+    (mkKeymap "n" "<leader>gp" "<cmd>lua require('gitsigns').preview_hunk_inline()<CR>" "Preview Hunk Inline")
+    (mkKeymap "n" "<leader>gP" "<cmd>lua require('gitsigns').preview_hunk()<CR>" "Preview Hunk (Popup)")
+    (mkKeymap "v" "<leader>gp"
+      (mkRaw # lua
+        ''
+          function()
+          require('gitsigns').preview_hunk_inline({ vim.fn.line('.'), vim.fn.line('v') })
+          end
+        '') "Preview Selection")
+
+    (mkKeymap "n" "<leader>gd" "<cmd>lua require('gitsigns').diffthis()<CR>" "Diff This")
+    (mkKeymap "n" "<leader>gD"
+      (mkRaw "function() require('gitsigns').diffthis('~') end") "Diff Against ~")
+
+    # Blame
+    (mkKeymap "n" "<leader>gb" "<cmd>lua require('gitsigns').blame_line()<CR>" "Blame Line")
+    (mkKeymap "n" "<leader>gB"
+      (mkRaw "function() require('gitsigns').blame_line({ full = true }) end") "Blame Line (Full)")
+    (mkKeymap "n" "<leader>gF" "<cmd>lua require('gitsigns').blame()<CR>" "Blame File")
+
+    # Quickfix
+    (mkKeymap "n" "<leader>gq" "<cmd>lua require('gitsigns').setqflist()<CR>" "Hunks to Quickfix")
+    (mkKeymap "n" "<leader>gQ"
+      (mkRaw "function() require('gitsigns').setqflist('all') end") "All Hunks to Quickfix")
+
+    # Toggles
+    (mkKeymap "n" "<leader>gb" "<cmd>lua require('gitsigns').toggle_current_line_blame()<CR>" "Toggle Blame (Line)")
+    (mkKeymap "n" "<leader>gw" "<cmd>lua require('gitsigns').toggle_word_diff()<CR>" "Toggle Word Diff")
+
+    # Text object
+    (mkKeymap "o" "ih" ":<C-U>Gitsigns select_hunk<CR>" "Select Hunk")
+    (mkKeymap "x" "ih" ":<C-U>Gitsigns select_hunk<CR>" "Select Hunk")
 
   ];
 }
