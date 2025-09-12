@@ -81,11 +81,6 @@ in
     (mkKeymap "x" "<leader>lf" "<cmd>:lua require('conform').format()<cr>" "Format File")
     (mkKeymap "v" "<leader>lf" "<cmd>:lua require('conform').format()<cr>" "Format File")
 
-    (mkKeymap "n" "gD" "<cmd>:lua vim.lsp.buf.declaration()<cr>" "Declaration")
-    (mkKeymap "n" "gi" "<cmd>:lua vim.lsp.buf.implementation()<cr>" "Implementation")
-    (mkKeymap "n" "gR" "<cmd>:lua vim.lsp.buf.references()<cr>" "References")
-    (mkKeymap "n" "gy" "<cmd>:lua vim.lsp.buf.type_definition()<cr>" "Type Definition")
-
     (mkKeymap "n" "[d" "<cmd>:lua vim.diagnostic.goto_prev()<cr>" "Previous Diagnostic")
     (mkKeymap "n" "]d" "<cmd>:lua vim.diagnostic.goto_next()<cr>" "Next Diagnostic")
     (mkKeymap "n" "<leader>lL"
