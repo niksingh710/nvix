@@ -1,4 +1,6 @@
-{ pkgs, ... }:
 {
-  extraPlugins = with pkgs.vimPlugins; [ haskell-tools-nvim ];
+  plugins.lsp.servers.hls = {
+    enable = true;
+    installGhc = false;
+  };
 }
