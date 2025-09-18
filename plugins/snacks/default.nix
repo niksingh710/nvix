@@ -204,6 +204,13 @@ in
                     picker.preview.win:toggle()
                   end,
                 },
+                win = {
+                  list = {
+                    keys = {
+                      ["<cr>"] = { { "pick_win", "jump" } },
+                    },
+                  },
+                },
               }
             '';
           win = {
