@@ -119,6 +119,10 @@ in
             "|" = (utils.listToUnkeyedAttrs [ "edit_vsplit" ]) // {
               mode = "n";
             };
+            "<cr>" = mkRaw # lua
+              ''
+                { { "pick_win", "jump" } }
+              '';
           };
         in
         {
@@ -203,13 +207,6 @@ in
                   toggle_preview = function(picker) --[[Override]]
                     picker.preview.win:toggle()
                   end,
-                },
-                win = {
-                  list = {
-                    keys = {
-                      ["<cr>"] = { { "pick_win", "jump" } },
-                    },
-                  },
                 },
               }
             '';
