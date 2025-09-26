@@ -87,12 +87,12 @@ in
       (mkRaw # lua
         ''
           function()
-            if vim.g.diagnostic_visible or vim.g.diagnostics_visible == nil then
+            if vim.g.diagnostics_visible == nil or vim.g.diagnostics_visible then
               vim.g.diagnostics_visible = false
               vim.diagnostic.disable()
             else
-               vim.g.diagnostics_visible = true
-               vim.diagnostic.enable()
+              vim.g.diagnostics_visible = true
+              vim.diagnostic.enable()
             end
           end
         ''

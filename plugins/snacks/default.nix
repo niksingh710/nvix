@@ -127,6 +127,31 @@ in
         in
         {
           enabled = true;
+          actions.pick_win = mkRaw # lua FIXME: on non overriden theme the picker window opens buffer with bg
+            ''
+              function(picker)
+                if not picker.layout.split then
+                  picker.layout:hide()
+                end
+                local win = Snacks.picker.util.pick_win {
+                  main = picker.main,
+                  float = false,
+                  filter = function(_, buf)
+                    local ft = vim.bo[buf].ft
+                    return ft == 'snacks_dashboard' or not ft:find '^snacks'
+                  end,
+                }
+                if not win then
+                  if not picker.layout.split then
+                    vim.defer_fn(function()
+                      if not picker.closed then
+                        picker.layout:unhide()
+                      end
+                    end, 100)
+                  end
+                end
+              end
+            '';
           sources.explorer = mkRaw # lua
             ''
               {
