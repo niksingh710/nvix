@@ -1,9 +1,16 @@
-{ flake, inputs', self', ... }:
+{
+  flake,
+  inputs',
+  self',
+  ...
+}:
 let
-  mkNixvim = module: inputs'.nixvim.legacyPackages.makeNixvimWithModule {
-    extraSpecialArgs = { inherit inputs self; };
-    inherit module;
-  };
+  mkNixvim =
+    module:
+    inputs'.nixvim.legacyPackages.makeNixvimWithModule {
+      extraSpecialArgs = { inherit inputs self; };
+      inherit module;
+    };
   inherit (flake) inputs self;
   bareModules = [
     # Core functionality and improvements

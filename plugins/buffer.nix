@@ -38,24 +38,24 @@ in
   ];
 
   keymaps = [
-    (mkKeymap "n" "<leader>b."
-      (mkRaw # lua
-        ''
-          function()
-            harpoon = require("harpoon")
-            harpoon:list():add()
-          end
-        ''
-      ) "Add File to Harpoon")
-    (mkKeymap "n" "<leader>bb"
-      (mkRaw # lua
-        ''
-          function()
-            harpoon = require("harpoon")
-            harpoon.ui:toggle_quick_menu(harpoon:list())
-          end
-        ''
-      ) "Harpoon ui")
+    (mkKeymap "n" "<leader>b." (
+      # lua
+      mkRaw ''
+        function()
+          harpoon = require("harpoon")
+          harpoon:list():add()
+        end
+      ''
+    ) "Add File to Harpoon")
+    (mkKeymap "n" "<leader>bb" (
+      # lua
+      mkRaw ''
+        function()
+          harpoon = require("harpoon")
+          harpoon.ui:toggle_quick_menu(harpoon:list())
+        end
+      ''
+    ) "Harpoon ui")
 
     (mkKeymap "n" "<leader>bp" "<cmd>:BufferLinePick<cr>" "Buffer Line Pick")
     (mkKeymap "n" "<leader>qc" "<cmd>:bp | bd #<cr>" "Buffer close")

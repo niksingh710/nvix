@@ -119,19 +119,24 @@ in
       desc = "Highlight on yank";
       event = [ "TextYankPost" ];
       callback =
-        mkRaw # lua
-          ''
-            function()
-              vim.highlight.on_yank()
-            end
-          '';
+        # lua
+        mkRaw ''
+          function()
+            vim.highlight.on_yank()
+          end
+        '';
     }
     {
       desc = "Check file changes";
-      event = [ "FocusGained" "BufEnter" "CursorHold" ];
+      event = [
+        "FocusGained"
+        "BufEnter"
+        "CursorHold"
+      ];
       pattern = [ "*" ];
-      callback = mkRaw # lua
-        ''
+      callback =
+        # lua
+        mkRaw ''
           function()
             if vim.fn.mode() ~= "c" then
               vim.cmd("checktime")

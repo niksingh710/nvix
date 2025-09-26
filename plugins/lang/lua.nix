@@ -4,7 +4,11 @@
       enable = true;
       settings.diagnostics = {
         disable = [ "miss-name" ];
-        globals = [ "vim" "cmp" "Snacks" ];
+        globals = [
+          "vim"
+          "cmp"
+          "Snacks"
+        ];
       };
     };
     conform-nvim.settings = {

@@ -38,16 +38,16 @@ let
     (mkKeymap "n" "<c-a-j>" ":lua require('smart-splits').resize_down()<cr>" "Resize Down")
     (mkKeymap "n" "<c-a-k>" ":lua require('smart-splits').resize_up()<cr>" "Resize Up")
     (mkKeymap "n" "<c-a-l>" ":lua require('smart-splits').resize_right()<cr>" "Resize Right")
-    (mkKeymap "n" "?"
-      (mkRaw # lua
-        ''
-          function()
-            require('flash').jump({
-              forward = true, wrap = true, multi_window = true
-            })
-            end
-        ''
-      ) "Flash Search")
+    (mkKeymap "n" "?" (
+      # lua
+      mkRaw ''
+        function()
+          require('flash').jump({
+            forward = true, wrap = true, multi_window = true
+          })
+          end
+      ''
+    ) "Flash Search")
 
     (mkKeymap "n" "<c-h>" ":lua require('smart-splits').move_cursor_left()<cr>" "Move Cursor Left")
     (mkKeymap "n" "<c-j>" ":lua require('smart-splits').move_cursor_down()<cr>" "Move Cursor Down")
@@ -78,78 +78,78 @@ let
     (mkKeymap "n" "<leader>cp" "<cmd>cprev<cr>" "quickfix prev")
     (mkKeymap "n" "<leader>cq" "<cmd>cclose<cr>" "quit quickfix")
 
-    (mkKeymap "n" "<leader>id"
-      (mkRaw # lua
-        ''
-          function()
-            local date = "# " .. os.date("%d-%m-%y")
-            local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-            local line = vim.api.nvim_get_current_line()
+    (mkKeymap "n" "<leader>id" (
+      # lua
+      mkRaw ''
+        function()
+          local date = "# " .. os.date("%d-%m-%y")
+          local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+          local line = vim.api.nvim_get_current_line()
 
-            -- Insert date at cursor position
-            local new_line = line:sub(1, col) .. date .. line:sub(col + 1)
-            vim.api.nvim_set_current_line(new_line)
+          -- Insert date at cursor position
+          local new_line = line:sub(1, col) .. date .. line:sub(col + 1)
+          vim.api.nvim_set_current_line(new_line)
 
-            -- Move cursor to next line
-            vim.api.nvim_win_set_cursor(0, { row + 1, 0 })
-          end
-        ''
-      ) "Insert Date at cursor position")
+          -- Move cursor to next line
+          vim.api.nvim_win_set_cursor(0, { row + 1, 0 })
+        end
+      ''
+    ) "Insert Date at cursor position")
 
     (mkKeymap "n" "n" "nzzzv" "Move to center")
     (mkKeymap "n" "N" "Nzzzv" "Moving to center")
-    (mkKeymap "n" "<leader>uC"
-      (mkRaw # lua
-        ''
-          require('stay-centered').toggle
-        ''
-      ) "Toggle stay-centered.nvim")
-    (mkKeymap "n" "<leader>ft"
-      (mkRaw # lua
-        ''
-          function()
-            vim.ui.input({ prompt = "Enter FileType: " }, function(input)
-              local ft = input
-              if not input or input == "" then
-                ft = vim.bo.filetype
-              end
-              vim.o.filetype = ft
-            end)
-          end
-        ''
-      ) "Set Filetype")
-
-    (mkKeymap "n" "<leader>o"
-      (mkRaw # lua
-        ''
-          function()
-            local word = vim.fn.expand("<cfile>") -- Gets file-like word under cursor
-
-            if word:match("^https?://") then
-              -- Detect OS and choose browser opener
-              local open_cmd
-              if vim.fn.has("macunix") == 1 then
-                open_cmd = "open"
-              elseif vim.fn.has("unix") == 1 then
-                open_cmd = "xdg-open"
-              elseif vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
-                open_cmd = "start"
-              else
-                print("Unsupported OS")
-                return
-              end
-
-              vim.fn.jobstart({ open_cmd, word }, { detach = true })
-
-            elseif vim.fn.filereadable(word) == 1 or vim.fn.isdirectory(word) == 1 then
-              -- It's a file or directory; open in current window
-              vim.cmd("edit " .. vim.fn.fnameescape(word))
-            else
-              print("Not a valid file or URL: " .. word)
+    (mkKeymap "n" "<leader>uC" (
+      # lua
+      mkRaw ''
+        require('stay-centered').toggle
+      ''
+    ) "Toggle stay-centered.nvim")
+    (mkKeymap "n" "<leader>ft" (
+      # lua
+      mkRaw ''
+        function()
+          vim.ui.input({ prompt = "Enter FileType: " }, function(input)
+            local ft = input
+            if not input or input == "" then
+              ft = vim.bo.filetype
             end
+            vim.o.filetype = ft
+          end)
+        end
+      ''
+    ) "Set Filetype")
+
+    (mkKeymap "n" "<leader>o" (
+      # lua
+      mkRaw ''
+        function()
+          local word = vim.fn.expand("<cfile>") -- Gets file-like word under cursor
+
+          if word:match("^https?://") then
+            -- Detect OS and choose browser opener
+            local open_cmd
+            if vim.fn.has("macunix") == 1 then
+              open_cmd = "open"
+            elseif vim.fn.has("unix") == 1 then
+              open_cmd = "xdg-open"
+            elseif vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
+              open_cmd = "start"
+            else
+              print("Unsupported OS")
+              return
+            end
+
+            vim.fn.jobstart({ open_cmd, word }, { detach = true })
+
+          elseif vim.fn.filereadable(word) == 1 or vim.fn.isdirectory(word) == 1 then
+            -- It's a file or directory; open in current window
+            vim.cmd("edit " .. vim.fn.fnameescape(word))
+          else
+            print("Not a valid file or URL: " .. word)
           end
-        ''
-      ) "Open")
+        end
+      ''
+    ) "Open")
 
     (mkKeymapWithOpts "n" "j" ''v:count || mode(1)[0:1] == "no" ? "j" : "gj"'' "Move down" {
       expr = true;
@@ -165,20 +165,78 @@ in
 
   # This is list to present icon on which key
   wKeyList = [
-    (wKeyObj [ "<leader>A" "" "" "true" ])
-    (wKeyObj [ "<leader><leader>" "" "" "true" ])
-    (wKeyObj [ "<leader>q" "" "quit/session" ])
-    (wKeyObj [ "<leader>i" "" "Insert" ])
-    (wKeyObj [ "<leader>v" "󰩬" "Insert" ])
-    (wKeyObj [ "z" "" "fold" ])
-    (wKeyObj [ "g" "" "goto" ])
-    (wKeyObj [ "[" "" "next" ])
-    (wKeyObj [ "]" "" "prev" ])
-    (wKeyObj [ "<leader>u" "󰔎" "ui" ])
-    (wKeyObj [ "<leader>o" "" "Open" ])
-    (wKeyObj [ "<leader>|" "" "vsplit" ])
-    (wKeyObj [ "<leader>-" "" "split" ])
-    (wKeyObj [ "<leader>c" "󰁨" "quickfix" ])
+    (wKeyObj [
+      "<leader>A"
+      ""
+      ""
+      "true"
+    ])
+    (wKeyObj [
+      "<leader><leader>"
+      ""
+      ""
+      "true"
+    ])
+    (wKeyObj [
+      "<leader>q"
+      ""
+      "quit/session"
+    ])
+    (wKeyObj [
+      "<leader>i"
+      ""
+      "Insert"
+    ])
+    (wKeyObj [
+      "<leader>v"
+      "󰩬"
+      "Insert"
+    ])
+    (wKeyObj [
+      "z"
+      ""
+      "fold"
+    ])
+    (wKeyObj [
+      "g"
+      ""
+      "goto"
+    ])
+    (wKeyObj [
+      "["
+      ""
+      "next"
+    ])
+    (wKeyObj [
+      "]"
+      ""
+      "prev"
+    ])
+    (wKeyObj [
+      "<leader>u"
+      "󰔎"
+      "ui"
+    ])
+    (wKeyObj [
+      "<leader>o"
+      ""
+      "Open"
+    ])
+    (wKeyObj [
+      "<leader>|"
+      ""
+      "vsplit"
+    ])
+    (wKeyObj [
+      "<leader>-"
+      ""
+      "split"
+    ])
+    (wKeyObj [
+      "<leader>c"
+      "󰁨"
+      "quickfix"
+    ])
   ];
 
   extraConfigLua = # lua

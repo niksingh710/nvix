@@ -6,8 +6,16 @@ in
 {
 
   wKeyList = [
-    (wKeyObj [ "<leader>lg" "" "goto" ])
-    (wKeyObj [ "<leader>l" "󰿘" "lsp" ])
+    (wKeyObj [
+      "<leader>lg"
+      ""
+      "goto"
+    ])
+    (wKeyObj [
+      "<leader>l"
+      "󰿘"
+      "lsp"
+    ])
   ];
 
   plugins.lsp.keymaps.extra = [
@@ -26,47 +34,46 @@ in
     (mkKeymap "n" "gpt" "<cmd>Lspsaga peek_type_definition<cr>" "Peek Type Definition")
     (mkKeymap "n" "[e" "<cmd>Lspsaga diagnostic_jump_prev<cr>" "Jump Prev Diagnostic")
     (mkKeymap "n" "]e" "<cmd>Lspsaga diagnostic_jump_next<cr>" "Jump Next Diagnostic")
-    (mkKeymap "n" "K"
-      (mkRaw ''
-        function()
-          local ok, ufo = pcall(require, "ufo")
-          if ok then
-            winid = ufo.peekFoldedLinesUnderCursor()
-          end
-          if not winid then
-            vim.cmd("Lspsaga hover_doc")
-          end
+    (mkKeymap "n" "K" (mkRaw ''
+      function()
+        local ok, ufo = pcall(require, "ufo")
+        if ok then
+          winid = ufo.peekFoldedLinesUnderCursor()
         end
-      '') "Hover Doc")
+        if not winid then
+          vim.cmd("Lspsaga hover_doc")
+        end
+      end
+    '') "Hover Doc")
 
     # UFO
-    (mkKeymap "n" "zR"
-      (mkRaw # lua
-        ''
-          function()
-            require("ufo").openAllFolds()
+    (mkKeymap "n" "zR" (
+      # lua
+      mkRaw ''
+        function()
+          require("ufo").openAllFolds()
+        end
+      ''
+    ) "Open all folds")
+    (mkKeymap "n" "zM" (
+      # lua
+      mkRaw ''
+        function()
+          require("ufo").closeAllFolds()
+        end
+      ''
+    ) "Close All Folds")
+    (mkKeymap "n" "zK" (
+      # lua
+      mkRaw ''
+        function()
+          local winid = require("ufo").peekFoldedLinesUnderCursor()
+          if not winid then
+            vim.lsp.buf.hover()
           end
-        ''
-      ) "Open all folds")
-    (mkKeymap "n" "zM"
-      (mkRaw # lua
-        ''
-          function()
-            require("ufo").closeAllFolds()
-          end
-        ''
-      ) "Close All Folds")
-    (mkKeymap "n" "zK"
-      (mkRaw # lua
-        ''
-          function()
-            local winid = require("ufo").peekFoldedLinesUnderCursor()
-            if not winid then
-              vim.lsp.buf.hover()
-            end
-          end
-        ''
-      ) "Peek Folded Lines")
+        end
+      ''
+    ) "Peek Folded Lines")
 
     (mkKeymap "n" "<leader>lq" "<CMD>LspStop<Enter>" "Stop LSP")
     (mkKeymap "n" "<leader>li" "<cmd>LspInfo<cr>" "LSP Info")
@@ -83,31 +90,31 @@ in
 
     (mkKeymap "n" "[d" "<cmd>:lua vim.diagnostic.goto_prev()<cr>" "Previous Diagnostic")
     (mkKeymap "n" "]d" "<cmd>:lua vim.diagnostic.goto_next()<cr>" "Next Diagnostic")
-    (mkKeymap "n" "<leader>lL"
-      (mkRaw # lua
-        ''
-          function()
-            if vim.g.diagnostics_visible == nil or vim.g.diagnostics_visible then
-              vim.g.diagnostics_visible = false
-              vim.diagnostic.disable()
-            else
-              vim.g.diagnostics_visible = true
-              vim.diagnostic.enable()
-            end
+    (mkKeymap "n" "<leader>lL" (
+      # lua
+      mkRaw ''
+        function()
+          if vim.g.diagnostics_visible == nil or vim.g.diagnostics_visible then
+            vim.g.diagnostics_visible = false
+            vim.diagnostic.disable()
+          else
+            vim.g.diagnostics_visible = true
+            vim.diagnostic.enable()
           end
-        ''
-      ) "Toggle Diagnostics")
-    (mkKeymap "n" "<leader>ll"
-      (mkRaw # lua
-        ''
-          function()
-            if vim.diagnostic.config().virtual_text == false then
-              vim.diagnostic.config({ virtual_text = { source = "always" } })
-            else
-              vim.diagnostic.config({ virtual_text = false })
-            end
+        end
+      ''
+    ) "Toggle Diagnostics")
+    (mkKeymap "n" "<leader>ll" (
+      # lua
+      mkRaw ''
+        function()
+          if vim.diagnostic.config().virtual_text == false then
+            vim.diagnostic.config({ virtual_text = { source = "always" } })
+          else
+            vim.diagnostic.config({ virtual_text = false })
           end
-        ''
-      ) "Toggle Virtual Text")
+        end
+      ''
+    ) "Toggle Virtual Text")
   ];
 }

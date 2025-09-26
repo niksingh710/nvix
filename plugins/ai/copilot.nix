@@ -25,26 +25,31 @@ in
       };
     };
   };
-  wKeyList = [ (wKeyObj [ "<leader>a" "󰚩" "ai" ]) ];
+  wKeyList = [
+    (wKeyObj [
+      "<leader>a"
+      "󰚩"
+      "ai"
+    ])
+  ];
   keymaps = [
-    (mkKeymap "n" "<leader>ac"
-      (mkRaw # lua
-        ''
-          function()
-            if vim.g.copilot_status == nil then
-              vim.g.copilot_status = "running"
-            end
-            if vim.g.copilot_status == "running" then
-              vim.g.copilot_status = "stopped"
-              vim.cmd("Copilot disable")
-            else
-              vim.g.copilot_status = "running"
-              vim.cmd("Copilot enable")
-            end
+    (mkKeymap "n" "<leader>ac" (
+      # lua
+      mkRaw ''
+        function()
+          if vim.g.copilot_status == nil then
+            vim.g.copilot_status = "running"
           end
-        ''
-      ) "Toggle Copilot")
-
+          if vim.g.copilot_status == "running" then
+            vim.g.copilot_status = "stopped"
+            vim.cmd("Copilot disable")
+          else
+            vim.g.copilot_status = "running"
+            vim.cmd("Copilot enable")
+          end
+        end
+      ''
+    ) "Toggle Copilot")
 
     (mkKeymap "n" "<leader>aCc" "<cmd>ChatGPT<CR>" "ChatGPT")
     (mkKeymap [ "n" "v" ] "<leader>aCe" "<cmd>ChatGPTEditWithInstruction<CR>" "Edit with instruction")
@@ -58,6 +63,9 @@ in
     (mkKeymap [ "n" "v" ] "<leader>aCf" "<cmd>ChatGPTRun fix_bugs<CR>" "Fix Bugs")
     (mkKeymap [ "n" "v" ] "<leader>aCx" "<cmd>ChatGPTRun explain_code<CR>" "Explain Code")
     (mkKeymap [ "n" "v" ] "<leader>aCr" "<cmd>ChatGPTRun roxygen_edit<CR>" "Roxygen Edit")
-    (mkKeymap [ "n" "v" ] "<leader>aCl" "<cmd>ChatGPTRun code_readability_analysis<CR>" "Code Readability Analysis")
+    (mkKeymap [
+      "n"
+      "v"
+    ] "<leader>aCl" "<cmd>ChatGPTRun code_readability_analysis<CR>" "Code Readability Analysis")
   ];
 }

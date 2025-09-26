@@ -16,8 +16,9 @@ in
     settings = {
       bigfile.enabled = true;
       scroll.enabled = false;
-      lazygit.config.os.edit = mkRaw # lua
-        ''
+      lazygit.config.os.edit =
+        # lua
+        mkRaw ''
           '[ -z "\"$NVIM\"" ] && (nvim -- {{filename}}) || (nvim --server "\"$NVIM\"" --remote-send "\"q\"" && nvim --server "\"$NVIM\"" --remote {{filename}})'
         '';
       quickfile.enabled = true;
@@ -26,8 +27,9 @@ in
       statuscolumn.enabled = true;
       dashboard = {
         enabled = true;
-        sections = mkRaw # lua
-          ''
+        sections =
+          # lua
+          mkRaw ''
             {
               { section = "header" },
               {
@@ -119,16 +121,18 @@ in
             "|" = (utils.listToUnkeyedAttrs [ "edit_vsplit" ]) // {
               mode = "n";
             };
-            "<cr>" = mkRaw # lua
-              ''
+            "<cr>" =
+              # lua
+              mkRaw ''
                 { { "pick_win", "jump" } }
               '';
           };
         in
         {
           enabled = true;
-          actions.pick_win = mkRaw # lua FIXME: on non overriden theme the picker window opens buffer with bg
-            ''
+          actions.pick_win =
+            # lua FIXME: on non overriden theme the picker window opens buffer with bg
+            mkRaw ''
               function(picker)
                 if not picker.layout.split then
                   picker.layout:hide()
@@ -152,8 +156,9 @@ in
                 end
               end
             '';
-          sources.explorer = mkRaw # lua
-            ''
+          sources.explorer =
+            # lua
+            mkRaw ''
               {
                 on_show = function(picker)
                   local show = false
@@ -253,7 +258,7 @@ in
     };
   };
 
-  extraPackages = with pkgs;[
+  extraPackages = with pkgs; [
     imagemagick
     ghostscript_headless
     tectonic
@@ -266,37 +271,37 @@ in
       desc = "Pre init Function";
       event = [ "VimEnter" ];
       callback =
-        mkRaw # lua
-          ''
-            -- Taken from https://github.com/folke/snacks.nvim?tab=readme-ov-file#-usage
-            function()
-            -- Setup some globals for debugging (lazy-loaded)
-            _G.dd = function (...)
-              Snacks.debug.inspect
-              (...)
-              end
-              _G.bt = function()
-            Snacks.debug.backtrace()
+        # lua
+        mkRaw ''
+          -- Taken from https://github.com/folke/snacks.nvim?tab=readme-ov-file#-usage
+          function()
+          -- Setup some globals for debugging (lazy-loaded)
+          _G.dd = function (...)
+            Snacks.debug.inspect
+            (...)
             end
-            vim.print = _G.dd -- Override print to use snacks for `:=` command
+            _G.bt = function()
+          Snacks.debug.backtrace()
+          end
+          vim.print = _G.dd -- Override print to use snacks for `:=` command
 
-            -- Create some toggle mappings
-            Snacks.toggle.diagnostics():map("<leader>ud")
-            Snacks.toggle.line_number():map("<leader>ul")
-            Snacks.toggle.inlay_hints():map("<leader>uh")
-            Snacks.toggle.treesitter():map("<leader>uT")
-            Snacks.toggle.option("spell",
-            { name = "Spelling" }):map("<leader>us")
-            Snacks.toggle.option("wrap",
-            { name = "Wrap" }):map("<leader>uw")
-            Snacks.toggle.option("relativenumber",
-            { name = "Relative Number" }):map("<leader>uL")
-            Snacks.toggle.option("conceallevel",
-            { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map("<leader>uc")
-            Snacks.toggle.option("background",
-            { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
-            end
-          '';
+          -- Create some toggle mappings
+          Snacks.toggle.diagnostics():map("<leader>ud")
+          Snacks.toggle.line_number():map("<leader>ul")
+          Snacks.toggle.inlay_hints():map("<leader>uh")
+          Snacks.toggle.treesitter():map("<leader>uT")
+          Snacks.toggle.option("spell",
+          { name = "Spelling" }):map("<leader>us")
+          Snacks.toggle.option("wrap",
+          { name = "Wrap" }):map("<leader>uw")
+          Snacks.toggle.option("relativenumber",
+          { name = "Relative Number" }):map("<leader>uL")
+          Snacks.toggle.option("conceallevel",
+          { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map("<leader>uc")
+          Snacks.toggle.option("background",
+          { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
+          end
+        '';
     }
   ];
 

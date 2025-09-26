@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 let
   inherit (config.nvix.mkKey) wKeyObj;
   inherit (config.nvix) icons;
@@ -11,15 +16,25 @@ in
     render-markdown.enable = true;
     mkdnflow = {
       enable = true;
-      toDo.symbols = [ " " "⧖" "x" ];
+      toDo.symbols = [
+        " "
+        "⧖"
+        "x"
+      ];
       mappings = {
         MkdnEnter = {
           key = "<cr>";
-          modes = [ "n" "i" ];
+          modes = [
+            "n"
+            "i"
+          ];
         };
         MkdnToggleToDo = {
           key = "<c-space>";
-          modes = [ "n" "i" ];
+          modes = [
+            "n"
+            "i"
+          ];
         };
       };
     };
@@ -38,19 +53,23 @@ in
       event = "Filetype";
       pattern = "markdown";
       callback =
-        mkRaw # lua
-          ''
-            function()
-              -- Set keymap: <leader>p to save and convert to PDF using pandoc
-              vim.api.nvim_buf_set_keymap(0, 'n', '<leader>pg', '<cmd>Glow<CR>', { desc = "Markdown Glow preview", noremap = true, silent = true })
-              vim.api.nvim_buf_set_keymap(0, 'n', '<leader>pb', '<cmd>MarkdownPreview<CR>', { desc = "Markdown Browser Preview", noremap = true, silent = true })
-              vim.api.nvim_buf_set_keymap(0, 'n', '<leader>pp', '<cmd> lua require("md-pdf").convert_md_to_pdf()<CR>', { desc = "Markdown Print pdf", noremap = true, silent = true })
-            end
-          '';
+        # lua
+        mkRaw ''
+          function()
+            -- Set keymap: <leader>p to save and convert to PDF using pandoc
+            vim.api.nvim_buf_set_keymap(0, 'n', '<leader>pg', '<cmd>Glow<CR>', { desc = "Markdown Glow preview", noremap = true, silent = true })
+            vim.api.nvim_buf_set_keymap(0, 'n', '<leader>pb', '<cmd>MarkdownPreview<CR>', { desc = "Markdown Browser Preview", noremap = true, silent = true })
+            vim.api.nvim_buf_set_keymap(0, 'n', '<leader>pp', '<cmd> lua require("md-pdf").convert_md_to_pdf()<CR>', { desc = "Markdown Print pdf", noremap = true, silent = true })
+          end
+        '';
     }
   ];
 
   wKeyList = [
-    (wKeyObj [ "<leader>p" "" "preview" ])
+    (wKeyObj [
+      "<leader>p"
+      ""
+      "preview"
+    ])
   ];
 }

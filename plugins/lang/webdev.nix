@@ -5,7 +5,11 @@ let
 in
 {
   wKeyList = [
-    (wKeyObj [ "<leader>R" "󱞒" "Http Requests" ])
+    (wKeyObj [
+      "<leader>R"
+      "󱞒"
+      "Http Requests"
+    ])
   ];
   plugins = {
     kulala = {

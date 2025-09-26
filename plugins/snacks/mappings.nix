@@ -5,11 +5,32 @@ let
 in
 {
   wKeyList = [
-    (wKeyObj [ "<leader>." "" "Scratch Buffer" ])
-    (wKeyObj [ "<leader>:" "" "" true ])
-    (wKeyObj [ "<leader>s" "" "search" ])
-    (wKeyObj [ "<leader>f" "" "file/find" ])
-    (wKeyObj [ "<leader>e" "󰙅" "Explorer" ])
+    (wKeyObj [
+      "<leader>."
+      ""
+      "Scratch Buffer"
+    ])
+    (wKeyObj [
+      "<leader>:"
+      ""
+      ""
+      true
+    ])
+    (wKeyObj [
+      "<leader>s"
+      ""
+      "search"
+    ])
+    (wKeyObj [
+      "<leader>f"
+      ""
+      "file/find"
+    ])
+    (wKeyObj [
+      "<leader>e"
+      "󰙅"
+      "Explorer"
+    ])
   ];
 
   keymaps = [
@@ -55,7 +76,9 @@ in
     (mkKeymap "n" "gI" "<cmd>:lua Snacks.picker.lsp_implementations() <cr>" "Goto Implementation")
     (mkKeymap "n" "gy" "<cmd>:lua Snacks.picker.lsp_type_definitions() <cr>" "Goto T[y]pe Definition")
     (mkKeymap "n" "<leader>ss" "<cmd>:lua Snacks.picker.lsp_symbols() <cr>" "LSP Symbols")
-    (mkKeymap "n" "<leader>sS" "<cmd>:lua Snacks.picker.lsp_workspace_symbols() <cr>" "LSP Workspace Symbols")
+    (mkKeymap "n" "<leader>sS" "<cmd>:lua Snacks.picker.lsp_workspace_symbols() <cr>"
+      "LSP Workspace Symbols"
+    )
 
     # Telescope replacement
     (mkKeymap "n" "<leader>sP" "<cmd>:lua Snacks.picker()<cr>" "Pickers")
@@ -72,23 +95,23 @@ in
     (mkKeymap "n" "<leader>sh" ''<cmd>:lua Snacks.picker.help()<cr>'' "Help Pages")
     (mkKeymap "n" "<leader>sk" ''<cmd>:lua Snacks.picker.keymaps({layout = 'vscode'})<cr>'' "Keymaps")
 
-    (mkKeymap "n" "<leader>su"
-      (mkRaw # lua
-        ''
-          function()
-            Snacks.picker.undo({
-              win = {
-                input = {
-                  keys = {
-                    ["y"] = { "yank_add", mode =  "n" },
-                    ["Y"] = { "yank_del", mode =  "n" },
-                  },
+    (mkKeymap "n" "<leader>su" (
+      # lua
+      mkRaw ''
+        function()
+          Snacks.picker.undo({
+            win = {
+              input = {
+                keys = {
+                  ["y"] = { "yank_add", mode =  "n" },
+                  ["Y"] = { "yank_del", mode =  "n" },
                 },
               },
-            })
-          end
-        ''
-      ) "Undo")
+            },
+          })
+        end
+      ''
+    ) "Undo")
 
     (mkKeymap "n" "<leader>ff" "<cmd>:lua Snacks.picker.files()<cr>" "Find Files")
     (mkKeymap "n" "<leader>fF" "<cmd>:lua Snacks.picker.smart()<cr>" "Smart")
