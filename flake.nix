@@ -13,7 +13,8 @@
     git-hooks.flake = false;
   };
 
-  outputs = inputs@{ flake-parts, ... }:
+  outputs =
+    inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = import inputs.systems;
       _module.args = { inherit inputs; };

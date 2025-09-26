@@ -1,12 +1,8 @@
 {
   plugins = {
     lsp.servers = {
-      nixd = {
+      nil_ls = {
         enable = true;
-        settings = {
-          nixpkgs.expr = "import <nixpkgs> {}";
-          formatting.command = [ "nixpkgs-fmt" ];
-        };
       };
       statix.enable = true;
     };
