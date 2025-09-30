@@ -131,7 +131,7 @@ in
         {
           enabled = true;
           actions.pick_win =
-            # lua FIXME: on non overriden theme the picker window opens buffer with bg
+            # lua FIXME: on non overridden theme the picker window opens buffer with bg
             mkRaw ''
               function(picker)
                 if not picker.layout.split then
@@ -147,12 +147,17 @@ in
                 }
                 if not win then
                   if not picker.layout.split then
-                    vim.defer_fn(function()
-                      if not picker.closed then
-                        picker.layout:unhide()
-                      end
-                    end, 100)
+                    picker.layout:unhide()
                   end
+                  return true
+                end
+                picker.main = win
+                if not picker.layout.split then
+                  vim.defer_fn(function()
+                    if not picker.closed then
+                      picker.layout:unhide()
+                    end
+                  end, 100)
                 end
               end
             '';
