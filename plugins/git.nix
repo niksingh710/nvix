@@ -14,6 +14,9 @@ in
       enable = true;
       settings = {
         current_line_blame = true;
+        preview_config = {
+          border = "rounded";
+        };
         signs = with icons.ui; {
           add.text = "${LineLeft}";
           change.text = "${LineLeft}";
@@ -84,7 +87,7 @@ in
         require('gitsigns').stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
         end
       ''
-    ) "Stage Selection")
+    ) "Stage/Unstage Selection")
 
     (mkKeymap "n" "<leader>gr" "<cmd>lua require('gitsigns').reset_buffer()<CR>" "Reset Buffer")
     (mkKeymap "v" "<leader>gr" (
@@ -113,20 +116,19 @@ in
       ''
     ) "Preview Selection")
 
-    (mkKeymap "n" "<leader>gd" "<cmd>lua require('gitsigns').diffthis()<CR>" "Diff This")
-    (mkKeymap "n" "<leader>gD" (mkRaw "function() require('gitsigns').diffthis('~') end")
-      "Diff Against ~"
+    (mkKeymap "n" "<leader>dg" "<cmd>lua require('gitsigns').diffthis()<CR>" "Git Diff ")
+    (mkKeymap "n" "<leader>dG" (mkRaw "function() require('gitsigns').diffthis('~') end")
+      "Git diff last commit (HEAD~)"
     )
 
     # Blame
-    (mkKeymap "n" "<leader>gb" "<cmd>lua require('gitsigns').blame_line()<CR>" "Blame Line")
-    (mkKeymap "n" "<leader>gB" (mkRaw "function() require('gitsigns').blame_line({ full = true }) end")
+    (mkKeymap "n" "<leader>gk" (mkRaw "function() require('gitsigns').blame_line({ full = true }) end")
       "Blame Line (Full)"
     )
-    (mkKeymap "n" "<leader>gF" "<cmd>lua require('gitsigns').blame()<CR>" "Blame File")
+    (mkKeymap "n" "<leader>gK" ":lua require('gitsigns').blame()<CR>" "Blame File")
 
     # Quickfix
-    (mkKeymap "n" "<leader>gq" "<cmd>lua require('gitsigns').setqflist()<CR>" "Hunks to Quickfix")
+    (mkKeymap "n" "<leader>gq" ":lua require('gitsigns').setqflist()<CR>" "Hunks to Quickfix")
     (mkKeymap "n" "<leader>gQ" (mkRaw "function() require('gitsigns').setqflist('all') end")
       "All Hunks to Quickfix"
     )

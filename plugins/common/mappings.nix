@@ -56,6 +56,31 @@ let
     (mkKeymap "n" "<c-\\>" ":lua require('smart-splits').move_cursor_previous()<cr>"
       "Move Cursor Previous"
     )
+    (mkKeymap "n" "<leader>dd"
+      (
+        # lua
+        mkRaw ''
+          function()
+            local any_diff = false
+            for _, w in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+              if vim.api.nvim_win_get_option(w, "diff") then
+                any_diff = true
+                break
+              end
+            end
+
+            if any_diff then
+              vim.cmd("windo diffoff")
+            else
+              vim.cmd("windo diffthis")
+            end
+          end
+        ''
+      )
+
+      "Toggle Diff the opened windows"
+    )
+
     (mkKeymap "n" "<c-s>" "<cmd>w ++p<cr>" "Save the file")
     (mkKeymap "n" "<a-+>" "<C-a>" "Increase Number")
     (mkKeymap "n" "<a-->" "<C-x>" "Decrease Number")
@@ -64,7 +89,22 @@ let
     (mkKeymap "n" "<a-k>" "<cmd>m .-2<cr>==" "Move line up")
 
     (mkKeymap "n" "<leader>qq" "<cmd>quitall!<cr>" "Quit!")
-    (mkKeymap "n" "<leader>qw" "<cmd>:lua vim.cmd('close')<cr>" "Close Window!")
+    (mkKeymap "n" "<leader>qw" (
+      # lua
+      mkRaw ''
+        function()
+          local wins = vim.api.nvim_tabpage_list_wins(0)
+          if #wins > 1 then
+              local ok, err = pcall(vim.cmd, 'close')
+              if not ok then
+                  vim.notify("Cannot close the last window!", vim.log.levels.WARN)
+              end
+          else
+              vim.notify("Cannot close the last window!", vim.log.levels.WARN)
+          end
+        end
+      ''
+    ) "Close Window!")
 
     (mkKeymap "n" "<leader><leader>" "<cmd>nohl<cr>" "no highlight!")
     (mkKeymap "n" "<esc>" "<esc>:nohlsearch<cr>" "escape")
@@ -221,6 +261,11 @@ in
       "<leader>o"
       ""
       "Open"
+    ])
+    (wKeyObj [
+      "<leader>d"
+      ""
+      "diff"
     ])
     (wKeyObj [
       "<leader>|"
