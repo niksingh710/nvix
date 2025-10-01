@@ -3,6 +3,31 @@
     enable = true;
     settings = {
       presets.bottom_search = true;
+      routes = [
+        # FIXME: <https://github.com/folke/noice.nvim/issues/1097>
+        {
+          filter = {
+            event = "msg_show";
+            kind = [ "shell_out" ];
+          };
+          view = "notify";
+          opts = {
+            level = "info";
+            title = "stdout";
+          };
+        }
+        {
+          filter = {
+            event = "msg_show";
+            kind = [ "shell_err" ];
+          };
+          view = "notify";
+          opts = {
+            level = "error";
+            title = "stderr";
+          };
+        }
+      ];
       views = {
         cmdline_popup = {
           position = {
