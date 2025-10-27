@@ -16,25 +16,27 @@ in
     render-markdown.enable = true;
     mkdnflow = {
       enable = true;
-      toDo.symbols = [
-        " "
-        "⧖"
-        "x"
-      ];
-      mappings = {
-        MkdnEnter = {
-          key = "<cr>";
-          modes = [
-            "n"
-            "i"
-          ];
-        };
-        MkdnToggleToDo = {
-          key = "<c-space>";
-          modes = [
-            "n"
-            "i"
-          ];
+      settings = {
+        toDo.symbols = [
+          " "
+          "⧖"
+          "x"
+        ];
+        mappings = {
+          MkdnEnter = {
+            key = "<cr>";
+            modes = [
+              "n"
+              "i"
+            ];
+          };
+          MkdnToggleToDo = {
+            key = "<c-space>";
+            modes = [
+              "n"
+              "i"
+            ];
+          };
         };
       };
     };
