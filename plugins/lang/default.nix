@@ -17,8 +17,8 @@
       };
       formatters = {
         xmllint.command = lib.getExe' pkgs.libxml2 "xmllint";
-        json.command = lib.getExe pkgs.fixjson;
-        yaml.command = lib.getExe pkgs.yamlfix;
+        fixjson.command = lib.getExe pkgs.fixjson;
+        yamlfix.command = lib.getExe pkgs.yamlfix;
       };
     };
   };
