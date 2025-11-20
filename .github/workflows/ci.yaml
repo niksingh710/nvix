@@ -27,4 +27,4 @@ jobs:
 
       - name: Build flake outputs
         run: |
-          nix build .#bare .#core .#full --no-link
+          nix build .#bare .#core --no-link
