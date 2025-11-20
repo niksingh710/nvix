@@ -7,7 +7,7 @@ in
   opts = {
     foldcolumn = "1";
     foldlevel = 99;
-    foldlevelstart = -1;
+    foldlevelstart = 99;
     foldenable = true;
   };
   plugins = {
