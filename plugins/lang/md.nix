@@ -12,7 +12,10 @@ in
 {
   plugins = {
     img-clip.enable = true;
-    markdown-preview.enable = true;
+    markdown-preview = {
+      enable = true;
+      settings.echo_preview_url = 1;
+    };
     render-markdown.enable = true;
     mkdnflow = {
       enable = true;
