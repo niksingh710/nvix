@@ -124,7 +124,7 @@ in
             "<cr>" =
               # lua
               mkRaw ''
-                { { "pick_win", "jump" } }
+                { { "pick_win", "jump" }, mode = { "n", "i" } }
               '';
           };
         in
