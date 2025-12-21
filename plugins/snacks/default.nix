@@ -55,7 +55,7 @@ in
                 local cmds = {
                   {
                     title = "Notifications",
-                    cmd = "gh notify -s -a -n5",
+                    cmd = "PAGER= gh notify -s -a -n5",
                     action = function()
                       vim.ui.open("https://github.com/notifications")
                     end,
@@ -66,7 +66,7 @@ in
                   },
                   {
                     title = "Open Issues",
-                    cmd = "gh issue list -L 3",
+                    cmd = "PAGER= gh issue list -L 3",
                     key = "i",
                     action = function()
                       vim.fn.jobstart("gh issue list --web", { detach = true })
@@ -77,7 +77,7 @@ in
                   {
                     icon = " ",
                     title = "Open PRs",
-                    cmd = "gh pr list -L 3",
+                    cmd = "PAGER= gh pr list -L 3",
                     key = "P",
                     action = function()
                       vim.fn.jobstart("gh pr list --web", { detach = true })
