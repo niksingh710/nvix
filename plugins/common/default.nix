@@ -17,6 +17,10 @@ in
     with icons.diagnostics;
     # lua
     ''
+      vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true })
+      vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn",  { undercurl = true })
+      vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo",  { undercurl = true })
+      vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint",  { undercurl = true })
       local function my_paste(reg)
         return function(lines)
           local content = vim.fn.getreg('"')
