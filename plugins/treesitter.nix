@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   plugins = {
     mini-ai.enable = true;
@@ -11,7 +12,7 @@
             "markdown"
           ];
         };
-        auto_install = true;
+        grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars;
         indent_enable = true;
         folding = true;
         autoLoad = true;
