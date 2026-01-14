@@ -14,7 +14,7 @@
           just
           nil
           nix-output-monitor
-          nixfmt-rfc-style
+          nixfmt
         ];
         shellHook = ''
           echo 1>&2 "🐼: $(id -un) | 🧬: $(nix eval --raw --impure --expr 'builtins.currentSystem') | 🐧: $(uname -r) "
@@ -23,7 +23,7 @@
       };
 
       pre-commit.settings = {
-        hooks.nixfmt-rfc-style.enable = true;
+        hooks.nixfmt.enable = true;
       };
     };
 }

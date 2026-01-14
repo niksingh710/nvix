@@ -8,8 +8,8 @@
       statix.enable = true;
     };
     conform-nvim.settings = {
-      formatters_by_ft.nix = ["nixfmt"];
-      formatters.nixfmt.command = lib.getExe pkgs.nixfmt-rfc-style;
+      formatters_by_ft.nix = [ "nixfmt" ];
+      formatters.nixfmt.command = lib.getExe pkgs.nixfmt;
     };
   };
 }
