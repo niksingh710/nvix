@@ -34,6 +34,7 @@
             row = -2;
             col = "50%";
           };
+          border.style = "none";
         };
         cmdline_popupmenu.position = {
           row = -5;

@@ -21,9 +21,6 @@
           echo 1>&2 "Ready to work on ${name}!"
         '';
       };
-
-      pre-commit.settings = {
-        hooks.nixfmt.enable = true;
-      };
+      pre-commit.settings.hooks.nixfmt.enable = true;
     };
 }

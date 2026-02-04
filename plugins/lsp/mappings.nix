@@ -90,6 +90,8 @@ in
 
     (mkKeymap "n" "[d" "<cmd>:lua vim.diagnostic.goto_prev()<cr>" "Previous Diagnostic")
     (mkKeymap "n" "]d" "<cmd>:lua vim.diagnostic.goto_next()<cr>" "Next Diagnostic")
+    (mkKeymap "n" "gr" "<cmd>:Trouble lsp_references<cr>" "Trouble Lsp References")
+    (mkKeymap "n" "gd" "<cmd>:Trouble lsp_definitions<cr>" "Trouble Lsp References")
     (mkKeymap "n" "<leader>lL" (
       # lua
       mkRaw ''
