@@ -159,37 +159,45 @@ let
       ''
     ) "Set Filetype")
 
-    (mkKeymap "n" "<leader>o" (
-      # lua
-      mkRaw ''
-        function()
-          local word = vim.fn.expand("<cfile>") -- Gets file-like word under cursor
+    (mkKeymap "n" "<leader>o" (mkRaw ''
+      function()
+        local target = vim.fn.expand("<cfile>")
 
-          if word:match("^https?://") then
-            -- Detect OS and choose browser opener
-            local open_cmd
-            if vim.fn.has("macunix") == 1 then
-              open_cmd = "open"
-            elseif vim.fn.has("unix") == 1 then
-              open_cmd = "xdg-open"
-            elseif vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
-              open_cmd = "start"
-            else
-              print("Unsupported OS")
-              return
-            end
+        if not target or target == "" then
+          vim.notify("Nothing under cursor", vim.log.levels.ERROR)
+          return
+        end
 
-            vim.fn.jobstart({ open_cmd, word }, { detach = true })
+        local url = nil
 
-          elseif vim.fn.filereadable(word) == 1 or vim.fn.isdirectory(word) == 1 then
-            -- It's a file or directory; open in current window
-            vim.cmd("edit " .. vim.fn.fnameescape(word))
+        -- Case 1: http(s) URL
+        if target:match("^https?://") then
+          url = target
+        else
+          -- Case 2: file path (absolute or relative)
+          local path = vim.fn.fnamemodify(target, ":p")
+
+          if vim.fn.filereadable(path) == 1 or vim.fn.isdirectory(path) == 1 then
+            url = "file://" .. path
           else
-            print("Not a valid file or URL: " .. word)
+            vim.notify("Not a URL and not an existing file: " .. target, vim.log.levels.ERROR)
+            return
           end
         end
-      ''
-    ) "Open")
+
+        -- OSC 8 clickable hyperlink
+        local esc = string.char(27)
+        local bel = string.char(7)
+
+        local osc8_start = esc .. "]8;;" .. url .. bel
+        local osc8_end   = esc .. "]8;;" .. bel
+
+        local out = osc8_start .. "Open" .. osc8_end .. " → " .. url .. "\n"
+
+        -- Write directly to terminal so it interprets OSC 8
+        vim.api.nvim_out_write(out)
+      end
+    '') "Open")
 
     (mkKeymapWithOpts "n" "j" ''v:count || mode(1)[0:1] == "no" ? "j" : "gj"'' "Move down" {
       expr = true;

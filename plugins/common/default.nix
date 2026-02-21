@@ -131,19 +131,54 @@ in
         '';
     }
     {
-      desc = "Check file changes";
+      desc = "Reload files from disk when we focus vim";
+      event = [ "FocusGained" ];
+      pattern = [ "*" ];
+      callback =
+        # lua
+        mkRaw ''
+          function()
+            if vim.fn.getcmdwintype() == "" then
+              vim.cmd("checktime")
+            end
+          end
+        '';
+    }
+
+    {
+      desc = "Every time we enter an unmodified buffer, check if it changed on disk";
+      event = [ "BufEnter" ];
+      pattern = [ "*" ];
+      callback =
+        # lua
+        mkRaw ''
+          function(args)
+            if vim.bo.buftype == ""
+              and not vim.bo.modified
+              and vim.fn.expand("%") ~= ""
+            then
+              vim.cmd("checktime " .. args.buf)
+            end
+          end
+        '';
+    }
+
+    {
+      desc = "Close the popup-menu automatically";
       event = [
-        "FocusGained"
-        "BufEnter"
-        "CursorHold"
+        "CursorMovedI"
+        "InsertLeave"
       ];
       pattern = [ "*" ];
       callback =
         # lua
         mkRaw ''
           function()
-            if vim.fn.mode() ~= "c" then
-              vim.cmd("checktime")
+            if vim.fn.pumvisible() == 0
+              and not vim.wo.pvw
+              and vim.fn.getcmdwintype() == ""
+            then
+              vim.cmd("pclose")
             end
           end
         '';
