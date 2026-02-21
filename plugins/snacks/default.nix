@@ -121,11 +121,6 @@ in
             "|" = (utils.listToUnkeyedAttrs [ "edit_vsplit" ]) // {
               mode = "n";
             };
-            "<cr>" =
-              # lua
-              mkRaw ''
-                { { "pick_win", "jump" }, mode = { "n", "i" } }
-              '';
           };
         in
         {
@@ -247,7 +242,13 @@ in
             '';
           win = {
             input.keys = keys;
-            list.keys = keys;
+            list.keys = keys // {
+              "<Enter>" =
+                # lua
+                mkRaw ''
+                  { { "pick_win", "jump" }, mode = { "n", "i" } }
+                '';
+            };
           };
         };
       image = {
