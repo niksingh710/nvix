@@ -185,5 +185,12 @@ in
     }
   ];
 
+  performance.byteCompileLua = {
+    enable = true;
+    luaLib = true;
+    nvimRuntime = true;
+    plugins = true;
+  };
+
   extraLuaPackages = lp: with lp; [ luarocks ];
 }
