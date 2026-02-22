@@ -61,6 +61,11 @@ in
       "git"
     ])
     (wKeyObj [
+      "<leader>d"
+      ""
+      "git"
+    ])
+    (wKeyObj [
       "<leader>gh"
       "󰫅"
       "hunks"
@@ -154,8 +159,8 @@ in
 
     # Quickfix
     (mkKeymap "n" "<leader>gC" ":GitConflictListQf<CR>" "All GitConflicts to Quickfix")
-    (mkKeymap "n" "<leader>gq" ":lua require('gitsigns').setqflist()<CR>" "Hunks to Quickfix")
-    (mkKeymap "n" "<leader>gQ" (mkRaw "function() require('gitsigns').setqflist('all') end")
+    (mkKeymap "n" "<leader>ghH" ":lua require('gitsigns').setqflist()<CR>" "Buffer Hunk to Quickfix")
+    (mkKeymap "n" "<leader>ghh" (mkRaw "function() require('gitsigns').setqflist('all') end")
       "All Hunks to Quickfix"
     )
 
