@@ -36,4 +36,4 @@ jobs:
 
       - name: Build flake outputs
         run: |
-          nix build --accept-flake-config .#bare .#core --no-link --print-out-paths | cachix push nvix
+          nix build --accept-flake-config .#bare .#core .#full --no-link --print-out-paths | cachix push nvix
