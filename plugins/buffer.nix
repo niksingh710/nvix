@@ -82,7 +82,7 @@ in
 
     (mkKeymap "n" "<leader>qt" "<cmd>tabclose<cr>" "Close Tab")
     (mkKeymap "n" "<leader><tab>q" "<cmd>tabclose<cr>" "Close Tab")
-    (mkKeymap "n" "<leader><tab>n" "<cmd>tabnew<cr>" "New Tab")
+    (mkKeymap "n" "<leader><tab>n" "<cmd>tab split<cr>" "Open current buffer in new tab")
   ];
 
 }

@@ -182,7 +182,7 @@ in
     )
 
     # Telescope replacement
-    (mkKeymap "n" "<leader>sP" "<cmd>:lua Snacks.picker()<cr>" "Pickers")
+    (mkKeymap "n" "<leader>sP" "<cmd>:lua Snacks.picker({layout = 'vscode'})<cr>" "Pickers")
     (mkKeymap "n" "<leader>ss" "<cmd>:lua Snacks.picker.smart()<cr>" "Smart")
     (mkKeymap "n" "<leader>st" "<cmd>:lua Snacks.picker.todo_comments({layout = 'ivy'})<cr>" "Todo")
     (mkKeymap "n" "<leader>sT"
