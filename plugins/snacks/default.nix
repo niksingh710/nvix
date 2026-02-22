@@ -15,7 +15,7 @@ in
     enable = true;
     settings = {
       bigfile.enabled = true;
-      scroll.enabled = true;
+      scroll.enabled = false;
       animate.enabled = true;
       quickfile.enabled = true;
       indent.enabled = true;
