@@ -1,5 +1,9 @@
 {
   description = "Nikhil's NixOs / nix-darwin configuration";
+  nixConfig = {
+    extra-substituters = "https://nvix.cachix.org";
+    extra-trusted-public-key = "nvix.cachix.org-1:qVYAfj2oiH0DF3pSs8OfPYI6B0mAZ+h5mMajN+EOL2E=";
+  };
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixvim.url = "github:nix-community/nixvim";
