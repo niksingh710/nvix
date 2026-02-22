@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 {
   extraPlugins = [
     pkgs.vimPlugins.windows-nvim
