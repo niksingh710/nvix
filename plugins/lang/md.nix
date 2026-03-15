@@ -9,6 +9,7 @@ let
 in
 {
   plugins = {
+    lsp.servers.markdown_oxide.enable = true;
     img-clip.enable = true;
     markdown-preview = {
       enable = true;

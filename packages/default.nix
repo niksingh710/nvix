@@ -29,6 +29,7 @@ let
     # UI and appearance
     self.nvixPlugins.lualine
     self.nvixPlugins.firenvim
+    self.nvixPlugins.leetcode
 
     # Code editing and syntax
     self.nvixPlugins.treesitter
