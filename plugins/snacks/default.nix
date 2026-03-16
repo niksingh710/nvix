@@ -24,7 +24,7 @@ in
       image = {
         enabled = true;
         border = "none";
-        doc.inline = false;
+        doc.inline = true;
       };
       notifier = {
         enabled = true;

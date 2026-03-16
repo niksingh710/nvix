@@ -1,8 +1,25 @@
 { config, ... }:
 {
   colorschemes = {
-    catppuccin = {
+    kanagawa = {
       enable = true;
+      settings = {
+        compile = false;
+        undercurl = true;
+        transparent = config.nvix.transparent;
+        colors.theme.all.ui.bg_gutter = "none";
+        theme = "dragon";
+        background = {
+          dark = "dragon";
+          light = "lotus";
+        };
+        commentStyle.italic = true;
+        keywordStyle.italic = true;
+        statementStyle.bold = true;
+      };
+    };
+    catppuccin = {
+      enable = false;
       settings = {
         integrations.native_lsp = {
           enabled = true;
