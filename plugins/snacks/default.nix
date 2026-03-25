@@ -24,7 +24,10 @@ in
       image = {
         enabled = true;
         border = "none";
-        doc.inline = true;
+        doc = {
+          conceal = true;
+          inline = true;
+        };
       };
       notifier = {
         enabled = true;

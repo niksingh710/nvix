@@ -1,5 +1,6 @@
 {
-  description = "Nikhil's NixOs / nix-darwin configuration";
+  # TODO: Make plugins lazy load as now keymap function is added
+  description = "Neovim configuration with nix";
   nixConfig = {
     extra-substituters = "https://nvix.cachix.org";
     extra-trusted-public-keys = "nvix.cachix.org-1:qVYAfj2oiH0DF3pSs8OfPYI6B0mAZ+h5mMajN+EOL2E=";

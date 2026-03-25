@@ -5,6 +5,7 @@ in
 {
 
   plugins = {
+    texpresso.enable = true;
     lsp.servers.texlab.enable = true;
     vimtex = {
       enable = true;
@@ -59,6 +60,19 @@ in
     }
     {
       __unkeyed-1 = "<localleader>lL";
+      __unkeyed-2 = "<cmd>TeXpresso %<cr>";
+      desc = "Live Preview";
+      icon = {
+        icon = "";
+        color = "green";
+      };
+      mode = [
+        "n"
+        "x"
+      ];
+    }
+    {
+      __unkeyed-1 = "<localleader>lS";
       __unkeyed-2 = "<plug>(vimtex-compile-selected)";
       desc = "Compile selected";
       icon = {

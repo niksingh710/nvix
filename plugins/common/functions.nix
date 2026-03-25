@@ -1,6 +1,12 @@
 { lib, ... }:
 {
   nvix.mkKey = rec {
+    mkKeymapLazy = key: action: desc: {
+      __unkeyed-1 = key;
+      __unkeyed-2 = action;
+      inherit desc;
+    };
+
     # set of functions that returns attrs for keymap List
     mkKeymap = mode: key: action: desc: {
       inherit mode key action;
