@@ -22,6 +22,7 @@ in
     obsidian = {
       enable = true;
       settings = {
+        footer.enabled = false;
         preferred_link_style = "markdown";
         note_id_func =
           # lua
@@ -95,14 +96,15 @@ in
   ];
 
   keymaps = [
-    (mkKeymap "n" "<leader>os" "<cmd>ObsidianQuickSwitch<cr>" "Obsidian Quick Switch")
-    (mkKeymap "n" "<leader>oS" "<cmd>ObsidianSwitch<cr>" "Obsidian Switch")
-    (mkKeymap "n" "<leader>o/" "<cmd>ObsidianSearch<cr>" "Obsidian Switch")
-    (mkKeymap "n" "<leader>ot" "<cmd>ObsidianTOC<cr>" "Obsidian TOC")
-    (mkKeymap "n" "<leader>ol" "<cmd>ObsidianLinks<cr>" "Obsidian Buffer links")
-    (mkKeymap "n" "<leader>or" "<cmd>ObsidianBacklinks<cr>" "Who links Current Buffer")
-    (mkKeymap "n" "<leader>o|" "<cmd>ObsidianFollowLink vsplit<cr>" "Open the link in a vertical split")
-    (mkKeymap "n" "<leader>o-" "<cmd>ObsidianFollowLink hsplit<cr>"
+    (mkKeymap "n" "<leader>os" "<cmd>Obsidian quick_switch<cr>" "Obsidian Quick Switch")
+    (mkKeymap "n" "<leader>o/" "<cmd>Obsidian search<cr>" "Obsidian Switch")
+    (mkKeymap "n" "<leader>ot" "<cmd>Obsidian tags<cr>" "Obsidian tag search")
+    (mkKeymap "n" "<leader>ol" "<cmd>Obsidian links<cr>" "Obsidian Buffer links")
+    (mkKeymap "n" "<leader>or" "<cmd>Obsidian backlinks<cr>" "Who links Current Buffer")
+    (mkKeymap "n" "<leader>o|" "<cmd>Obsidian follow_link vsplit<cr>"
+      "Open the link in a vertical split"
+    )
+    (mkKeymap "n" "<leader>o-" "<cmd>Obsidian follow_link hsplit<cr>"
       "Open the link in a horizontal split"
     )
     (mkKeymap "n" "<leader>o<cr>" (
@@ -136,7 +138,7 @@ in
           vim.api.nvim_win_set_cursor(0, { row, end_col })
 
           -- run command (expects visual selection)
-          vim.cmd("ObsidianLinkNew")
+          vim.cmd("Obsidian link_new")
         end
       ''
     ) "Make note from text under cursor")
