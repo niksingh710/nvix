@@ -146,21 +146,69 @@ in
     }
 
     {
-      desc = "Every time we enter an unmodified buffer, check if it changed on disk";
-      event = [ "BufEnter" ];
+      desc = "Watch files for external changes using libuv";
+      event = [
+        "BufRead"
+        "BufWritePost"
+      ];
       pattern = [ "*" ];
-      callback =
-        # lua
-        mkRaw ''
-          function(args)
-            if vim.bo.buftype == ""
-              and not vim.bo.modified
-              and vim.fn.expand("%") ~= ""
-            then
-              vim.cmd("checktime " .. args.buf)
-            end
+      callback = mkRaw ''
+        function(args)
+          local bufnr = args.buf
+          local filepath = vim.api.nvim_buf_get_name(bufnr)
+
+          -- Only watch normal files
+          if filepath == "" or vim.bo[bufnr].buftype ~= "" then
+            return
           end
-        '';
+
+          -- Use a Lua table to store watchers (can't store userdata in vim.b)
+          if not _G._nvix_watchers then
+            _G._nvix_watchers = {}
+          end
+
+          -- Stop existing watcher for this buffer
+          if _G._nvix_watchers[bufnr] then
+            _G._nvix_watchers[bufnr]:stop()
+            _G._nvix_watchers[bufnr] = nil
+          end
+
+          local uv = vim.uv or vim.loop
+          local watcher = uv.new_fs_event()
+          if not watcher then return end
+
+          _G._nvix_watchers[bufnr] = watcher
+
+          local function on_change(err, fname, status)
+            if err then return end
+            vim.schedule(function()
+              -- Double-check buffer is still valid and unmodified
+              if vim.api.nvim_buf_is_valid(bufnr) and not vim.bo[bufnr].modified then
+                vim.api.nvim_buf_call(bufnr, function()
+                  vim.cmd('checktime')
+                end)
+              end
+            end)
+          end
+
+          -- Try watching the file directly
+          pcall(function()
+            watcher:start(filepath, {}, on_change)
+          end)
+
+          -- Cleanup when buffer is deleted
+          vim.api.nvim_create_autocmd("BufDelete", {
+            buffer = bufnr,
+            once = true,
+            callback = function()
+              if _G._nvix_watchers[bufnr] then
+                _G._nvix_watchers[bufnr]:stop()
+                _G._nvix_watchers[bufnr] = nil
+              end
+            end
+          })
+        end
+      '';
     }
 
     {
