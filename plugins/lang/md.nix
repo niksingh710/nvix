@@ -9,7 +9,10 @@ let
 in
 {
   plugins = {
-    lsp.servers.markdown_oxide.enable = true;
+    lsp.servers = {
+      markdown_oxide.enable = true;
+      marksman.enable = true;
+    };
     img-clip.enable = true;
     markdown-preview = {
       enable = true;
@@ -17,11 +20,11 @@ in
     };
     render-markdown = {
       enable = true;
-      settings.preset = "obsidian";
     };
     obsidian = {
       enable = true;
       settings = {
+        ui.enable = false;
         footer.enabled = false;
         preferred_link_style = "markdown";
         note_id_func =
