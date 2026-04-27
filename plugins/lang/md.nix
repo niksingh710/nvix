@@ -17,6 +17,7 @@ in
     markdown-preview = {
       enable = true;
       settings.echo_preview_url = 1;
+      settings.open_to_the_world = 1;
     };
     render-markdown = {
       enable = true;
