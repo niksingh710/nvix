@@ -21,6 +21,40 @@ in
     };
     render-markdown = {
       enable = true;
+      settings = {
+        # Skip render-markdown entirely for leetcode.nvim managed buffers/files.
+        ignore =
+          # lua
+          mkRaw ''
+            function(bufnr)
+              bufnr = bufnr or 0
+              local name = vim.api.nvim_buf_get_name(bufnr)
+              -- leetcode.nvim stores solution files under stdpath('data')/leetcode/
+              if name:match("/leetcode/") then
+                return true
+              end
+              -- also skip its custom filetype if ever set
+              if vim.bo[bufnr].filetype == "leetcode.nvim" then
+                return true
+              end
+              return false
+            end
+          '';
+        # Don't conceal [[...]] when contents look like a LeetCode-style
+        # numeric/array literal (e.g. [[1,2]], [["a","b"]]). Real wiki-links
+        # such as [[My Note]] still render normally.
+        link.wiki.body =
+          # lua
+          mkRaw ''
+            function(ctx)
+              local text = (ctx and ctx.text) or ""
+              if text:match("^[%d%s,%-%[%]%.\"']+$") then
+                return false
+              end
+              return nil
+            end
+          '';
+      };
     };
     obsidian = {
       enable = true;
