@@ -67,7 +67,19 @@ in
         workspaces = [
           {
             name = "Notes";
-            path = "~/.notes";
+            # Use a function so the directory is created on first run if missing.
+            # obsidian.nvim's Workspace.new requires `path` to exist; otherwise it
+            # silently drops the spec and setup errors with "At least one workspace
+            # is required!" -- bad UX for first-time users.
+            path =
+              # lua
+              mkRaw ''
+                function()
+                  local p = vim.fn.expand("~/.notes")
+                  vim.fn.mkdir(p, "p")
+                  return p
+                end
+              '';
           }
         ];
       };
