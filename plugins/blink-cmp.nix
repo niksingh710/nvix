@@ -9,6 +9,8 @@ in
       enable = true;
       settings = {
         completion.menu.border = "rounded";
+        # Don't preselect the first item; <C-j>/<C-n> picks index 1 on first press.
+        completion.list.selection.preselect = false;
         keymap = {
           "<C-j>" = [
             "select_next"
