@@ -6,11 +6,15 @@
       enable = true;
       settings = {
         highlight = {
-          enable = true;
-          disable = [
-            "latex"
-            "markdown"
-          ];
+          # TODO: remove once this is fully migrated
+          # evaluation warning: Nixvim (plugins.treesitter): `plugins.treesitter.settings.highlight.disable` is an upstream legacy nvim-treesitter
+          # option. For Nixvim's native highlighting support with the modern nvim-treesitter main
+          # branch, use `plugins.treesitter.highlight.disable` instead.
+          enable = false;
+          # disable = [
+          #   "latex"
+          #   "markdown"
+          # ];
         };
         grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars;
         indent_enable = true;

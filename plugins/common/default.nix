@@ -11,8 +11,8 @@ in
     map (fn: ./${fn}) (
       filter (fn: (fn != "default.nix" && !hasSuffix ".md" "${fn}")) (attrNames (readDir ./.))
     );
+  nixpkgs.config.allowUnfree = true;
   luaLoader.enable = false;
-
   extraConfigLua =
     with icons.diagnostics;
     # lua
