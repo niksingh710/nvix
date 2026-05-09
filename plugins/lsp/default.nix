@@ -1,6 +1,13 @@
 { lib, config, ... }:
 let
   inherit (config.nvix.mkKey) mkKeymap;
+  inherit (config.nvix.icons.diagnostics)
+    BoldError
+    BoldWarning
+    BoldInformation
+    BoldHint
+    ;
+  inherit (lib.nixvim) mkRaw;
 in
 {
 
@@ -75,7 +82,15 @@ in
   diagnostic.settings = {
     virtual_text = false;
     underline = true;
-    signs = true;
+    signs = {
+      text = mkRaw ''
+        {
+                [vim.diagnostic.severity.ERROR] = "${BoldError}",
+                [vim.diagnostic.severity.WARN] = "${BoldWarning}",
+                [vim.diagnostic.severity.INFO] = "${BoldInformation}",
+                [vim.diagnostic.severity.HINT] = "${BoldHint}",
+              }'';
+    };
     severity_sort = true;
     float = {
       border = config.nvix.border;

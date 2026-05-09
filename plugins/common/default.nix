@@ -13,9 +13,7 @@ in
     );
   nixpkgs.config.allowUnfree = true;
   luaLoader.enable = false;
-  extraConfigLua =
-    with icons.diagnostics;
-    # lua
+  extraConfigLua = # lua
     ''
       vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true })
       vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn",  { undercurl = true })
@@ -46,19 +44,6 @@ in
 
       vim.opt.whichwrap:append("<>[]hl")
       vim.opt.listchars:append("space:·")
-
-      -- below part set's the Diagnostic icons/colors
-      local signs = {
-        Hint = "${BoldHint}",
-        Info = "${BoldInformation}",
-        Warn = "${BoldWarning}",
-        Error = "${BoldError}",
-      }
-
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-      end
     '';
 
   globals = {
