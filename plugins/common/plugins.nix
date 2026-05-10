@@ -62,6 +62,6 @@ in
   keymaps = [
     (mkKeymap "n" "<leader>vt" "<cmd>:lua require('flash').treesitter()<cr>" "Select Treesitter Node")
     (mkKeymap "n" "<leader>ut" ":TrimToggle<cr>" "Toggle Trim")
-    (mkKeymap "v" "<leader>us" "<cmd>CodeSnap<cr>" "SnapShot the selected code")
+    (mkKeymap "v" "<leader>us" ":CodeSnap<cr>" "SnapShot the selected code")
   ];
 }
