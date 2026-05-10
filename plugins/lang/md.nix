@@ -59,9 +59,10 @@ in
     obsidian = {
       enable = true;
       settings = {
+        legacy_commands = false;
         ui.enable = false;
         footer.enabled = false;
-        preferred_link_style = "markdown";
+        link.style = "markdown";
         note_id_func =
           # lua
           mkRaw ''
