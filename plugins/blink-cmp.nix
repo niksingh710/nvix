@@ -8,6 +8,9 @@ in
     blink-cmp = {
       enable = true;
       settings = {
+        # Use Lua implementation to avoid pre-built binary download issues
+        fuzzy.implementation = "lua";
+
         completion.menu.border = "rounded";
         # Don't preselect the first item; <C-j>/<C-n> picks index 1 on first press.
         completion.list.selection.preselect = false;
