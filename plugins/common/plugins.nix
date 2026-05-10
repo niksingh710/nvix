@@ -6,6 +6,27 @@ in
   extraPlugins = with pkgs.vimPlugins; [ stay-centered-nvim ];
   plugins = {
     # Must have plugins to have a decent flow of work
+    cord.enable = true;
+    remote-nvim = {
+      enable = true;
+      package = pkgs.vimPlugins.remote-nvim-nvim.overrideAttrs (_: {
+        dontPatchShebangs = true;
+      });
+    };
+    codesnap = {
+      enable = true;
+      settings = {
+        snapshot_config = {
+          background.stops = [
+            { color = "#00000000"; }
+            { color = "#00000000"; }
+          ];
+          theme = "vercel@https://raw.githubusercontent.com/Railly/one-hunter-vscode/refs/heads/main/themes/OneHunter-Vercel-color-theme.json";
+          watermark.content = "";
+        };
+      };
+    };
+    direnv.enable = true;
     gx.enable = true;
     comment = {
       enable = true;
@@ -41,5 +62,6 @@ in
   keymaps = [
     (mkKeymap "n" "<leader>vt" "<cmd>:lua require('flash').treesitter()<cr>" "Select Treesitter Node")
     (mkKeymap "n" "<leader>ut" ":TrimToggle<cr>" "Toggle Trim")
+    (mkKeymap "v" "<leader>us" "<cmd>CodeSnap<cr>" "SnapShot the selected code")
   ];
 }
