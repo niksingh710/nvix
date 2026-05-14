@@ -1,7 +1,6 @@
 # This is common neovim settings with basic plugin sets
 { config, lib, ... }:
 let
-  inherit (config.nvix) icons;
   inherit (lib.nixvim) mkRaw;
 in
 {
@@ -19,6 +18,7 @@ in
       vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn",  { undercurl = true })
       vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo",  { undercurl = true })
       vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint",  { undercurl = true })
+      vim.api.nvim_set_hl(0, "WhichKeyIcon", { link = "NONE", underline = false, undercurl = false })
       local function my_paste(reg)
         return function(lines)
           local content = vim.fn.getreg('"')
